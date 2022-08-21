@@ -71,7 +71,7 @@ class _ContractPaymentsGraphicViewPageItemState
         ExpandablePageView.builder(
           controller: pageController,
           itemCount:
-              _viewModel.getContractPaymentPortionDetailsMapList().length,
+          _viewModel.getContractPaymentPortionDetailsMapList().length,
           itemBuilder: (context, index) {
             return MyTable(
                 map: _viewModel
