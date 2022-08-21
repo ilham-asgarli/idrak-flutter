@@ -1,9 +1,9 @@
 import 'package:emekteb/presentation-layer/features/chat/views/chat_view.dart';
-import 'package:emekteb/presentation-layer/features/contract/view/contract_details_view.dart';
+import 'package:emekteb/presentation-layer/features/contract/views/contract_details_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../presentation-layer/features/contract/model/contract_details.dart';
-import '../../../presentation-layer/features/contract/view/contract_view.dart';
+import '../../../presentation-layer/features/contract/models/contract_details.dart';
+import '../../../presentation-layer/features/contract/views/contract_view.dart';
 import '../../../presentation-layer/features/diary/views/diary_view.dart';
 import '../../../presentation-layer/features/home/views/home_view.dart';
 import '../../../presentation-layer/features/login/views/login_view.dart';

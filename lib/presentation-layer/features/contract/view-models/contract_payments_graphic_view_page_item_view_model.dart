@@ -5,7 +5,7 @@ import 'package:emekteb/utils/constants/app/app_constants.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../data-domain-layer/accounting/modules/contract_controller.dart';
-import '../model/contract_details.dart';
+import '../models/contract_details.dart';
 import '../notifiers/contract_payments_graphic_view_page_item_notifier.dart';
 
 class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {

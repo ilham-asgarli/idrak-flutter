@@ -1,13 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/data-domain-layer/accounting/modules/contract_controller.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
-import 'package:emekteb/presentation-layer/features/contract/view-model/contract_details_view_model.dart';
-import 'package:emekteb/presentation-layer/features/contract/view/contract_payments_graphic_view.dart';
+import 'package:emekteb/presentation-layer/features/contract/view-models/contract_details_view_model.dart';
+import 'package:emekteb/presentation-layer/features/contract/views/contract_payments_graphic_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/base/views/base_view.dart';
-import '../model/contract_details.dart';
+import '../models/contract_details.dart';
 
 class ContractDetailsView extends StatefulWidget {
   final ContractDetails contractDetails;

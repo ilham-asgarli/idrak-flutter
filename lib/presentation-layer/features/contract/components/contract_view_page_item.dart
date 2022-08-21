@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
-import 'package:emekteb/presentation-layer/features/contract/view-model/contract_view_model.dart';
+import 'package:emekteb/presentation-layer/features/contract/view-models/contract_view_model.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,7 @@ import '../../../../core/constants/navigation/navigation_constants.dart';
 import '../../../../core/init/navigation/navigation_service.dart';
 import '../../../../generated/locale_keys.g.dart';
 import '../../../widgets/my_table.dart';
-import '../model/contract_details.dart';
+import '../models/contract_details.dart';
 
 class ContractViewPageItem extends StatefulWidget {
   final ContractViewModel contractViewModel;

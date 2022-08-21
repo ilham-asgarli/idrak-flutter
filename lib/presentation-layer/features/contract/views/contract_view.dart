@@ -9,7 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/base/views/base_view.dart';
-import '../view-model/contract_view_model.dart';
+import '../view-models/contract_view_model.dart';
 
 class ContractView extends StatefulWidget {
   final String title;

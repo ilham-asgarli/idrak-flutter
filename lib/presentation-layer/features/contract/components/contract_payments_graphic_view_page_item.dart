@@ -8,8 +8,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/base/views/base_view.dart';
 import '../../../../generated/locale_keys.g.dart';
-import '../model/contract_details.dart';
-import '../view-model/contract_payments_graphic_view_page_item_view_model.dart';
+import '../models/contract_details.dart';
+import '../view-models/contract_payments_graphic_view_page_item_view_model.dart';
 
 class ContractPaymentsGraphicViewPageItem extends StatefulWidget {
   final ContractDetails contractDetails;
