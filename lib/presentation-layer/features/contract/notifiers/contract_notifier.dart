@@ -8,6 +8,7 @@ class ContractNotifier extends BaseChangeNotifier {
   int activeIndex = 0;
 
   reset() {
+    isDisposed = false;
     contractItems = [];
     customerItems = [];
     studentItems = [];

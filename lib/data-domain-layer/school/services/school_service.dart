@@ -26,7 +26,7 @@ class SchoolService extends ISchoolService {
   @override
   Future<IResponseModel<SchoolClassYearly>> fetchClassList(
       String? accessToken, String? yearId) async {
-    String url = ApiConstants.classYearly(yearId);
+    String url = ApiConstants.classYearly(yearId: yearId);
 
     IResponseModel<SchoolClassYearly> response = await CoreHttp.instance.send(
       url,
@@ -41,7 +41,7 @@ class SchoolService extends ISchoolService {
   @override
   Future<IResponseModel<SchoolWeekYearly>> fetchWeekList(
       String? accessToken, String? yearId) async {
-    String url = ApiConstants.weekYearly(yearId);
+    String url = ApiConstants.weekYearly(yearId: yearId);
 
     IResponseModel<SchoolWeekYearly> response = await CoreHttp.instance.send(
       url,
@@ -56,7 +56,7 @@ class SchoolService extends ISchoolService {
   @override
   Future<IResponseModel<SchoolScheduler>> fetchScheduler(
       String? accessToken, String? classYearId, String? weekId) async {
-    String url = ApiConstants.scheduler(classYearId, weekId);
+    String url = ApiConstants.scheduler(classYearId: classYearId, weekId: weekId);
 
     IResponseModel<SchoolScheduler> response = await CoreHttp.instance.send(
       url,
@@ -70,7 +70,7 @@ class SchoolService extends ISchoolService {
 
   @override
   Future<IResponseModel<SchoolYearController>> fetchYearByYearId(String? accessToken, String? yearId) async {
-    String url = ApiConstants.yearlyById(yearId);
+    String url = ApiConstants.yearlyById(yearId: yearId);
 
     IResponseModel<SchoolYearController> response = await CoreHttp.instance.send(
       url,

@@ -27,7 +27,7 @@ class ContractViewModel with BaseViewModel {
     super.init(context);
 
     contractNotifier = Provider.of<ContractNotifier>(context);
-    contractNotifier.isDisposed = false;
+    contractNotifier.reset();
 
     contractController = await getContractController(accessToken);
 

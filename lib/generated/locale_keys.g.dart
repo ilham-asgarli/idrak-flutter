@@ -60,7 +60,18 @@ abstract class  LocaleKeys {
   static const contractStudent = 'contractStudent';
   static const haveNoContract = 'haveNoContract';
   static const contractDetails = 'contractDetails';
+  static const contractPayments = 'contractPayments';
   static const payed = 'payed';
   static const mustPay = 'mustPay';
+  static const contractInvoices_no = 'contractInvoices.no';
+  static const contractInvoices_qaimeNo = 'contractInvoices.qaimeNo';
+  static const contractInvoices_amount = 'contractInvoices.amount';
+  static const contractInvoices_currency = 'contractInvoices.currency';
+  static const contractInvoices_account_cash = 'contractInvoices.account.cash';
+  static const contractInvoices_account_bank = 'contractInvoices.account.bank';
+  static const contractInvoices_account = 'contractInvoices.account';
+  static const contractInvoices_date = 'contractInvoices.date';
+  static const contractInvoices = 'contractInvoices';
+  static const haveNoPayment = 'haveNoPayment';
 
 }

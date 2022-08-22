@@ -1,4 +1,5 @@
 import 'package:emekteb/core/init/network/IResponseModel.dart';
+import 'package:emekteb/data-domain-layer/accounting/modules/invoices_controller.dart';
 
 import '../../../core/constants/app/api_constants.dart';
 import '../../../core/constants/enums/http_request_enum.dart';
@@ -25,9 +26,22 @@ class AccountingService extends IAccountingService {
   Future<IResponseModel<CustomerController>> fetchCustomerByPredimetId(
       String? accessToken, String? predimetId) async {
     IResponseModel<CustomerController> response = await CoreHttp.instance.send(
-      ApiConstants.customerByPredimetId(predimetId),
+      ApiConstants.customerByPredimetId(predimetId: predimetId),
       type: HttpTypes.GET,
       parseModel: CustomerController(),
+      accessToken: accessToken,
+    );
+
+    return response;
+  }
+
+  @override
+  Future<IResponseModel<InvoicesController>> fetchInvoicesByContractId(
+      String? accessToken, String? contractId) async {
+    IResponseModel<InvoicesController> response = await CoreHttp.instance.send(
+      ApiConstants.contractInvoices(contractId: contractId),
+      type: HttpTypes.GET,
+      parseModel: InvoicesController(),
       accessToken: accessToken,
     );
 

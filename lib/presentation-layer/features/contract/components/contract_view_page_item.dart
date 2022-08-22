@@ -93,7 +93,7 @@ class _ContractViewPageItemState extends State<ContractViewPageItem>
             label: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
-                LocaleKeys.contractDetails.tr(),
+                LocaleKeys.contractPayments.tr(),
               ),
             ),
           ),
@@ -103,26 +103,32 @@ class _ContractViewPageItemState extends State<ContractViewPageItem>
   }
 
   Widget buildChart(BuildContext context) {
+    double? totalPaymentPercent = widget.contractViewModel.contractController
+        ?.result?[widget.index].contractPaymentOrder?.totalPaymentPercent;
+    double? totalDeptPercent = widget.contractViewModel.contractController
+        ?.result?[widget.index].contractPaymentOrder?.totalDeptPercent;
+
     return PieChart(
       PieChartData(
-          sectionsSpace: 2,
-          centerSpaceRadius: context.dynamicWidth(0.1),
-          sections: [
-            PieChartSectionData(
-              color: Colors.green,
-              value: 270,
-              radius: 25,
-              title: "75%",
-              titleStyle: const TextStyle(color: Colors.white),
-            ),
-            PieChartSectionData(
-              color: Colors.red,
-              value: 90,
-              radius: 45,
-              title: "25%",
-              titleStyle: const TextStyle(color: Colors.white),
-            ),
-          ]),
+        sectionsSpace: 2,
+        centerSpaceRadius: context.dynamicWidth(0.1),
+        sections: [
+          PieChartSectionData(
+            color: Colors.green,
+            value: totalPaymentPercent,
+            radius: 25,
+            title: "${totalPaymentPercent?.toStringAsFixed(0)}%",
+            titleStyle: const TextStyle(color: Colors.white),
+          ),
+          PieChartSectionData(
+            color: Colors.red,
+            value: totalDeptPercent,
+            radius: 45,
+            title: "${totalDeptPercent?.toStringAsFixed(0)}%",
+            titleStyle: const TextStyle(color: Colors.white),
+          ),
+        ],
+      ),
     );
   }
 

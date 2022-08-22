@@ -19,13 +19,23 @@ class ContractPaymentsGraphicView extends StatefulWidget {
 }
 
 class _ContractPaymentsGraphicViewState
-    extends State<ContractPaymentsGraphicView> {
+    extends State<ContractPaymentsGraphicView> with AutomaticKeepAliveClientMixin<ContractPaymentsGraphicView>{
+  @override
+  bool get wantKeepAlive => true;
+
   late ContractPaymentsGraphicViewPageNotifier notifier;
 
   PageController pageController = PageController();
 
   @override
+  void dispose() {
+    notifier.reset();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     notifier = Provider.of<ContractPaymentsGraphicViewPageNotifier>(context);
 
     return Padding(

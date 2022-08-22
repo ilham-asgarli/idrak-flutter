@@ -4,6 +4,7 @@ import 'package:emekteb/presentation-layer/widgets/my_shimmer.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/colors/my_colors.dart';
+import '../../../widgets/table_place_holder.dart';
 
 class ContractBodyPlaceHolder extends StatelessWidget {
   const ContractBodyPlaceHolder({Key? key}) : super(key: key);
@@ -17,15 +18,24 @@ class ContractBodyPlaceHolder extends StatelessWidget {
           children: [
             buildTitlePlaceHolder(context),
             context.widget.verticalSpace(context, 0.015),
-            buildTablePlaceholder(context, 17),
+            const TablePlaceHolder(
+              columnCount: 2,
+              rowCount: 17,
+            ),
             context.widget.verticalSpace(context, 0.03),
             buildTitlePlaceHolder(context),
             context.widget.verticalSpace(context, 0.015),
-            buildTablePlaceholder(context, 4),
+            const TablePlaceHolder(
+              columnCount: 2,
+              rowCount: 4,
+            ),
             context.widget.verticalSpace(context, 0.03),
             buildTitlePlaceHolder(context),
             context.widget.verticalSpace(context, 0.015),
-            buildTablePlaceholder(context, 6),
+            const TablePlaceHolder(
+              columnCount: 2,
+              rowCount: 6,
+            ),
           ],
         ),
       ),
@@ -40,40 +50,6 @@ class ContractBodyPlaceHolder extends StatelessWidget {
         height: context.dynamicHeight(0.04),
         child: const Card(),
       ),
-    );
-  }
-
-  Widget buildTablePlaceholder(BuildContext context, int childCount) {
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: childCount,
-      itemBuilder: (context, index) {
-        return MyShimmer(
-          color: MyColors.shimmerColor,
-          child: Table(
-            children: [
-              TableRow(children: [
-                Card(
-                  child: Padding(
-                    padding: context.paddingNormal,
-                    child: const Text(""),
-                  ),
-                ),
-                Card(
-                  child: Padding(
-                    padding: context.paddingNormal,
-                    child: const Text(""),
-                  ),
-                ),
-              ]),
-            ],
-          ),
-        );
-      },
-      separatorBuilder: (BuildContext context, int index) {
-        return context.widget.verticalSpace(context, 0.01);
-      },
     );
   }
 }

@@ -83,8 +83,21 @@ class CodegenLoader extends AssetLoader{
   },
   "haveNoContract": "Aktiv müqaviləniz yoxdur.",
   "contractDetails": "Müqavilə detalları",
+  "contractPayments": "Müqavilə üzrə ödənişlər",
   "payed": "Ödənilib",
-  "mustPay": "Ödənməlidir"
+  "mustPay": "Ödənməlidir",
+  "contractInvoices": {
+    "no": "No",
+    "qaimeNo": "Qaimə nömrəsi",
+    "amount": "Məbləğ",
+    "currency": "Valyuta",
+    "account": {
+      "cash": "Kassa - Nağd",
+      "bank": "Bank"
+    },
+    "date": "Tarix"
+  },
+  "haveNoPayment": "Ödəməniz yoxdur."
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"az_AZ": az_AZ};
 }

@@ -2,12 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/presentation-layer/widgets/my_table.dart';
-import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/base/views/base_view.dart';
 import '../../../../generated/locale_keys.g.dart';
+import '../../../widgets/expandable_page_view.dart';
 import '../models/contract_details.dart';
 import '../view-models/contract_payments_graphic_view_page_item_view_model.dart';
 
@@ -15,9 +15,11 @@ class ContractPaymentsGraphicViewPageItem extends StatefulWidget {
   final ContractDetails contractDetails;
   final int index;
 
-  const ContractPaymentsGraphicViewPageItem(
-      {required this.contractDetails, required this.index, Key? key})
-      : super(key: key);
+  const ContractPaymentsGraphicViewPageItem({
+    required this.contractDetails,
+    required this.index,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ContractPaymentsGraphicViewPageItem> createState() =>
@@ -56,13 +58,32 @@ class _ContractPaymentsGraphicViewPageItemState
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        buildMustPay(),
+        context.widget.verticalSpace(context, 0.03),
+        Visibility(
+          visible: _viewModel.getPaymentsListLength() > 0,
+          child: buildPayed(),
+        ),
+      ],
+    );
+  }
+
+  Widget buildMustPay() {
+    return Column(
+      children: [
         Text(
           LocaleKeys.mustPay.tr(),
           style: context.textTheme.titleLarge,
         ),
         context.widget.verticalSpace(context, 0.015),
         MyTable(map: _viewModel.getContractPaymentDetailsMap()),
-        context.widget.verticalSpace(context, 0.03),
+      ],
+    );
+  }
+
+  Widget buildPayed() {
+    return Column(
+      children: [
         Text(
           LocaleKeys.payed.tr(),
           style: context.textTheme.titleLarge,
@@ -70,8 +91,7 @@ class _ContractPaymentsGraphicViewPageItemState
         context.widget.verticalSpace(context, 0.015),
         ExpandablePageView.builder(
           controller: pageController,
-          itemCount:
-          _viewModel.getContractPaymentPortionDetailsMapList().length,
+          itemCount: _viewModel.getPaymentsListLength(),
           itemBuilder: (context, index) {
             return MyTable(
                 map: _viewModel

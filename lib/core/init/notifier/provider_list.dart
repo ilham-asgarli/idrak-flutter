@@ -1,11 +1,10 @@
 import 'package:emekteb/presentation-layer/features/contract/notifiers/contract_notifier.dart';
+import 'package:emekteb/presentation-layer/features/contract/notifiers/contract_payments_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
-import '../../../presentation-layer/features/contract/notifiers/contract_details_notifier.dart';
 import '../../../presentation-layer/features/contract/notifiers/contract_payments_graphic_view_page_item_notifier.dart';
 import '../../../presentation-layer/features/contract/notifiers/contract_payments_graphic_view_page_notifier.dart';
-import '../navigation/navigation_service.dart';
 import 'theme_notifier.dart';
 
 class ApplicationProvider {
@@ -24,9 +23,6 @@ class ApplicationProvider {
       create: (context) => ThemeNotifier(),
     ),
     ChangeNotifierProvider(
-      create: (_) => ContractDetailsNotifier(),
-    ),
-    ChangeNotifierProvider(
       create: (_) => ContractNotifier(),
     ),
     ChangeNotifierProvider(
@@ -34,6 +30,9 @@ class ApplicationProvider {
     ),
     ChangeNotifierProvider(
       create: (_) => ContractPaymentsGraphicViewPageItemNotifier(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => ContractPaymentsNotifier(),
     ),
     //Provider.value(value: NavigationService.instance),
   ];

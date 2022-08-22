@@ -67,6 +67,19 @@
   },
   "haveNoContract": "Aktiv müqaviləniz yoxdur.",
   "contractDetails": "Müqavilə detalları",
+  "contractPayments": "Müqavilə üzrə ödənişlər",
   "payed": "Ödənilib",
-  "mustPay": "Ödənməlidir"
+  "mustPay": "Ödənməlidir",
+  "contractInvoices": {
+    "no": "No",
+    "qaimeNo": "Qaimə nömrəsi",
+    "amount": "Məbləğ",
+    "currency": "Valyuta",
+    "account": {
+      "cash": "Kassa - Nağd",
+      "bank": "Bank"
+    },
+    "date": "Tarix"
+  },
+  "haveNoPayment": "Ödəməniz yoxdur."
 }

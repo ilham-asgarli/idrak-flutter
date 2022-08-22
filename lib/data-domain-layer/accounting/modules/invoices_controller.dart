@@ -1,11 +1,11 @@
 import 'package:emekteb/core/base/models/base_model.dart';
 
-class ContractController extends BaseModel {
+class InvoicesController extends BaseModel<InvoicesController> {
   String? code;
   String? message;
   List<Result>? result;
 
-  ContractController({this.code, this.message, this.result});
+  InvoicesController({this.code, this.message, this.result});
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,8 +19,8 @@ class ContractController extends BaseModel {
   }
 
   @override
-  ContractController fromJson(Map<String, dynamic> json) {
-    return ContractController(
+  InvoicesController fromJson(Map<String, dynamic> json) {
+    return InvoicesController(
       code: json['code'],
       message: json['message'],
       result: json["result"] == null
@@ -31,6 +31,194 @@ class ContractController extends BaseModel {
 }
 
 class Result {
+  String? id;
+  String? paymentDate;
+  String? paidType;
+  int? amount;
+  Kassa? kassa;
+  BankAccount? bankAccount;
+  Currency? currency;
+  Contract? contract;
+  dynamic paymentNumber;
+
+  Result(
+      {this.id,
+      this.paymentDate,
+      this.paidType,
+      this.amount,
+      this.kassa,
+      this.bankAccount,
+      this.currency,
+      this.contract,
+      this.paymentNumber});
+
+  Result.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    paymentDate = json['paymentDate'];
+    paidType = json['paidType'];
+    amount = json['amount'];
+    kassa = json['kassa'] != null ? Kassa.fromJson(json['kassa']) : null;
+    bankAccount = json['bankAccount'] != null
+        ? BankAccount.fromJson(json['bankAccount'])
+        : null;
+    currency =
+        json['currency'] != null ? Currency.fromJson(json['currency']) : null;
+    contract =
+        json['contract'] != null ? Contract.fromJson(json['contract']) : null;
+    paymentNumber = json['paymentNumber'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['paymentDate'] = paymentDate;
+    data['paidType'] = paidType;
+    data['amount'] = amount;
+    if (kassa != null) {
+      data['kassa'] = kassa!.toJson();
+    }
+    if (bankAccount != null) {
+      data['bankAccount'] = bankAccount!.toJson();
+    }
+    if (currency != null) {
+      data['currency'] = currency!.toJson();
+    }
+    if (contract != null) {
+      data['contract'] = contract!.toJson();
+    }
+    data['paymentNumber'] = paymentNumber;
+    return data;
+  }
+}
+
+class Kassa {
+  String? id;
+  String? info;
+
+  Kassa({this.id, this.info});
+
+  Kassa.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    info = json['info'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['info'] = info;
+    return data;
+  }
+}
+
+class BankAccount {
+  String? id;
+  String? bankAccount;
+  Currency? currency;
+  Bank? bank;
+
+  BankAccount({this.id, this.bankAccount, this.currency, this.bank});
+
+  BankAccount.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    bankAccount = json['bankAccount'];
+    currency =
+        json['currency'] != null ? Currency.fromJson(json['currency']) : null;
+    bank = json['bank'] != null ? Bank.fromJson(json['bank']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['bankAccount'] = bankAccount;
+    if (currency != null) {
+      data['currency'] = currency!.toJson();
+    }
+    if (bank != null) {
+      data['bank'] = bank!.toJson();
+    }
+    return data;
+  }
+}
+
+class Currency {
+  String? id;
+  String? isoCode;
+  String? info;
+  String? coin;
+
+  Currency({this.id, this.isoCode, this.info, this.coin});
+
+  Currency.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    isoCode = json['isoCode'];
+    info = json['info'];
+    coin = json['coin'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['isoCode'] = isoCode;
+    data['info'] = info;
+    data['coin'] = coin;
+    return data;
+  }
+}
+
+class Bank {
+  String? id;
+  String? info;
+  String? muxbirHesab;
+  String? branchCode;
+  String? voen;
+  String? iban;
+  String? swift;
+  String? city;
+  String? address;
+  String? phone;
+
+  Bank(
+      {this.id,
+      this.info,
+      this.muxbirHesab,
+      this.branchCode,
+      this.voen,
+      this.iban,
+      this.swift,
+      this.city,
+      this.address,
+      this.phone});
+
+  Bank.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    info = json['info'];
+    muxbirHesab = json['muxbirHesab'];
+    branchCode = json['branchCode'];
+    voen = json['voen'];
+    iban = json['iban'];
+    swift = json['swift'];
+    city = json['city'];
+    address = json['address'];
+    phone = json['phone'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['info'] = info;
+    data['muxbirHesab'] = muxbirHesab;
+    data['branchCode'] = branchCode;
+    data['voen'] = voen;
+    data['iban'] = iban;
+    data['swift'] = swift;
+    data['city'] = city;
+    data['address'] = address;
+    data['phone'] = phone;
+    return data;
+  }
+}
+
+class Contract {
   String? id;
   String? contractNumber;
   String? info;
@@ -43,7 +231,7 @@ class Result {
   ContractPaymentOrder? contractPaymentOrder;
   dynamic contractCancelled;
 
-  Result(
+  Contract(
       {this.id,
       this.contractNumber,
       this.info,
@@ -56,7 +244,7 @@ class Result {
       this.contractPaymentOrder,
       this.contractCancelled});
 
-  Result.fromJson(Map<String, dynamic> json) {
+  Contract.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     contractNumber = json['contractNumber'];
     info = json['info'];
@@ -169,15 +357,15 @@ class ContractType {
 class Branch {
   String? id;
   String? info;
-  dynamic adress;
-  dynamic webPage;
-  dynamic email;
-  dynamic phone1;
-  dynamic phone2;
-  dynamic fax1;
-  dynamic fax2;
-  dynamic mob1;
-  dynamic mob2;
+  String? adress;
+  String? webPage;
+  String? email;
+  String? phone1;
+  String? phone2;
+  String? fax1;
+  String? fax2;
+  String? mob1;
+  String? mob2;
   String? prefix;
 
   Branch(
@@ -292,13 +480,13 @@ class Customer {
   String? secondName;
   String? firstName;
   String? fatherName;
-  String? matherName;
+  dynamic matherName;
   Gender? gender;
-  CustomerDocument? customerDocument;
+  dynamic customerDocument;
   String? dob;
   dynamic email;
-  String? mob1;
-  String? mob2;
+  dynamic mob1;
+  dynamic mob2;
   String? fullName;
 
   Customer(
@@ -322,9 +510,7 @@ class Customer {
     fatherName = json['fatherName'];
     matherName = json['matherName'];
     gender = json['gender'] != null ? Gender.fromJson(json['gender']) : null;
-    customerDocument = json['customerDocument'] != null
-        ? CustomerDocument.fromJson(json['customerDocument'])
-        : null;
+    customerDocument = json['customerDocument'];
     dob = json['dob'];
     email = json['email'];
     mob1 = json['mob1'];
@@ -342,9 +528,7 @@ class Customer {
     if (gender != null) {
       data['gender'] = gender!.toJson();
     }
-    if (customerDocument != null) {
-      data['customerDocument'] = customerDocument!.toJson();
-    }
+    data['customerDocument'] = customerDocument;
     data['dob'] = dob;
     data['email'] = email;
     data['mob1'] = mob1;
@@ -369,55 +553,6 @@ class Gender {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['info'] = info;
-    return data;
-  }
-}
-
-class CustomerDocument {
-  String? documentSeriya;
-  String? documentFin;
-  dynamic documentOrqan;
-  dynamic documentGivenDate;
-  dynamic registrationAdress;
-  String? liveAdress;
-  dynamic bloodGroup;
-  dynamic height;
-  dynamic eyeColor;
-
-  CustomerDocument(
-      {this.documentSeriya,
-      this.documentFin,
-      this.documentOrqan,
-      this.documentGivenDate,
-      this.registrationAdress,
-      this.liveAdress,
-      this.bloodGroup,
-      this.height,
-      this.eyeColor});
-
-  CustomerDocument.fromJson(Map<String, dynamic> json) {
-    documentSeriya = json['documentSeriya'];
-    documentFin = json['documentFin'];
-    documentOrqan = json['documentOrqan'];
-    documentGivenDate = json['documentGivenDate'];
-    registrationAdress = json['registrationAdress'];
-    liveAdress = json['liveAdress'];
-    bloodGroup = json['bloodGroup'];
-    height = json['height'];
-    eyeColor = json['eyeColor'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['documentSeriya'] = documentSeriya;
-    data['documentFin'] = documentFin;
-    data['documentOrqan'] = documentOrqan;
-    data['documentGivenDate'] = documentGivenDate;
-    data['registrationAdress'] = registrationAdress;
-    data['liveAdress'] = liveAdress;
-    data['bloodGroup'] = bloodGroup;
-    data['height'] = height;
-    data['eyeColor'] = eyeColor;
     return data;
   }
 }
@@ -476,25 +611,25 @@ class Parametrs {
 
 class ContractPaymentOrder {
   String? id;
-  num? initialAmount;
-  num? initialAmountPercent;
-  num? totalAmount;
-  num? totalValue;
-  num? discount;
+  int? initialAmount;
+  int? initialAmountPercent;
+  int? totalAmount;
+  int? totalValue;
+  int? discount;
   int? discountMonth;
-  num? loanPercent;
-  num? totalCapital;
-  num? totalInterest;
-  num? totalBalance;
-  num? totalPaymentAmount;
+  int? loanPercent;
+  int? totalCapital;
+  int? totalInterest;
+  int? totalBalance;
+  int? totalPaymentAmount;
   double? totalPaymentPercent;
-  num? totalDeptAmount;
+  int? totalDeptAmount;
   double? totalDeptPercent;
   dynamic expireDate;
-  num? lastPaymentAmount;
-  dynamic lastPaymentDate;
-  num? monthlyPayment;
-  PaymentType? paymentType;
+  int? lastPaymentAmount;
+  String? lastPaymentDate;
+  int? monthlyPayment;
+  Kassa? paymentType;
   Currency? currency;
   int? offerMonth;
   dynamic offerDate;
@@ -549,7 +684,7 @@ class ContractPaymentOrder {
     lastPaymentDate = json['lastPaymentDate'];
     monthlyPayment = json['monthlyPayment'];
     paymentType = json['paymentType'] != null
-        ? PaymentType.fromJson(json['paymentType'])
+        ? Kassa.fromJson(json['paymentType'])
         : null;
     currency =
         json['currency'] != null ? Currency.fromJson(json['currency']) : null;
@@ -602,64 +737,20 @@ class ContractPaymentOrder {
   }
 }
 
-class PaymentType {
-  String? id;
-  String? info;
-
-  PaymentType({this.id, this.info});
-
-  PaymentType.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    info = json['info'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['info'] = info;
-    return data;
-  }
-}
-
-class Currency {
-  String? id;
-  String? isoCode;
-  String? info;
-  dynamic coin;
-
-  Currency({this.id, this.isoCode, this.info, this.coin});
-
-  Currency.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    isoCode = json['isoCode'];
-    info = json['info'];
-    coin = json['coin'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['isoCode'] = isoCode;
-    data['info'] = info;
-    data['coin'] = coin;
-    return data;
-  }
-}
-
 class ContractPaymentOrderLine {
   String? id;
   int? line;
   String? lineDate;
-  num? amount;
-  num? capital;
-  num? interest;
-  num? balance;
+  int? amount;
+  int? capital;
+  int? interest;
+  int? balance;
   dynamic taxAmount;
   dynamic taxRoadAmount;
-  List<Payments>? payments;
+  dynamic payments;
   dynamic debt;
   bool? editable;
-  dynamic lineType;
+  String? lineType;
   dynamic debet;
   dynamic credit;
 
@@ -690,9 +781,7 @@ class ContractPaymentOrderLine {
     balance = json['balance'];
     taxAmount = json['taxAmount'];
     taxRoadAmount = json['taxRoadAmount'];
-    payments = json['payments'] == null
-        ? null
-        : List<Payments>.from(json['payments'].map((x) => Result.fromJson(x)));
+    payments = json['payments'];
     debt = json['debt'];
     editable = json['editable'];
     lineType = json['lineType'];
@@ -717,25 +806,6 @@ class ContractPaymentOrderLine {
     data['lineType'] = lineType;
     data['debet'] = debet;
     data['credit'] = credit;
-    return data;
-  }
-}
-
-class Payments {
-  int? lineAmount;
-  String? paymentDate;
-
-  Payments({this.lineAmount, this.paymentDate});
-
-  Payments.fromJson(Map<String, dynamic> json) {
-    lineAmount = json['lineAmount'];
-    paymentDate = json['paymentDate'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['lineAmount'] = lineAmount;
-    data['paymentDate'] = paymentDate;
     return data;
   }
 }

@@ -84,4 +84,13 @@ class AppConstants {
     LocaleKeys.contract_contractPaymentOrderLine_payments_paymentDate,
     LocaleKeys.contract_contractPaymentOrderLine_payments_lineAmount,
   ];
+
+  static const List<String> contractPaymentNames = [
+    LocaleKeys.contractInvoices_no,
+    LocaleKeys.contractInvoices_qaimeNo,
+    LocaleKeys.contractInvoices_amount,
+    LocaleKeys.contractInvoices_currency,
+    LocaleKeys.contractInvoices_account,
+    LocaleKeys.contractInvoices_date,
+  ];
 }

@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
-import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
 import 'package:emekteb/presentation-layer/features/contract/components/contract_body_place_holder.dart';
 import 'package:emekteb/presentation-layer/features/contract/components/contract_view_page_item.dart';
+import 'package:emekteb/presentation-layer/widgets/have_no.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -31,7 +31,6 @@ class _ContractViewState extends State<ContractView> {
 
   @override
   void dispose() {
-    _contractViewModel.contractNotifier.reset();
     _contractViewModel.contractNotifier.isDisposed = true;
     super.dispose();
   }
@@ -66,31 +65,10 @@ class _ContractViewState extends State<ContractView> {
         ? const ContractBodyPlaceHolder()
         : _contractViewModel.isCustomerHaveContract()
             ? buildMainBody()
-            : buildHaveNoContract();
-  }
-
-  Widget buildHaveNoContract() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FaIcon(
-            FontAwesomeIcons.fileContract,
-            size: 100,
-            color: context.colorScheme.background,
-          ),
-          widget.verticalSpace(context, 0.05),
-          Text(
-            LocaleKeys.haveNoContract.tr(),
-            style: TextStyle(
-              color: context.colorScheme.background,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-    );
+            : HaveNo(
+                description: LocaleKeys.haveNoContract.tr(),
+                iconData: FontAwesomeIcons.fileContract,
+              );
   }
 
   Widget buildMainBody() {

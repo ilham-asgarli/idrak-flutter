@@ -17,7 +17,20 @@ class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {
   void init(context) {
     super.init(context);
 
-    notifier = Provider.of<ContractPaymentsGraphicViewPageItemNotifier>(context);
+    notifier =
+        Provider.of<ContractPaymentsGraphicViewPageItemNotifier>(context);
+    notifier.reset();
+  }
+
+  int getPaymentsListLength() {
+    return contractDetails
+            .contractController
+            ?.result?[contractDetails.contractIndex]
+            .contractPaymentOrder
+            ?.contractPaymentOrderLine?[index]
+            .payments
+            ?.length ??
+        0;
   }
 
   Map<String?, String?> getContractPaymentDetailsMap() {
@@ -31,11 +44,12 @@ class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {
     List<Map<String?, String?>> list = [];
 
     List<Payments>? payments = contractDetails
-        .contractController
-        ?.result?[contractDetails.contractIndex]
-        .contractPaymentOrder
-        ?.contractPaymentOrderLine?[index]
-        .payments ?? [Payments(), Payments()];
+            .contractController
+            ?.result?[contractDetails.contractIndex]
+            .contractPaymentOrder
+            ?.contractPaymentOrderLine?[index]
+            .payments ??
+        [];
 
     for (var element in payments) {
       int paymentIndex = payments.indexOf(element);
