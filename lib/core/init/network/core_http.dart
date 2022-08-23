@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:emekteb/core/base/models/base_http.dart';
 import 'package:emekteb/core/constants/app/api_constants.dart';
+import 'package:emekteb/core/helper/auth_helper.dart';
 import 'package:http/http.dart';
 
 import '../../base/models/base_error.dart';
@@ -20,19 +21,25 @@ class CoreHttp {
 
   CoreHttp._init();
 
-  Future<IResponseModel<R>> send<R, T extends BaseModel>(String url, {
+  Future<IResponseModel<R>> send<R, T extends BaseModel>(
+    String url, {
     required HttpTypes type,
     required T parseModel,
     data,
     accessToken,
   }) async {
-    Response? response = await _sendRequest(
-        url, type: type, data: data, accessToken: accessToken);
+    Response? response = await _sendRequest(url,
+        type: type, data: data, accessToken: accessToken);
 
     if (response != null) {
       try {
         final model = _returnResponse(response, parseModel: parseModel);
         return ResponseModel<R>(data: model);
+      } on InvalidInputException catch (e) {
+        if (type == HttpTypes.GET) {
+          await AuthHelper().logout();
+        }
+        return ResponseModel(error: BaseError(e.toString()));
       } on Exception catch (e) {
         return ResponseModel(error: BaseError(e.toString()));
       }

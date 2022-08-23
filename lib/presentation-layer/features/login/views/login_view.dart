@@ -26,7 +26,7 @@ class _LoginViewState extends State<LoginView> {
   late LoginViewModel _loginViewModel;
 
   final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController();
+  late TextEditingController _usernameController;
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -49,6 +49,10 @@ class _LoginViewState extends State<LoginView> {
               _loginViewModel = model;
               _loginViewModel.loginNotifier = notifier;
               model.init(context);
+
+              _usernameController = TextEditingController(
+                text: _loginViewModel.getSavedUserName(),
+              );
             },
             onPageBuilder: (BuildContext context, LoginViewModel viewModel) =>
                 KeyboardVisibilityProvider(
@@ -110,7 +114,7 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  welcomeMessage() {
+  Widget welcomeMessage() {
     return Column(
       children: [
         Text(
@@ -208,7 +212,13 @@ class _LoginViewState extends State<LoginView> {
           _loginViewModel.loginNotifier.changeIsLogging(true);
           _loginFormKey.currentState?.save();
 
-          _loginViewModel.login().then((value) {
+          _loginViewModel.authHelper
+              .login(
+            context: context,
+            mounted: mounted,
+            loginModel: _loginViewModel.loginModel,
+          )
+              .then((value) {
             _loginViewModel.loginNotifier.changeIsLogging(false);
           });
         }
@@ -218,7 +228,7 @@ class _LoginViewState extends State<LoginView> {
               factor: 0.5,
             )
           : Text(
-              tr("login"),
+              LocaleKeys.login.tr(),
             ),
     );
   }

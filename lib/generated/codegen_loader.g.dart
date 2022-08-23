@@ -56,8 +56,6 @@ class CodegenLoader extends AssetLoader{
       "line": "Nömrə",
       "lineDate": "Tarix",
       "amount": "Məbləğ",
-      "discountPercent": "Güzəşt",
-      "mustPay": "Ödənilməli",
       "debt": "Borc",
       "payments": {
         "lineAmount": "Məbləğ",

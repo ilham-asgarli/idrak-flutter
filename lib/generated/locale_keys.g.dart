@@ -36,8 +36,6 @@ abstract class  LocaleKeys {
   static const contract_contractPaymentOrderLine_line = 'contract.contractPaymentOrderLine.line';
   static const contract_contractPaymentOrderLine_lineDate = 'contract.contractPaymentOrderLine.lineDate';
   static const contract_contractPaymentOrderLine_amount = 'contract.contractPaymentOrderLine.amount';
-  static const contract_contractPaymentOrderLine_discountPercent = 'contract.contractPaymentOrderLine.discountPercent';
-  static const contract_contractPaymentOrderLine_mustPay = 'contract.contractPaymentOrderLine.mustPay';
   static const contract_contractPaymentOrderLine_debt = 'contract.contractPaymentOrderLine.debt';
   static const contract_contractPaymentOrderLine_payments_lineAmount = 'contract.contractPaymentOrderLine.payments.lineAmount';
   static const contract_contractPaymentOrderLine_payments_paymentDate = 'contract.contractPaymentOrderLine.payments.paymentDate';

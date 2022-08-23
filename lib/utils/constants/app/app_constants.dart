@@ -75,8 +75,6 @@ class AppConstants {
     LocaleKeys.contract_contractPaymentOrderLine_line,
     LocaleKeys.contract_contractPaymentOrderLine_lineDate,
     LocaleKeys.contract_contractPaymentOrderLine_amount,
-    LocaleKeys.contract_contractPaymentOrderLine_discountPercent,
-    LocaleKeys.contract_contractPaymentOrderLine_mustPay,
     LocaleKeys.contract_contractPaymentOrderLine_debt,
   ];
 

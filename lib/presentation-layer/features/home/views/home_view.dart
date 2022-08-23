@@ -44,7 +44,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               IconButton(
                 onPressed: () async {
-                  _homeViewModel.logout(context, mounted);
+                  _homeViewModel.authHelper.logout();
                 },
                 icon: const Icon(Icons.exit_to_app),
               ),
@@ -98,7 +98,7 @@ class _HomeViewState extends State<HomeView> {
           widget.verticalSpace(context, 0.005),
           Text(
             _homeViewModel.userInfo.result?.role?.description ?? "",
-            style: TextStyle(
+            style: const TextStyle(
               color: MyColors.secondColor,
             ),
           ),

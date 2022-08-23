@@ -81,10 +81,6 @@ class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {
       case LocaleKeys.contract_contractPaymentOrderLine_amount:
         detail = contractPaymentOrderLine?.amount.toString();
         break;
-      case LocaleKeys.contract_contractPaymentOrderLine_discountPercent:
-        break;
-      case LocaleKeys.contract_contractPaymentOrderLine_mustPay:
-        break;
       case LocaleKeys.contract_contractPaymentOrderLine_debt:
         detail = contractPaymentOrderLine?.debt;
         break;

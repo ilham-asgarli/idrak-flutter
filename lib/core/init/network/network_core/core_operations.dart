@@ -43,8 +43,7 @@ extension _CoreHttpOperations on CoreHttp {
     if (response.statusCode == 200) {
       return _responseParser(parseModel, jsonDecoded);
     } else {
-      BaseHttp? baseHttp =
-          _responseParser(BaseHttp(), jsonDecoded);
+      BaseHttp? baseHttp = _responseParser(BaseHttp(), jsonDecoded);
 
       switch (response.statusCode) {
         case 400:
