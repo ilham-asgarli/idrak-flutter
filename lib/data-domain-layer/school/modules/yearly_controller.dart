@@ -1,7 +1,7 @@
 import '../../../core/base/models/base_model.dart';
 
-class SchoolYearsController extends BaseModel<SchoolYearsController> {
-  SchoolYearsController({
+class YearlyController extends BaseModel<YearlyController> {
+  YearlyController({
     this.code,
     this.message,
     this.result,
@@ -21,8 +21,8 @@ class SchoolYearsController extends BaseModel<SchoolYearsController> {
       };
 
   @override
-  SchoolYearsController fromJson(Map<String, dynamic> json) {
-    return SchoolYearsController(
+  YearlyController fromJson(Map<String, dynamic> json) {
+    return YearlyController(
       code: json["code"],
       message: json["message"],
       result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),

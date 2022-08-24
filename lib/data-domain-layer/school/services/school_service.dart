@@ -1,22 +1,23 @@
 import 'package:emekteb/core/init/network/IResponseModel.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_year_controller.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_week_yearly.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_yearly.dart';
+import 'package:emekteb/data-domain-layer/school/modules/timetable_controller.dart';
+import 'package:emekteb/data-domain-layer/school/modules/year_controller.dart';
+import 'package:emekteb/data-domain-layer/school/modules/week_yearly_controller.dart';
+import 'package:emekteb/data-domain-layer/school/modules/yearly_controller.dart';
 
-import '../../../core/constants/app/api_constants.dart';
+import '../../../core/constants/api/api_url_constants.dart';
 import '../../../core/constants/enums/http_request_enum.dart';
 import '../../../core/init/network/core_http.dart';
-import '../modules/school_scheduler.dart';
-import '../modules/school_class_yearly.dart';
+import '../modules/scheduler_controller.dart';
+import '../modules/class_yearly_controller.dart';
 import 'ISchoolService.dart';
 
 class SchoolService extends ISchoolService {
   @override
-  Future<IResponseModel<SchoolYearsController>> fetchYearList(accessToken) async {
-    IResponseModel<SchoolYearsController> response = await CoreHttp.instance.send(
-      ApiConstants.yearly,
+  Future<IResponseModel<YearlyController>> fetchYearList(accessToken) async {
+    IResponseModel<YearlyController> response = await CoreHttp.instance.send(
+      ApiUrlConstants.yearly,
       type: HttpTypes.GET,
-      parseModel: SchoolYearsController(),
+      parseModel: YearlyController(),
       accessToken: accessToken,
     );
 
@@ -24,14 +25,17 @@ class SchoolService extends ISchoolService {
   }
 
   @override
-  Future<IResponseModel<SchoolClassYearly>> fetchClassList(
-      String? accessToken, String? yearId) async {
-    String url = ApiConstants.classYearly(yearId: yearId);
+  Future<IResponseModel<ClassYearlyController>> fetchClassList(
+    String? accessToken,
+    String? yearId,
+  ) async {
+    String url = ApiUrlConstants.classYearly(yearId: yearId);
 
-    IResponseModel<SchoolClassYearly> response = await CoreHttp.instance.send(
+    IResponseModel<ClassYearlyController> response =
+        await CoreHttp.instance.send(
       url,
       type: HttpTypes.GET,
-      parseModel: SchoolClassYearly(),
+      parseModel: ClassYearlyController(),
       accessToken: accessToken,
     );
 
@@ -39,14 +43,17 @@ class SchoolService extends ISchoolService {
   }
 
   @override
-  Future<IResponseModel<SchoolWeekYearly>> fetchWeekList(
-      String? accessToken, String? yearId) async {
-    String url = ApiConstants.weekYearly(yearId: yearId);
+  Future<IResponseModel<WeekYearlyController>> fetchWeekList(
+    String? accessToken,
+    String? yearId,
+  ) async {
+    String url = ApiUrlConstants.weekYearly(yearId: yearId);
 
-    IResponseModel<SchoolWeekYearly> response = await CoreHttp.instance.send(
+    IResponseModel<WeekYearlyController> response =
+        await CoreHttp.instance.send(
       url,
       type: HttpTypes.GET,
-      parseModel: SchoolWeekYearly(),
+      parseModel: WeekYearlyController(),
       accessToken: accessToken,
     );
 
@@ -54,14 +61,18 @@ class SchoolService extends ISchoolService {
   }
 
   @override
-  Future<IResponseModel<SchoolScheduler>> fetchScheduler(
-      String? accessToken, String? classYearId, String? weekId) async {
-    String url = ApiConstants.scheduler(classYearId: classYearId, weekId: weekId);
+  Future<IResponseModel<SchedulerController>> fetchScheduler(
+    String? accessToken,
+    String? classYearId,
+    String? weekId,
+  ) async {
+    String url =
+        ApiUrlConstants.scheduler(classYearId: classYearId, weekId: weekId);
 
-    IResponseModel<SchoolScheduler> response = await CoreHttp.instance.send(
+    IResponseModel<SchedulerController> response = await CoreHttp.instance.send(
       url,
       type: HttpTypes.GET,
-      parseModel: SchoolScheduler(),
+      parseModel: SchedulerController(),
       accessToken: accessToken,
     );
 
@@ -69,13 +80,39 @@ class SchoolService extends ISchoolService {
   }
 
   @override
-  Future<IResponseModel<SchoolYearController>> fetchYearByYearId(String? accessToken, String? yearId) async {
-    String url = ApiConstants.yearlyById(yearId: yearId);
+  Future<IResponseModel<YearController>> fetchYearByYearId(
+    String? accessToken,
+    String? yearId,
+  ) async {
+    String url = ApiUrlConstants.yearlyById(yearId: yearId);
 
-    IResponseModel<SchoolYearController> response = await CoreHttp.instance.send(
+    IResponseModel<YearController> response = await CoreHttp.instance.send(
       url,
       type: HttpTypes.GET,
-      parseModel: SchoolYearController(),
+      parseModel: YearController(),
+      accessToken: accessToken,
+    );
+
+    return response;
+  }
+
+  @override
+  Future<IResponseModel<TimetableController>> fetchTimetable(
+    String? accessToken,
+    String? customerId,
+    String? yearId,
+    int? monthId,
+  ) async {
+    String url = ApiUrlConstants.timetable(
+      customerId: customerId,
+      yearId: yearId,
+      monthId: monthId,
+    );
+
+    IResponseModel<TimetableController> response = await CoreHttp.instance.send(
+      url,
+      type: HttpTypes.GET,
+      parseModel: TimetableController(),
       accessToken: accessToken,
     );
 

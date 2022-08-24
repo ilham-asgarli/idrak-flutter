@@ -1,15 +1,42 @@
-import 'package:emekteb/data-domain-layer/school/modules/school_class_yearly.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_week_yearly.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_yearly.dart';
+import 'package:emekteb/data-domain-layer/school/modules/class_yearly_controller.dart';
+import 'package:emekteb/data-domain-layer/school/modules/week_yearly_controller.dart';
+import 'package:emekteb/data-domain-layer/school/modules/yearly_controller.dart';
 
 import '../../../core/init/network/IResponseModel.dart';
-import '../modules/school_scheduler.dart';
-import '../modules/school_year_controller.dart';
+import '../modules/scheduler_controller.dart';
+import '../modules/timetable_controller.dart';
+import '../modules/year_controller.dart';
 
 abstract class ISchoolService {
-  Future<IResponseModel<SchoolYearsController>> fetchYearList(String? accessToken);
-  Future<IResponseModel<SchoolYearController>> fetchYearByYearId(String? accessToken, String? yearId);
-  Future<IResponseModel<SchoolClassYearly>> fetchClassList(String? accessToken, String? yearId);
-  Future<IResponseModel<SchoolWeekYearly>> fetchWeekList(String? accessToken, String? yearId);
-  Future<IResponseModel<SchoolScheduler>> fetchScheduler(String? accessToken, String? classYearId, String? weekId);
+  Future<IResponseModel<YearlyController>> fetchYearList(
+    String? accessToken,
+  );
+
+  Future<IResponseModel<YearController>> fetchYearByYearId(
+    String? accessToken,
+    String? yearId,
+  );
+
+  Future<IResponseModel<ClassYearlyController>> fetchClassList(
+    String? accessToken,
+    String? yearId,
+  );
+
+  Future<IResponseModel<WeekYearlyController>> fetchWeekList(
+    String? accessToken,
+    String? yearId,
+  );
+
+  Future<IResponseModel<SchedulerController>> fetchScheduler(
+    String? accessToken,
+    String? classYearId,
+    String? weekId,
+  );
+
+  Future<IResponseModel<TimetableController>> fetchTimetable(
+    String? accessToken,
+    String? customerId,
+    String? yearId,
+    int? monthId,
+  );
 }

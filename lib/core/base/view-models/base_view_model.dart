@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:emekteb/core/constants/app/hive_constants.dart';
+import 'package:emekteb/core/constants/cache/hive_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 

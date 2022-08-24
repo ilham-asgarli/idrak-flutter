@@ -3,7 +3,7 @@ import 'package:emekteb/core/base/notifier/base_change_notifier.dart';
 import 'package:emekteb/utils/constants/app/app_constants.dart';
 import 'package:emekteb/utils/constants/enums/enums.dart';
 
-import '../../../../data-domain-layer/school/modules/school_scheduler.dart';
+import '../../../../data-domain-layer/school/modules/scheduler_controller.dart';
 import '../models/main_end_drawer_item.dart';
 
 class TimetableNotifier extends BaseChangeNotifier {
@@ -16,7 +16,7 @@ class TimetableNotifier extends BaseChangeNotifier {
   bool isMainEndDrawerLoading = false;
   bool isChoosingEndDrawerLoading = true;
   bool isBodyWidgetLoading = true;
-  late SchoolScheduler schoolScheduler;
+  late SchedulerController schoolScheduler;
 
   changeMainEndDrawerItems(List<MainEndDrawerItem> mainEndDrawerItems) {
     this.mainEndDrawerItems = mainEndDrawerItems;

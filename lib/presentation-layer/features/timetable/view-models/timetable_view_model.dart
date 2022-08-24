@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_scheduler.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_week_yearly.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_yearly.dart';
+import 'package:emekteb/data-domain-layer/school/modules/scheduler_controller.dart';
+import 'package:emekteb/data-domain-layer/school/modules/week_yearly_controller.dart';
+import 'package:emekteb/data-domain-layer/school/modules/yearly_controller.dart';
 import 'package:emekteb/utils/constants/app/app_constants.dart';
 
 import '../../../../core/init/network/IResponseModel.dart';
-import '../../../../data-domain-layer/school/modules/school_class_yearly.dart';
+import '../../../../data-domain-layer/school/modules/class_yearly_controller.dart';
 import '../../../../data-domain-layer/school/services/school_service.dart';
 import '../../../../utils/constants/enums/enums.dart';
 import '../models/choosing_end_drawer_item.dart';
@@ -59,22 +59,22 @@ class TimetableViewModel with BaseViewModel {
     });
   }
 
-  Future<SchoolScheduler?> getData() async {
-    SchoolScheduler? schoolScheduler = await getSchoolSchedulerByClassAndWeek();
+  Future<SchedulerController?> getData() async {
+    SchedulerController? schoolScheduler = await getSchoolSchedulerByClassAndWeek();
     return schoolScheduler;
   }
 
   /// If [yearIndex] is null year index is current year.
   Future<TimetableFilter> getFilterDataByYear({int? yearIndex}) async {
-    SchoolYearsController? schoolYearly = timetableFilter == null
+    YearlyController? schoolYearly = timetableFilter == null
         ? await getYearList()
         : timetableFilter!.schoolYearly;
 
     int index = yearIndex ?? getCurrentYearIndex(schoolYearly);
 
-    SchoolClassYearly? schoolClassYearly =
+    ClassYearlyController? schoolClassYearly =
         await getSchoolClassYearly(schoolYearly?.result?[index].id);
-    SchoolWeekYearly? schoolWeekYearly =
+    WeekYearlyController? schoolWeekYearly =
         await getSchoolWeekYearly(schoolYearly?.result?[index].id);
 
     timetableFilter = TimetableFilter(
@@ -86,30 +86,30 @@ class TimetableViewModel with BaseViewModel {
     return timetableFilter!;
   }
 
-  Future<SchoolYearsController?> getYearList() async {
-    IResponseModel<SchoolYearsController> responseModel =
+  Future<YearlyController?> getYearList() async {
+    IResponseModel<YearlyController> responseModel =
         await timetableService.fetchYearList(accessToken);
 
     return responseModel.data;
   }
 
-  Future<SchoolClassYearly?> getSchoolClassYearly(String? yearId) async {
-    IResponseModel<SchoolClassYearly> responseModel =
+  Future<ClassYearlyController?> getSchoolClassYearly(String? yearId) async {
+    IResponseModel<ClassYearlyController> responseModel =
         await timetableService.fetchClassList(accessToken, yearId);
 
     return responseModel.data;
   }
 
-  Future<SchoolWeekYearly?> getSchoolWeekYearly(String? yearId) async {
-    IResponseModel<SchoolWeekYearly> responseModel =
+  Future<WeekYearlyController?> getSchoolWeekYearly(String? yearId) async {
+    IResponseModel<WeekYearlyController> responseModel =
         await timetableService.fetchWeekList(accessToken, yearId);
 
     return responseModel.data;
   }
 
-  Future<SchoolScheduler?> getSchoolScheduler(
+  Future<SchedulerController?> getSchoolScheduler(
       String? classYearId, String? weekId) async {
-    IResponseModel<SchoolScheduler> responseModel =
+    IResponseModel<SchedulerController> responseModel =
         await timetableService.fetchScheduler(accessToken, classYearId, weekId);
 
     return responseModel.data;
@@ -145,7 +145,7 @@ class TimetableViewModel with BaseViewModel {
     await getDataAndChangeState();
   }
 
-  Future<SchoolScheduler?> getSchoolSchedulerByClassAndWeek() async {
+  Future<SchedulerController?> getSchoolSchedulerByClassAndWeek() async {
     int selectedWeekIndex = timetableNotifier
         .mainEndDrawerItems[AppConstants.timetableEndDrawerWeekIndex]
         .selectedChoosingEndDrawerItemIndex;
@@ -158,7 +158,7 @@ class TimetableViewModel with BaseViewModel {
           timetableFilter!.schoolClassYearly!.result![selectedClassIndex].id!;
       int weekId =
           timetableFilter!.schoolWeekYearly!.result![selectedWeekIndex].id!;
-      SchoolScheduler? schoolScheduler =
+      SchedulerController? schoolScheduler =
           await getSchoolScheduler(classYearId, weekId.toString());
       return schoolScheduler;
     } catch (e) {
@@ -197,7 +197,7 @@ class TimetableViewModel with BaseViewModel {
     }
   }
 
-  int getCurrentYearIndex(SchoolYearsController? schoolYearly) {
+  int getCurrentYearIndex(YearlyController? schoolYearly) {
     int index = 0;
     schoolYearly?.result?.forEach((e) {
       if (e.isCurrent != null && e.isCurrent!) {
@@ -207,7 +207,7 @@ class TimetableViewModel with BaseViewModel {
     return index;
   }
 
-  int getCurrentWeekIndex(SchoolWeekYearly? schoolWeekYearly) {
+  int getCurrentWeekIndex(WeekYearlyController? schoolWeekYearly) {
     int index = 0;
     schoolWeekYearly?.result?.forEach((e) {
       if (e.isCurrent != null && e.isCurrent!) {

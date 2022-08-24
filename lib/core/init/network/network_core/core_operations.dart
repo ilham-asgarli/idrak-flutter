@@ -9,7 +9,7 @@ extension _CoreHttpOperations on CoreHttp {
   }) async {
     Response? response;
 
-    url = ApiConstants.base + url;
+    url = ApiUrlConstants.base + url;
 
     try {
       switch (type) {

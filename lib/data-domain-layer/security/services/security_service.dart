@@ -1,4 +1,4 @@
-import 'package:emekteb/core/constants/app/api_constants.dart';
+import 'package:emekteb/core/constants/api/api_url_constants.dart';
 import 'package:emekteb/core/constants/enums/http_request_enum.dart';
 import 'package:emekteb/core/init/network/core_http.dart';
 import 'package:emekteb/data-domain-layer/security/modules/login_response.dart';
@@ -13,7 +13,7 @@ class SecurityService extends ISecurityService {
   Future<IResponseModel<LoginResponse>> fetchUser(Login model) async {
     IResponseModel<LoginResponse> response =
         await CoreHttp.instance.send<LoginResponse, LoginResponse>(
-      ApiConstants.auth,
+      ApiUrlConstants.auth,
       type: HttpTypes.POST,
       parseModel: LoginResponse(),
       data: model.toJson(),
@@ -25,7 +25,7 @@ class SecurityService extends ISecurityService {
   @override
   Future<IResponseModel<UserInfo>> fetchUserInfo(String? accessToken) async {
     IResponseModel<UserInfo> response = await CoreHttp.instance.send(
-      ApiConstants.userInfo,
+      ApiUrlConstants.userInfo,
       type: HttpTypes.GET,
       parseModel: UserInfo(),
       accessToken: accessToken,

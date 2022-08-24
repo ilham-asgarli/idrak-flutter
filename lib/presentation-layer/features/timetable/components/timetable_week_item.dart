@@ -1,11 +1,11 @@
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/string_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_scheduler.dart';
+import 'package:emekteb/data-domain-layer/school/modules/scheduler_controller.dart';
 import 'package:flutter/material.dart';
 
 class TimetableWeekItem extends StatelessWidget {
-  final SchoolScheduler schoolScheduler;
+  final SchedulerController schoolScheduler;
   final int day;
 
   const TimetableWeekItem(

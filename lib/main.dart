@@ -1,6 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/core/constants/app/hive_constants.dart';
+import 'package:emekteb/core/constants/cache/hive_constants.dart';
 import 'package:emekteb/core/init/cache/hive_manager.dart';
 import 'package:emekteb/core/init/cache/shared_preferences_manager.dart';
 import 'package:emekteb/generated/codegen_loader.g.dart';

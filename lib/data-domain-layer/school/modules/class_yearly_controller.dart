@@ -1,15 +1,15 @@
 import 'package:emekteb/core/base/models/base_model.dart';
 
-class SchoolClassYearly extends BaseModel<SchoolClassYearly> {
+class ClassYearlyController extends BaseModel<ClassYearlyController> {
   String? code;
   String? message;
   List<Result>? result;
 
-  SchoolClassYearly({this.code, this.message, this.result});
+  ClassYearlyController({this.code, this.message, this.result});
 
   @override
-  SchoolClassYearly fromJson(Map<String, dynamic> json) {
-    return SchoolClassYearly(
+  ClassYearlyController fromJson(Map<String, dynamic> json) {
+    return ClassYearlyController(
       code: json['code'],
       message: json['message'],
       result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),

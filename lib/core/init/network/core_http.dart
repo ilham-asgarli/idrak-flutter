@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:emekteb/core/base/models/base_http.dart';
-import 'package:emekteb/core/constants/app/api_constants.dart';
+import 'package:emekteb/core/constants/api/api_url_constants.dart';
 import 'package:emekteb/core/helper/auth_helper.dart';
 import 'package:http/http.dart';
 

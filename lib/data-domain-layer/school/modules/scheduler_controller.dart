@@ -1,11 +1,11 @@
 import 'package:emekteb/core/base/models/base_model.dart';
 
-class SchoolScheduler extends BaseModel {
+class SchedulerController extends BaseModel {
   String? code;
   String? message;
   Result? result;
 
-  SchoolScheduler({this.code, this.message, this.result});
+  SchedulerController({this.code, this.message, this.result});
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +20,7 @@ class SchoolScheduler extends BaseModel {
 
   @override
   fromJson(Map<String, dynamic> json) {
-    return SchoolScheduler(
+    return SchedulerController(
       code: json['code'],
       message: json['message'],
       result: Result.fromJson(json["result"]),

@@ -1,11 +1,11 @@
 import 'package:emekteb/core/base/models/base_model.dart';
 
-class SchoolWeekYearly extends BaseModel {
+class YearController extends BaseModel<YearController> {
   String? code;
   String? message;
-  List<Result>? result;
+  Result? result;
 
-  SchoolWeekYearly({this.code, this.message, this.result});
+  YearController({this.code, this.message, this.result});
 
   @override
   Map<String, dynamic> toJson() {
@@ -13,45 +13,54 @@ class SchoolWeekYearly extends BaseModel {
     data['code'] = code;
     data['message'] = message;
     if (result != null) {
-      data['result'] = result!.map((v) => v.toJson()).toList();
+      data['result'] = result!.toJson();
     }
     return data;
   }
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    return SchoolWeekYearly(
+  YearController fromJson(Map<String, dynamic> json) {
+    return YearController(
       code: json['code'],
       message: json['message'],
-      result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
+      result: json['result'] != null ? Result.fromJson(json['result']) : null,
     );
   }
 }
 
 class Result {
-  int? id;
+  String? id;
   String? info;
-  String? startWeek;
-  String? endWeek;
+  String? startYear;
+  String? endYear;
   bool? isCurrent;
+  int? statusYear;
 
-  Result({this.id, this.info, this.startWeek, this.endWeek, this.isCurrent});
+  Result(
+      {this.id,
+      this.info,
+      this.startYear,
+      this.endYear,
+      this.isCurrent,
+      this.statusYear});
 
   Result.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     info = json['info'];
-    startWeek = json['startWeek'];
-    endWeek = json['endWeek'];
+    startYear = json['startYear'];
+    endYear = json['endYear'];
     isCurrent = json['isCurrent'];
+    statusYear = json['statusYear'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['info'] = info;
-    data['startWeek'] = startWeek;
-    data['endWeek'] = endWeek;
+    data['startYear'] = startYear;
+    data['endYear'] = endYear;
     data['isCurrent'] = isCurrent;
+    data['statusYear'] = statusYear;
     return data;
   }
 }

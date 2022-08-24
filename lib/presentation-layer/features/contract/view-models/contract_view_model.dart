@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/data-domain-layer/accounting/modules/customer_controller.dart';
-import 'package:emekteb/data-domain-layer/school/modules/school_year_controller.dart';
+import 'package:emekteb/data-domain-layer/school/modules/year_controller.dart';
 import 'package:emekteb/data-domain-layer/school/services/school_service.dart';
 import 'package:emekteb/utils/constants/app/app_constants.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +17,7 @@ class ContractViewModel with BaseViewModel {
 
   ContractController? contractController;
   List<CustomerController?> customerControllers = [];
-  List<SchoolYearController?> schoolYearControllers = [];
+  List<YearController?> schoolYearControllers = [];
 
   AccountingService accountingService = AccountingService();
   SchoolService schoolService = SchoolService();
@@ -82,9 +82,9 @@ class ContractViewModel with BaseViewModel {
     return responseModel.data;
   }
 
-  Future<SchoolYearController?> getSchoolYearController(
+  Future<YearController?> getSchoolYearController(
       String? accessToken, String? yearId) async {
-    IResponseModel<SchoolYearController> responseModel =
+    IResponseModel<YearController> responseModel =
         await schoolService.fetchYearByYearId(accessToken, yearId);
 
     return responseModel.data;
