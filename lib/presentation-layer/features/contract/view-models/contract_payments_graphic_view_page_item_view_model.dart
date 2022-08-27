@@ -62,7 +62,6 @@ class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {
     return list;
   }
 
-  // TODO: Fulfill discountPercent and mustPay parts
   String? getContractPaymentDetailsValueByName(String name) {
     String? detail;
     ContractPaymentOrderLine? contractPaymentOrderLine = contractDetails
@@ -73,16 +72,16 @@ class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {
 
     switch (name) {
       case LocaleKeys.contract_contractPaymentOrderLine_line:
-        detail = contractPaymentOrderLine?.line.toString();
+        detail = "${contractPaymentOrderLine?.line ?? ""}";
         break;
       case LocaleKeys.contract_contractPaymentOrderLine_lineDate:
         detail = contractPaymentOrderLine?.lineDate;
         break;
       case LocaleKeys.contract_contractPaymentOrderLine_amount:
-        detail = contractPaymentOrderLine?.amount.toString();
+        detail = "${contractPaymentOrderLine?.amount ?? ""}";
         break;
       case LocaleKeys.contract_contractPaymentOrderLine_debt:
-        detail = contractPaymentOrderLine?.debt.toString();
+        detail = "${contractPaymentOrderLine?.debt ?? ""}";
         break;
     }
 
@@ -103,8 +102,8 @@ class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {
         detail = contractPaymentOrderLine?.payments?[paymentIndex].paymentDate;
         break;
       case LocaleKeys.contract_contractPaymentOrderLine_payments_lineAmount:
-        detail = contractPaymentOrderLine?.payments?[paymentIndex].lineAmount
-            .toString();
+        detail =
+            "${contractPaymentOrderLine?.payments?[paymentIndex].lineAmount ?? ""}";
         break;
     }
 

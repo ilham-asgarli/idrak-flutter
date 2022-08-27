@@ -1,3 +1,4 @@
+import 'package:emekteb/data-domain-layer/school/modules/student_controller.dart';
 import 'package:emekteb/data-domain-layer/school/modules/week_yearly_controller.dart';
 import 'package:emekteb/data-domain-layer/school/modules/yearly_controller.dart';
 
@@ -5,11 +6,13 @@ import '../../../../data-domain-layer/school/modules/class_yearly_controller.dar
 
 class ScheduleFilter {
   YearlyController? schoolYearly;
+  StudentController? studentController;
   ClassYearlyController? schoolClassYearly;
   WeekYearlyController? schoolWeekYearly;
 
   ScheduleFilter({
     required this.schoolYearly,
+    required this.studentController,
     required this.schoolClassYearly,
     required this.schoolWeekYearly,
   });

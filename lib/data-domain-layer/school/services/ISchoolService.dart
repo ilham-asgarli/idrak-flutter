@@ -23,6 +23,12 @@ abstract class ISchoolService {
     String? yearId,
   );
 
+  Future<IResponseModel<ClassYearlyController>> fetchClassListForParent(
+    String? accessToken,
+    String? yearId,
+    String? studentId,
+  );
+
   Future<IResponseModel<WeekYearlyController>> fetchWeekList(
     String? accessToken,
     String? yearId,

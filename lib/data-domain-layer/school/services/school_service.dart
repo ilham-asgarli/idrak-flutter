@@ -44,6 +44,26 @@ class SchoolService extends ISchoolService {
   }
 
   @override
+  Future<IResponseModel<ClassYearlyController>> fetchClassListForParent(
+    String? accessToken,
+    String? yearId,
+    String? studentId,
+  ) async {
+    String url = ApiUrlConstants.classYearlyForParent(
+        yearId: yearId, studentId: studentId);
+
+    IResponseModel<ClassYearlyController> response =
+        await CoreHttp.instance.send(
+      url,
+      type: HttpTypes.GET,
+      parseModel: ClassYearlyController(),
+      accessToken: accessToken,
+    );
+
+    return response;
+  }
+
+  @override
   Future<IResponseModel<WeekYearlyController>> fetchWeekList(
     String? accessToken,
     String? yearId,

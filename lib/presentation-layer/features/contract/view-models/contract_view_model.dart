@@ -95,7 +95,8 @@ class ContractViewModel with BaseViewModel {
       List<Map<String, String>> list = contractController!.result!.map((e) {
         int index = contractController!.result!.indexOf(e);
         return {
-          for (String contractItemName in AppConstants.contractConditionItemNames)
+          for (String contractItemName
+              in AppConstants.contractConditionItemNames)
             contractItemName.tr():
                 getContractConditionDetailByName(contractItemName, index),
         };
@@ -110,7 +111,8 @@ class ContractViewModel with BaseViewModel {
       List<Map<String, String>> list = contractController!.result!.map((e) {
         int index = contractController!.result!.indexOf(e);
         return {
-          for (String customerItemName in AppConstants.contractCustomerItemNames)
+          for (String customerItemName
+              in AppConstants.contractCustomerItemNames)
             customerItemName.tr():
                 getCustomerInfoDetailByName(customerItemName, index),
         };
@@ -153,43 +155,36 @@ class ContractViewModel with BaseViewModel {
             contractController?.result?[index].contractPaymentOrder?.expireDate;
         break;
       case LocaleKeys.contract_contractPaymentOrder_totalValue:
-        detail = contractController
-            ?.result?[index].contractPaymentOrder?.totalValue
-            .toString();
+        detail =
+            "${contractController?.result?[index].contractPaymentOrder?.totalValue ?? ""}";
         break;
       case LocaleKeys.contract_contractPaymentOrder_discount:
-        detail = contractController
-            ?.result?[index].contractPaymentOrder?.discount
-            .toString();
+        detail =
+            "${contractController?.result?[index].contractPaymentOrder?.discount ?? ""}";
         break;
       case LocaleKeys.contract_contractPaymentOrder_totalAmount:
-        detail = contractController
-            ?.result?[index].contractPaymentOrder?.totalAmount
-            .toString();
+        detail =
+            "${contractController?.result?[index].contractPaymentOrder?.totalAmount ?? ""}";
         break;
       case LocaleKeys.contract_contractPaymentOrder_paymentType_info:
         detail = contractController
             ?.result?[index].contractPaymentOrder?.paymentType?.info;
         break;
       case LocaleKeys.contract_contractPaymentOrder_offerMonth:
-        detail = contractController
-            ?.result?[index].contractPaymentOrder?.offerMonth
-            .toString();
+        detail =
+            "${contractController?.result?[index].contractPaymentOrder?.offerMonth ?? ""}";
         break;
       case LocaleKeys.contract_contractPaymentOrder_monthlyPayment:
-        detail = contractController
-            ?.result?[index].contractPaymentOrder?.monthlyPayment
-            .toString();
+        detail =
+            "${contractController?.result?[index].contractPaymentOrder?.monthlyPayment ?? ""}";
         break;
       case LocaleKeys.contract_contractPaymentOrder_discountMonth:
-        detail = contractController
-            ?.result?[index].contractPaymentOrder?.discountMonth
-            .toString();
+        detail =
+            "${contractController?.result?[index].contractPaymentOrder?.discountMonth ?? ""}";
         break;
       case LocaleKeys.contract_contractPaymentOrder_loanPercent:
-        detail = contractController
-            ?.result?[index].contractPaymentOrder?.loanPercent
-            .toString();
+        detail =
+            "${contractController?.result?[index].contractPaymentOrder?.loanPercent ?? ""}";
         break;
       case LocaleKeys.contract_contractPaymentOrder_offerDate:
         detail =
@@ -201,15 +196,15 @@ class ContractViewModel with BaseViewModel {
         break;
       case LocaleKeys.contract_contractPaymentOrder_initialAmount:
         detail =
-            "${contractController?.result?[index].contractPaymentOrder?.initialAmount.toString()} (${contractController?.result?[index].contractPaymentOrder?.initialAmountPercent.toString()}%)";
+            "${contractController?.result?[index].contractPaymentOrder?.initialAmount ?? ""} (${contractController?.result?[index].contractPaymentOrder?.initialAmountPercent ?? ""}%)";
         break;
       case LocaleKeys.contract_contractPaymentOrder_totalPaymentAmount:
         detail =
-            "${contractController?.result?[index].contractPaymentOrder?.totalPaymentAmount.toString()} (${contractController?.result?[index].contractPaymentOrder?.totalPaymentPercent.toString()}%)";
+            "${contractController?.result?[index].contractPaymentOrder?.totalPaymentAmount ?? ""} (${contractController?.result?[index].contractPaymentOrder?.totalPaymentPercent ?? ""}%)";
         break;
       case LocaleKeys.contract_contractPaymentOrder_totalDeptAmount:
         detail =
-            "${contractController?.result?[index].contractPaymentOrder?.totalDeptAmount.toString()} (${contractController?.result?[index].contractPaymentOrder?.totalDeptPercent.toString()}%)";
+            "${contractController?.result?[index].contractPaymentOrder?.totalDeptAmount ?? ""} (${contractController?.result?[index].contractPaymentOrder?.totalDeptPercent ?? ""}%)";
         break;
     }
 

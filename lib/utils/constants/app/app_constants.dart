@@ -26,8 +26,9 @@ class AppConstants {
   ];
 
   static const int scheduleEndDrawerYearIndex = 0;
-  static const int scheduleEndDrawerWeekIndex = 1;
-  static const int scheduleEndDrawerClassIndex = 2;
+  static const int scheduleEndDrawerStudentIndex = 1;
+  static const int scheduleEndDrawerWeekIndex = 2;
+  static const int scheduleEndDrawerClassIndex = 3;
 
   static const int timetableEndDrawerStudentIndex = 0;
   static const int timetableEndDrawerYearIndex = 1;
@@ -37,6 +38,7 @@ class AppConstants {
     LocaleKeys.scheduleMainEndDrawerItemTitles_0,
     LocaleKeys.scheduleMainEndDrawerItemTitles_1,
     LocaleKeys.scheduleMainEndDrawerItemTitles_2,
+    LocaleKeys.scheduleMainEndDrawerItemTitles_3,
   ];
 
   static const List<String> timetableMainEndDrawerItemTitleKeys = [

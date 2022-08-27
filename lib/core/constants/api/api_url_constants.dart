@@ -12,6 +12,9 @@ class ApiUrlConstants {
   static String classYearly({required yearId}) =>
       "school/api/v1/class-yearly/year/$yearId";
 
+  static String classYearlyForParent({required yearId, required studentId}) =>
+      "school/api/v1/class-yearly/year/$yearId/student/$studentId";
+
   static String weekYearly({required yearId}) =>
       "school/api/v1/week/year/$yearId";
 

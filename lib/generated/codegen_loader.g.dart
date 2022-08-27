@@ -21,8 +21,9 @@ class CodegenLoader extends AssetLoader{
   "password": "Şifrə",
   "scheduleMainEndDrawerItemTitles": {
     "0": "Tədris ili",
-    "1": "Həftələr",
-    "2": "Sinif"
+    "1": "Şagird",
+    "2": "Həftələr",
+    "3": "Sinif"
   },
   "timetableMainEndDrawerItemTitles": {
     "0": "Şagird",

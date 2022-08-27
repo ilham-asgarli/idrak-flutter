@@ -37,14 +37,12 @@ class ContractPaymentsViewPageItemViewModel with BaseViewModel {
         detail = "${contractPaymentDetails.contractPaymentIndex + 1}";
         break;
       case LocaleKeys.contractInvoices_qaimeNo:
-        detail = contractPaymentDetails.invoicesController
-            ?.result?[contractPaymentDetails.contractPaymentIndex].paymentNumber
-            .toString();
+        detail =
+            "${contractPaymentDetails.invoicesController?.result?[contractPaymentDetails.contractPaymentIndex].paymentNumber ?? ""}";
         break;
       case LocaleKeys.contractInvoices_amount:
-        detail = contractPaymentDetails.invoicesController
-            ?.result?[contractPaymentDetails.contractPaymentIndex].amount
-            .toString();
+        detail =
+            "${contractPaymentDetails.invoicesController?.result?[contractPaymentDetails.contractPaymentIndex].amount ?? ""}";
         break;
       case LocaleKeys.contractInvoices_currency:
         detail = contractPaymentDetails

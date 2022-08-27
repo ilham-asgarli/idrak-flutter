@@ -8,6 +8,7 @@ abstract class  LocaleKeys {
   static const scheduleMainEndDrawerItemTitles_0 = 'scheduleMainEndDrawerItemTitles.0';
   static const scheduleMainEndDrawerItemTitles_1 = 'scheduleMainEndDrawerItemTitles.1';
   static const scheduleMainEndDrawerItemTitles_2 = 'scheduleMainEndDrawerItemTitles.2';
+  static const scheduleMainEndDrawerItemTitles_3 = 'scheduleMainEndDrawerItemTitles.3';
   static const scheduleMainEndDrawerItemTitles = 'scheduleMainEndDrawerItemTitles';
   static const timetableMainEndDrawerItemTitles_0 = 'timetableMainEndDrawerItemTitles.0';
   static const timetableMainEndDrawerItemTitles_1 = 'timetableMainEndDrawerItemTitles.1';

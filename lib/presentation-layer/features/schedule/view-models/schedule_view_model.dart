@@ -7,6 +7,7 @@ import 'package:emekteb/utils/constants/app/app_constants.dart';
 
 import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain-layer/school/modules/class_yearly_controller.dart';
+import '../../../../data-domain-layer/school/modules/student_controller.dart';
 import '../../../../data-domain-layer/school/services/school_service.dart';
 import '../../../../utils/constants/enums/enums.dart';
 import '../../../../utils/models/choosing_end_drawer_item.dart';
@@ -54,8 +55,13 @@ class ScheduleViewModel with BaseViewModel {
     );
     scheduleNotifier.changeEndDrawerEnum(SCHEDULE_END_DRAWER.MAIN);
 
-    if (mainIndex == AppConstants.scheduleEndDrawerYearIndex) {
-      await getFilterDataAndChangeState(yearIndex: choosingIndex);
+    switch (mainIndex) {
+      case AppConstants.scheduleEndDrawerYearIndex:
+        await getFilterDataAndChangeState(yearIndex: choosingIndex);
+        break;
+      case AppConstants.scheduleEndDrawerStudentIndex:
+        await getFilterDataAndChangeState(studentIndex: choosingIndex);
+        break;
     }
 
     await getDataAndChangeState();
@@ -91,6 +97,10 @@ class ScheduleViewModel with BaseViewModel {
       case AppConstants.scheduleEndDrawerYearIndex:
         return timetableFilter?.schoolYearly?.result!
             .map((e) => ChoosingEndDrawerItem(title: e.info))
+            .toList();
+      case AppConstants.scheduleEndDrawerStudentIndex:
+        return timetableFilter?.studentController?.result!
+            .map((e) => ChoosingEndDrawerItem(title: e.customer?.fullName))
             .toList();
       case AppConstants.scheduleEndDrawerWeekIndex:
         return timetableFilter?.schoolWeekYearly?.result!
@@ -154,7 +164,10 @@ class ScheduleViewModel with BaseViewModel {
     });
   }
 
-  Future<void> getFilterDataAndChangeState({int? yearIndex}) async {
+  Future<void> getFilterDataAndChangeState({
+    int? yearIndex,
+    int? studentIndex,
+  }) async {
     if (!scheduleNotifier.isChoosingEndDrawerLoading) {
       scheduleNotifier.changeIsChoosingEndDrawerLoading(true);
     }
@@ -163,7 +176,10 @@ class ScheduleViewModel with BaseViewModel {
       scheduleNotifier.changeIsBodyWidgetLoading(true);
     }
 
-    scheduleFilter = await getFilterDataByYear(yearIndex: yearIndex);
+    scheduleFilter = await getFilterDataByYear(
+      yearIndex: yearIndex,
+      studentIndex: studentIndex,
+    );
     setMainEndDrawerItems(scheduleFilter);
     scheduleNotifier.changeIsChoosingEndDrawerLoading(false);
   }
@@ -175,22 +191,39 @@ class ScheduleViewModel with BaseViewModel {
   }
 
   /// If [yearIndex] is null year index is current year.
-  Future<ScheduleFilter> getFilterDataByYear({int? yearIndex}) async {
+  Future<ScheduleFilter> getFilterDataByYear({
+    int? yearIndex,
+    int? studentIndex,
+  }) async {
     YearlyController? schoolYearly = scheduleFilter == null
         ? await getYearList()
         : scheduleFilter?.schoolYearly;
 
+    StudentController? studentController =
+        role == ROLE.ROLE_SCHOOL_STUDENT_PARENT
+            ? scheduleFilter == null
+                ? await getStudents()
+                : scheduleFilter?.studentController
+            : null;
+
     int index = yearIndex ?? getCurrentYearIndex(schoolYearly);
 
-    ClassYearlyController? schoolClassYearly = await getSchoolClassYearly(
-      schoolYearly?.result?[index].id,
-    );
+    ClassYearlyController? schoolClassYearly =
+        role == ROLE.ROLE_SCHOOL_STUDENT_PARENT
+            ? await getClassYearlyControllerForParent(
+                schoolYearly?.result?[index].id,
+                studentController?.result?[studentIndex ?? 0].customer?.id,
+              )
+            : await getClassYearlyController(
+                schoolYearly?.result?[index].id,
+              );
     WeekYearlyController? schoolWeekYearly = await getSchoolWeekYearly(
       schoolYearly?.result?[index].id,
     );
 
     return ScheduleFilter(
       schoolYearly: schoolYearly,
+      studentController: studentController,
       schoolClassYearly: schoolClassYearly,
       schoolWeekYearly: schoolWeekYearly,
     );
@@ -203,9 +236,18 @@ class ScheduleViewModel with BaseViewModel {
     return responseModel.data;
   }
 
-  Future<ClassYearlyController?> getSchoolClassYearly(String? yearId) async {
+  Future<ClassYearlyController?> getClassYearlyController(
+      String? yearId) async {
     IResponseModel<ClassYearlyController> responseModel =
         await schoolService.fetchClassList(accessToken, yearId);
+
+    return responseModel.data;
+  }
+
+  Future<ClassYearlyController?> getClassYearlyControllerForParent(
+      String? yearId, String? studentId) async {
+    IResponseModel<ClassYearlyController> responseModel = await schoolService
+        .fetchClassListForParent(accessToken, yearId, studentId);
 
     return responseModel.data;
   }
@@ -213,6 +255,13 @@ class ScheduleViewModel with BaseViewModel {
   Future<WeekYearlyController?> getSchoolWeekYearly(String? yearId) async {
     IResponseModel<WeekYearlyController> responseModel =
         await schoolService.fetchWeekList(accessToken, yearId);
+
+    return responseModel.data;
+  }
+
+  Future<StudentController?> getStudents() async {
+    IResponseModel<StudentController> responseModel =
+        await schoolService.fetchStudents(accessToken);
 
     return responseModel.data;
   }
