@@ -140,6 +140,7 @@ class _TimetableViewState extends State<TimetableView> {
       itemCount: _timetableViewModel.timetableDayListLength(),
       itemBuilder: (context, index) {
         return TimetableViewPageItem(
+          key: PageStorageKey(index),
           timetableController: _timetableViewModel.timetableController,
           index: index,
         );

@@ -21,21 +21,33 @@ class TimetableViewPageItem extends StatefulWidget {
   State<TimetableViewPageItem> createState() => _TimetableViewPageItemState();
 }
 
-class _TimetableViewPageItemState extends State<TimetableViewPageItem> {
+class _TimetableViewPageItemState extends State<TimetableViewPageItem>
+    with AutomaticKeepAliveClientMixin<TimetableViewPageItem> {
+  @override
+  bool get wantKeepAlive => true;
+
   late TimetableViewPageItemNotifier timetableViewPageItemNotifier;
   final PageController pageController = PageController();
 
   @override
-  void dispose() {
-    timetableViewPageItemNotifier.reset();
-    super.dispose();
+  Widget build(BuildContext context) {
+    super.build(context);
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => TimetableViewPageItemNotifier(),
+        ),
+        Consumer<TimetableViewPageItemNotifier>(
+            builder: (context, notifier, _) {
+          timetableViewPageItemNotifier = notifier;
+          return buildPage(context);
+        }),
+      ],
+    );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    timetableViewPageItemNotifier =
-        Provider.of<TimetableViewPageItemNotifier>(context);
-
+  Padding buildPage(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
         top: context.normalValue,
@@ -53,6 +65,7 @@ class _TimetableViewPageItemState extends State<TimetableViewPageItem> {
                   0,
               itemBuilder: (context, index) {
                 return TimetableViewPageItemPageItem(
+                  key: PageStorageKey(index),
                   date:
                       widget.timetableController?.result?.dates?[widget.index],
                   index: index,

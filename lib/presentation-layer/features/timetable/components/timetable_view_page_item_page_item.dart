@@ -21,11 +21,17 @@ class TimetableViewPageItemPageItem extends StatefulWidget {
 }
 
 class _TimetableViewPageItemPageItemState
-    extends State<TimetableViewPageItemPageItem> {
+    extends State<TimetableViewPageItemPageItem>
+    with AutomaticKeepAliveClientMixin<TimetableViewPageItemPageItem> {
+  @override
+  bool get wantKeepAlive => true;
+
   late TimetableViewPageItemPageItemViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return BaseView<TimetableViewPageItemPageItemViewModel>(
       viewModel: TimetableViewPageItemPageItemViewModel(),
       onModelReady: (model) async {
