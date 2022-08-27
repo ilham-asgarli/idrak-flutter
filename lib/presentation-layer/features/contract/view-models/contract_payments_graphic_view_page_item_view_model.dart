@@ -82,7 +82,7 @@ class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {
         detail = contractPaymentOrderLine?.amount.toString();
         break;
       case LocaleKeys.contract_contractPaymentOrderLine_debt:
-        detail = contractPaymentOrderLine?.debt;
+        detail = contractPaymentOrderLine?.debt.toString();
         break;
     }
 

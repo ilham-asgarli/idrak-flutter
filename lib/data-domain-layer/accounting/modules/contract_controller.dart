@@ -657,7 +657,7 @@ class ContractPaymentOrderLine {
   dynamic taxAmount;
   dynamic taxRoadAmount;
   List<Payments>? payments;
-  dynamic debt;
+  num? debt;
   bool? editable;
   dynamic lineType;
   dynamic debet;
@@ -692,7 +692,7 @@ class ContractPaymentOrderLine {
     taxRoadAmount = json['taxRoadAmount'];
     payments = json['payments'] == null
         ? null
-        : List<Payments>.from(json['payments'].map((x) => Result.fromJson(x)));
+        : List<Payments>.from(json['payments'].map((x) => Payments.fromJson(x)));
     debt = json['debt'];
     editable = json['editable'];
     lineType = json['lineType'];
