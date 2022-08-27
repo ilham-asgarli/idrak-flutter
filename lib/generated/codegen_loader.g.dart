@@ -19,10 +19,15 @@ class CodegenLoader extends AssetLoader{
   "login": "Daxil olun",
   "username": "İstifadəçi adı",
   "password": "Şifrə",
-  "mainEndDrawerItemTitles": {
+  "scheduleMainEndDrawerItemTitles": {
     "0": "Tədris ili",
     "1": "Həftələr",
     "2": "Sinif"
+  },
+  "timetableMainEndDrawerItemTitles": {
+    "0": "Şagird",
+    "1": "Tədris ili",
+    "2": "Ay"
   },
   "dateOfBirth": "Doğum tarixi",
   "documentSerial": "Vəsiqənin nömrəsi",
@@ -95,7 +100,17 @@ class CodegenLoader extends AssetLoader{
     },
     "date": "Tarix"
   },
-  "haveNoPayment": "Ödəməniz yoxdur."
+  "haveNoPayment": "Ödəməniz yoxdur.",
+  "timetable": {
+    "no": "#",
+    "subject": "Fenn",
+    "teacher": "Müəllim",
+    "topic": "Mövzu",
+    "homeTask": "Ev tapşırığı",
+    "mark": "Qiymət",
+    "markNote": "Qeyd",
+    "contentInfo": "Məzmun Standartı"
+  }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"az_AZ": az_AZ};
 }

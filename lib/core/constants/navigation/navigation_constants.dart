@@ -10,8 +10,8 @@ class NavigationConstants {
   static const HOME = "/";
   static const LOGIN = "login";
   static const CHAT = "/dashboard/chat";
-  static const DIARY = "/school/timeline";
+  static const TIMETABLE = "/school/timeline";
   static const CONTRACT = "/school/contracts";
-  static const TIMETABLE = "/school/calendar";
+  static const SCHEDULE = "/school/calendar";
   static const CONTRACT_DETAILS = "/school/contracts/details";
 }

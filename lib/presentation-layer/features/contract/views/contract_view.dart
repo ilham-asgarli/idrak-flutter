@@ -23,11 +23,7 @@ class ContractView extends StatefulWidget {
 class _ContractViewState extends State<ContractView> {
   late ContractViewModel _contractViewModel;
 
-  PageController pageController = PageController(
-    /*viewportFraction:
-                _contractViewModel.contractListLength() > 1 ? 0.9 : 1,*/
-    initialPage: 0,
-  );
+  PageController pageController = PageController();
 
   @override
   void dispose() {

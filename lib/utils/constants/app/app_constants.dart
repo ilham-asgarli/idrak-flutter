@@ -6,13 +6,13 @@ import '../../../generated/locale_keys.g.dart';
 import '../../../presentation-layer/features/home/models/home_menu_item.dart';
 
 class AppConstants {
-  static final List<HomeMenuItem> allMenuItems = [
+  static final List<HomeMenuItem> homeMenuItems = [
     HomeMenuItem(
-        route: NavigationConstants.TIMETABLE,
+        route: NavigationConstants.SCHEDULE,
         iconData: FontAwesomeIcons.list,
         iconColor: Colors.orange),
     HomeMenuItem(
-        route: NavigationConstants.DIARY,
+        route: NavigationConstants.TIMETABLE,
         iconData: FontAwesomeIcons.book,
         iconColor: Colors.teal),
     HomeMenuItem(
@@ -25,14 +25,24 @@ class AppConstants {
         iconColor: Colors.blue),
   ];
 
-  static const int timetableEndDrawerYearIndex = 0;
-  static const int timetableEndDrawerWeekIndex = 1;
-  static const int timetableEndDrawerClassIndex = 2;
+  static const int scheduleEndDrawerYearIndex = 0;
+  static const int scheduleEndDrawerWeekIndex = 1;
+  static const int scheduleEndDrawerClassIndex = 2;
 
-  static const List<String> mainEndDrawerItemTitleKeys = [
-    LocaleKeys.mainEndDrawerItemTitles_0,
-    LocaleKeys.mainEndDrawerItemTitles_1,
-    LocaleKeys.mainEndDrawerItemTitles_2,
+  static const int timetableEndDrawerStudentIndex = 0;
+  static const int timetableEndDrawerYearIndex = 1;
+  static const int timetableEndDrawerMonthIndex = 2;
+
+  static const List<String> scheduleMainEndDrawerItemTitleKeys = [
+    LocaleKeys.scheduleMainEndDrawerItemTitles_0,
+    LocaleKeys.scheduleMainEndDrawerItemTitles_1,
+    LocaleKeys.scheduleMainEndDrawerItemTitles_2,
+  ];
+
+  static const List<String> timetableMainEndDrawerItemTitleKeys = [
+    LocaleKeys.timetableMainEndDrawerItemTitles_0,
+    LocaleKeys.timetableMainEndDrawerItemTitles_1,
+    LocaleKeys.timetableMainEndDrawerItemTitles_2,
   ];
 
   static const List<String> contractConditionItemNames = [
@@ -90,5 +100,16 @@ class AppConstants {
     LocaleKeys.contractInvoices_currency,
     LocaleKeys.contractInvoices_account,
     LocaleKeys.contractInvoices_date,
+  ];
+
+  static const List<String> timetableNames = [
+    LocaleKeys.timetable_no,
+    LocaleKeys.timetable_subject,
+    LocaleKeys.timetable_teacher,
+    LocaleKeys.timetable_topic,
+    LocaleKeys.timetable_homeTask,
+    LocaleKeys.timetable_mark,
+    LocaleKeys.timetable_markNote,
+    LocaleKeys.timetable_contentInfo,
   ];
 }

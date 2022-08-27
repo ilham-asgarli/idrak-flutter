@@ -28,6 +28,8 @@ class ApiUrlConstants {
   }) =>
       "school/api/v1/student/timetable/$customerId/$yearId/?month=$monthId";
 
+  static String student = "school/api/v1/student/";
+
   static String contract = "accounting/api/v1/contract/consent/current";
 
   static String customerByPredimetId({required predimetId}) =>

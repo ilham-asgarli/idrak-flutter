@@ -1,35 +1,35 @@
+import 'package:emekteb/core/base/views/base_view.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
-import 'package:emekteb/presentation-layer/features/timetable/components/timetable_body_place_holder.dart';
-import 'package:emekteb/presentation-layer/features/timetable/components/timetable_view_page_item.dart';
-import 'package:emekteb/presentation-layer/features/timetable/notifiers/timetable_notifier.dart';
+import 'package:emekteb/utils/constants/enums/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../core/base/views/base_view.dart';
-import '../../../../utils/constants/enums/enums.dart';
+import '../components/schedule_body_place_holder.dart';
+import '../../../components/end_drawer_place_holder.dart';
+import '../components/schedule_view_page_item.dart';
 import '../../../../utils/models/choosing_end_drawer_item.dart';
 import '../../../../utils/models/main_end_drawer_item.dart';
-import '../../../components/end_drawer_place_holder.dart';
-import '../view-models/timetable_view_model.dart';
+import '../notifiers/schedule_notifier.dart';
+import '../view-models/schedule_view_model.dart';
 
-class TimetableView extends StatefulWidget {
+class ScheduleView extends StatefulWidget {
   final String title;
 
-  const TimetableView({required this.title, Key? key}) : super(key: key);
+  const ScheduleView({required this.title, Key? key}) : super(key: key);
 
   @override
-  State<TimetableView> createState() => _TimetableViewState();
+  State<ScheduleView> createState() => _ScheduleViewState();
 }
 
-class _TimetableViewState extends State<TimetableView> {
-  late TimetableViewModel _timetableViewModel;
+class _ScheduleViewState extends State<ScheduleView> {
+  late ScheduleViewModel _scheduleViewModel;
 
-  final PageController _pageController = PageController();
+  PageController pageController = PageController();
 
   @override
   void dispose() {
-    _timetableViewModel.timetableNotifier.isDisposed = true;
+    _scheduleViewModel.scheduleNotifier.isDisposed = true;
     super.dispose();
   }
 
@@ -38,18 +38,18 @@ class _TimetableViewState extends State<TimetableView> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => TimetableNotifier(),
+          create: (_) => ScheduleNotifier(),
         ),
-        Consumer<TimetableNotifier>(builder: (context, notifier, _) {
-          return BaseView<TimetableViewModel>(
-            viewModel: TimetableViewModel(),
+        Consumer<ScheduleNotifier>(builder: (context, notifier, _) {
+          return BaseView<ScheduleViewModel>(
+            viewModel: ScheduleViewModel(),
             onModelReady: (model) async {
-              _timetableViewModel = model;
-              _timetableViewModel.timetableNotifier = notifier;
+              _scheduleViewModel = model;
+              _scheduleViewModel.scheduleNotifier = notifier;
               model.init(context);
             },
             onPageBuilder:
-                (BuildContext buildContext, TimetableViewModel model) =>
+                (BuildContext buildContext, ScheduleViewModel model) =>
                     buildPage(),
           );
         }),
@@ -80,8 +80,8 @@ class _TimetableViewState extends State<TimetableView> {
         ),
         onEndDrawerChanged: (isOpen) {
           if (!isOpen) {
-            _timetableViewModel.timetableNotifier
-                .changeEndDrawerEnum(TIMETABLE_END_DRAWER.MAIN);
+            _scheduleViewModel.scheduleNotifier
+                .changeEndDrawerEnum(SCHEDULE_END_DRAWER.MAIN);
           }
         },
         body: buildBody(),
@@ -90,41 +90,34 @@ class _TimetableViewState extends State<TimetableView> {
   }
 
   Widget buildBody() {
-    return _timetableViewModel.timetableNotifier.isBodyWidgetLoading
-        ? const TimetableBodyPlaceHolder()
+    return _scheduleViewModel.scheduleNotifier.isBodyWidgetLoading
+        ? const ScheduleBodyPlaceHolder()
         : buildMainBody();
   }
 
   Widget buildMainBody() {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: context.normalValue,
-        right: context.normalValue,
-      ),
-      child: Row(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(right: context.normalValue),
-            child: buildPageIndicator(),
-          ),
-          Expanded(
-            child: buildPageView(),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Padding(
+          padding: context.paddingNormalVertical,
+          child: buildPageIndicator(),
+        ),
+        Expanded(
+          child: buildPageView(),
+        ),
+      ],
     );
   }
 
   Widget buildPageIndicator() {
     return AnimatedSmoothIndicator(
-      axisDirection: Axis.vertical,
-      activeIndex: _timetableViewModel.timetableNotifier.activePage,
-      count: _timetableViewModel.timetableDayListLength(),
+      activeIndex: _scheduleViewModel.scheduleNotifier.activePage,
+      count: _scheduleViewModel.scheduleDayListLength(),
       effect: WormEffect(
         activeDotColor: context.colorScheme.background,
       ),
       onDotClicked: (int index) {
-        _pageController.animateToPage(
+        pageController.animateToPage(
           index,
           duration: const Duration(milliseconds: 500),
           curve: Curves.linear,
@@ -135,45 +128,43 @@ class _TimetableViewState extends State<TimetableView> {
 
   PageView buildPageView() {
     return PageView.builder(
-      controller: _pageController,
-      scrollDirection: Axis.vertical,
-      itemCount: _timetableViewModel.timetableDayListLength(),
+      padEnds: false,
+      controller: pageController,
+      itemCount: _scheduleViewModel.scheduleDayListLength(),
       itemBuilder: (context, index) {
-        return TimetableViewPageItem(
-          timetableController: _timetableViewModel.timetableController,
-          index: index,
+        return ScheduleViewPageItem(
+          schoolScheduler: _scheduleViewModel.schedulerController,
+          dayIndex: index,
         );
       },
       onPageChanged: (int index) {
-        _timetableViewModel.timetableNotifier.changeActivePage(index);
+        _scheduleViewModel.scheduleNotifier.changeActivePage(index);
       },
     );
   }
 
   Widget? buildEndDrawer() {
-    return _timetableViewModel.timetableNotifier.isMainEndDrawerLoading
+    return _scheduleViewModel.scheduleNotifier.isMainEndDrawerLoading
         ? const EndDrawerPlaceHolder()
-        : _timetableViewModel.timetableNotifier.endDrawerEnum ==
-                TIMETABLE_END_DRAWER.MAIN
+        : _scheduleViewModel.scheduleNotifier.endDrawerEnum ==
+                SCHEDULE_END_DRAWER.MAIN
             ? buildMainEndDrawer()
             : buildChoosingEndDrawer();
   }
 
   Widget buildMainEndDrawer() {
     return ListView.builder(
-      itemCount:
-          _timetableViewModel.timetableNotifier.mainEndDrawerItems.length,
+      itemCount: _scheduleViewModel.scheduleNotifier.mainEndDrawerItems.length,
       itemBuilder: (context, index) {
         return Visibility(
-          visible: index != 0 ||
-              _timetableViewModel.role == ROLE.ROLE_SCHOOL_STUDENT_PARENT,
+          visible: index != 0 || _scheduleViewModel.role == ROLE.ROLE_ADMIN,
           child: ListTile(
-            title: Text(_timetableViewModel
-                .timetableNotifier.mainEndDrawerItems[index].title),
+            title: Text(_scheduleViewModel
+                .scheduleNotifier.mainEndDrawerItems[index].title),
             onTap: () {
-              _timetableViewModel.timetableNotifier
-                  .changeEndDrawerEnum(TIMETABLE_END_DRAWER.CHOOSING);
-              _timetableViewModel.timetableNotifier.activeChoosingEndDrawer =
+              _scheduleViewModel.scheduleNotifier
+                  .changeEndDrawerEnum(SCHEDULE_END_DRAWER.CHOOSING);
+              _scheduleViewModel.scheduleNotifier.activeChoosingEndDrawer =
                   index;
             },
           ),
@@ -183,16 +174,15 @@ class _TimetableViewState extends State<TimetableView> {
   }
 
   Widget buildChoosingEndDrawer() {
-    return _timetableViewModel.timetableNotifier.isChoosingEndDrawerLoading
+    return _scheduleViewModel.scheduleNotifier.isChoosingEndDrawerLoading
         ? const EndDrawerPlaceHolder()
         : buildMainChoosingEndDrawer();
   }
 
   Widget buildMainChoosingEndDrawer() {
-    int mainIndex =
-        _timetableViewModel.timetableNotifier.activeChoosingEndDrawer;
+    int mainIndex = _scheduleViewModel.scheduleNotifier.activeChoosingEndDrawer;
     List<MainEndDrawerItem> mainEndDrawerItems =
-        _timetableViewModel.timetableNotifier.mainEndDrawerItems;
+        _scheduleViewModel.scheduleNotifier.mainEndDrawerItems;
     List<ChoosingEndDrawerItem>? choosingEndDrawerItems =
         mainEndDrawerItems[mainIndex].choosingEndDrawerItems;
 
@@ -204,8 +194,8 @@ class _TimetableViewState extends State<TimetableView> {
             children: [
               BackButton(
                 onPressed: () {
-                  _timetableViewModel.timetableNotifier
-                      .changeEndDrawerEnum(TIMETABLE_END_DRAWER.MAIN);
+                  _scheduleViewModel.scheduleNotifier
+                      .changeEndDrawerEnum(SCHEDULE_END_DRAWER.MAIN);
                 },
               ),
               Text(
@@ -230,7 +220,7 @@ class _TimetableViewState extends State<TimetableView> {
                     : null,
                 title: Text(choosingEndDrawerItems?[choosingIndex].title ?? ""),
                 onTap: () {
-                  _timetableViewModel.onTapChoosingEndDrawerItem(
+                  _scheduleViewModel.onTapChoosingEndDrawerItem(
                       mainIndex, choosingIndex);
                 },
               );

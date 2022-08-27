@@ -1,4 +1,5 @@
 import 'package:emekteb/data-domain-layer/school/modules/class_yearly_controller.dart';
+import 'package:emekteb/data-domain-layer/school/modules/student_controller.dart';
 import 'package:emekteb/data-domain-layer/school/modules/week_yearly_controller.dart';
 import 'package:emekteb/data-domain-layer/school/modules/yearly_controller.dart';
 
@@ -38,5 +39,9 @@ abstract class ISchoolService {
     String? customerId,
     String? yearId,
     int? monthId,
+  );
+
+  Future<IResponseModel<StudentController>> fetchStudents(
+    String? accessToken,
   );
 }

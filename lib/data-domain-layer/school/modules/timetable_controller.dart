@@ -82,11 +82,11 @@ class Subjects {
   Teacher? teacher;
   LessonHour? lessonHour;
   Subject? subject;
-  dynamic homeTask;
-  dynamic mark;
+  String? homeTask;
+  String? mark;
   dynamic markNote;
-  dynamic content;
-  dynamic topic;
+  Content? content;
+  Topic? topic;
   dynamic topic2;
   dynamic mediaLink;
   dynamic mediaLink2;
@@ -117,8 +117,9 @@ class Subjects {
     homeTask = json['homeTask'];
     mark = json['mark'];
     markNote = json['markNote'];
-    content = json['content'];
-    topic = json['topic'];
+    content =
+        json['content'] != null ? Content.fromJson(json['content']) : null;
+    topic = json['topic'] != null ? Topic.fromJson(json['topic']) : null;
     topic2 = json['topic2'];
     mediaLink = json['mediaLink'];
     mediaLink2 = json['mediaLink2'];
@@ -140,7 +141,9 @@ class Subjects {
     data['mark'] = mark;
     data['markNote'] = markNote;
     data['content'] = content;
-    data['topic'] = topic;
+    if (topic != null) {
+      data['topic'] = topic!.toJson();
+    }
     data['topic2'] = topic2;
     data['mediaLink'] = mediaLink;
     data['mediaLink2'] = mediaLink2;
@@ -341,7 +344,7 @@ class LessonHour {
 class Subject {
   String? id;
   String? info;
-  dynamic infoEng;
+  String? infoEng;
   String? infoRus;
 
   Subject({this.id, this.info, this.infoEng, this.infoRus});
@@ -359,6 +362,159 @@ class Subject {
     data['info'] = info;
     data['infoEng'] = infoEng;
     data['infoRus'] = infoRus;
+    return data;
+  }
+}
+
+class Content {
+  String? info;
+
+  Content({this.info});
+
+  Content.fromJson(Map<String, dynamic> json) {
+    info = json['info'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['info'] = info;
+    return data;
+  }
+}
+
+class Topic {
+  String? id;
+  int? classPrefix;
+  Yearly? yearly;
+  ClassSection? classSection;
+  Subject? subject;
+  String? info;
+  String? standart;
+  String? resources;
+  String? inteqrasiyya;
+  String? lessonType;
+  dynamic vahid;
+  dynamic lessonDate;
+  int? hour;
+  Gender? tendency;
+
+  Topic(
+      {this.id,
+      this.classPrefix,
+      this.yearly,
+      this.classSection,
+      this.subject,
+      this.info,
+      this.standart,
+      this.resources,
+      this.inteqrasiyya,
+      this.lessonType,
+      this.vahid,
+      this.lessonDate,
+      this.hour,
+      this.tendency});
+
+  Topic.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    classPrefix = json['classPrefix'];
+    yearly = json['yearly'] != null ? Yearly.fromJson(json['yearly']) : null;
+    classSection = json['classSection'] != null
+        ? ClassSection.fromJson(json['classSection'])
+        : null;
+    subject =
+        json['subject'] != null ? Subject.fromJson(json['subject']) : null;
+    info = json['info'];
+    standart = json['standart'];
+    resources = json['resources'];
+    inteqrasiyya = json['inteqrasiyya'];
+    lessonType = json['lessonType'];
+    vahid = json['vahid'];
+    lessonDate = json['lessonDate'];
+    hour = json['hour'];
+    tendency =
+        json['tendency'] != null ? Gender.fromJson(json['tendency']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['classPrefix'] = classPrefix;
+    if (yearly != null) {
+      data['yearly'] = yearly!.toJson();
+    }
+    if (classSection != null) {
+      data['classSection'] = classSection!.toJson();
+    }
+    if (subject != null) {
+      data['subject'] = subject!.toJson();
+    }
+    data['info'] = info;
+    data['standart'] = standart;
+    data['resources'] = resources;
+    data['inteqrasiyya'] = inteqrasiyya;
+    data['lessonType'] = lessonType;
+    data['vahid'] = vahid;
+    data['lessonDate'] = lessonDate;
+    data['hour'] = hour;
+    if (tendency != null) {
+      data['tendency'] = tendency!.toJson();
+    }
+    return data;
+  }
+}
+
+class Yearly {
+  String? id;
+  String? info;
+  String? startYear;
+  String? endYear;
+  dynamic isCurrent;
+  int? statusYear;
+
+  Yearly(
+      {this.id,
+      this.info,
+      this.startYear,
+      this.endYear,
+      this.isCurrent,
+      this.statusYear});
+
+  Yearly.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    info = json['info'];
+    startYear = json['startYear'];
+    endYear = json['endYear'];
+    isCurrent = json['isCurrent'];
+    statusYear = json['statusYear'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['info'] = info;
+    data['startYear'] = startYear;
+    data['endYear'] = endYear;
+    data['isCurrent'] = isCurrent;
+    data['statusYear'] = statusYear;
+    return data;
+  }
+}
+
+class ClassSection {
+  String? id;
+  String? info;
+
+  ClassSection({this.id, this.info});
+
+  ClassSection.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    info = json['info'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['info'] = info;
     return data;
   }
 }

@@ -4,13 +4,15 @@ import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/data-domain-layer/school/modules/scheduler_controller.dart';
 import 'package:flutter/material.dart';
 
-class TimetableWeekItem extends StatelessWidget {
-  final SchedulerController schoolScheduler;
-  final int day;
+class ScheduleViewPageItem extends StatelessWidget {
+  final SchedulerController? schoolScheduler;
+  final int dayIndex;
 
-  const TimetableWeekItem(
-      {required this.schoolScheduler, required this.day, Key? key})
-      : super(key: key);
+  const ScheduleViewPageItem({
+    required this.schoolScheduler,
+    required this.dayIndex,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class TimetableWeekItem extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  (schoolScheduler.result?.days?[day].info ?? "")
+                  (schoolScheduler?.result?.days?[dayIndex].info ?? "")
                       .toFirstLetterCapitalized(),
                   textAlign: TextAlign.center,
                   style: context.textTheme.titleLarge,
@@ -54,7 +56,7 @@ class TimetableWeekItem extends StatelessWidget {
               context.widget.verticalSpace(context, 0.005),
               Flexible(
                 child: Text(
-                  schoolScheduler.result?.days?[day].day ?? "",
+                  schoolScheduler?.result?.days?[dayIndex].day ?? "",
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -69,7 +71,7 @@ class TimetableWeekItem extends StatelessWidget {
     return ListView.separated(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: schoolScheduler.result?.list?.length ?? 8,
+      itemCount: schoolScheduler?.result?.list?.length ?? 8,
       itemBuilder: (context, index) {
         return Card(
           color: context.colorScheme.background,
@@ -82,8 +84,8 @@ class TimetableWeekItem extends StatelessWidget {
                 Flexible(
                   child: Text(
                     textAlign: TextAlign.center,
-                    "${index + 1}. ${schoolScheduler.result?.list?[index].schedulerList?[day].subject1?.subject?.info ?? ""}",
-                    style: TextStyle(
+                    "${index + 1}. ${schoolScheduler?.result?.list?[index].schedulerList?[dayIndex].subject1?.subject?.info ?? ""}",
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -91,7 +93,7 @@ class TimetableWeekItem extends StatelessWidget {
                 ),
                 context.widget.verticalSpace(context, 0.005),
                 Text(
-                  "${schoolScheduler.result?.list?[index].lessonHour?.startHour ?? ""} - ${schoolScheduler.result?.list?[index].lessonHour?.endHour ?? ""}",
+                  "${schoolScheduler?.result?.list?[index].lessonHour?.startHour ?? ""} - ${schoolScheduler?.result?.list?[index].lessonHour?.endHour ?? ""}",
                 ),
               ],
             ),

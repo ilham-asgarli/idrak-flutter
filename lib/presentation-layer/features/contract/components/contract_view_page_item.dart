@@ -33,7 +33,6 @@ class _ContractViewPageItemState extends State<ContractViewPageItem>
     super.build(context);
 
     return SingleChildScrollView(
-      key: UniqueKey(),
       padding: EdgeInsets.only(
         left: context.normalValue,
         right: context.normalValue,

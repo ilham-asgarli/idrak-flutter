@@ -12,7 +12,9 @@ class ClassYearlyController extends BaseModel<ClassYearlyController> {
     return ClassYearlyController(
       code: json['code'],
       message: json['message'],
-      result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
+      result: json["result"] != null
+          ? List<Result>.from(json["result"].map((x) => Result.fromJson(x)))
+          : null,
     );
   }
 

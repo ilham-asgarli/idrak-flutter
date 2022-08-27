@@ -5,6 +5,7 @@ import 'package:provider/single_child_widget.dart';
 
 import '../../../presentation-layer/features/contract/notifiers/contract_payments_graphic_view_page_item_notifier.dart';
 import '../../../presentation-layer/features/contract/notifiers/contract_payments_graphic_view_page_notifier.dart';
+import '../../../presentation-layer/features/timetable/notifiers/timetable_view_page_item_notifier.dart';
 import 'theme_notifier.dart';
 
 class ApplicationProvider {
@@ -30,6 +31,9 @@ class ApplicationProvider {
     ),
     ChangeNotifierProvider(
       create: (_) => ContractPaymentsGraphicViewPageItemNotifier(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => TimetableViewPageItemNotifier(),
     ),
     ChangeNotifierProvider(
       create: (_) => ContractPaymentsNotifier(),

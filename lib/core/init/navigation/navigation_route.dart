@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../../../presentation-layer/features/contract/models/contract_details.dart';
 import '../../../presentation-layer/features/contract/views/contract_view.dart';
-import '../../../presentation-layer/features/diary/views/diary_view.dart';
+import '../../../presentation-layer/features/timetable/views/timetable_view.dart';
 import '../../../presentation-layer/features/home/views/home_view.dart';
 import '../../../presentation-layer/features/login/views/login_view.dart';
 import '../../../presentation-layer/features/not-found-navigation/views/not_found_navigation.dart';
-import '../../../presentation-layer/features/timetable/views/timetable_view.dart';
+import '../../../presentation-layer/features/schedule/views/schedule_view.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
 class NavigationRoute {
@@ -21,24 +21,35 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case NavigationConstants.LOGIN:
-        return normalNavigate(const LoginView(), NavigationConstants.LOGIN);
+        return normalNavigate(
+          const LoginView(),
+          NavigationConstants.LOGIN,
+        );
       case NavigationConstants.HOME:
-        return normalNavigate(const HomeView(), NavigationConstants.HOME);
+        return normalNavigate(
+          const HomeView(),
+          NavigationConstants.HOME,
+        );
+      case NavigationConstants.SCHEDULE:
+        String title = settings.arguments as String;
+        return normalNavigate(
+          ScheduleView(title: title),
+          NavigationConstants.SCHEDULE,
+        );
       case NavigationConstants.TIMETABLE:
         String title = settings.arguments as String;
         return normalNavigate(
-            TimetableView(title: title), NavigationConstants.TIMETABLE);
-      case NavigationConstants.DIARY:
-        String title = settings.arguments as String;
-        return normalNavigate(
-            DiaryView(title: title), NavigationConstants.DIARY);
+          TimetableView(title: title),
+          NavigationConstants.TIMETABLE,
+        );
       case NavigationConstants.CONTRACT:
         String title = settings.arguments as String;
         return normalNavigate(
-            ContractView(title: title), NavigationConstants.CONTRACT);
+          ContractView(title: title),
+          NavigationConstants.CONTRACT,
+        );
       case NavigationConstants.CONTRACT_DETAILS:
-        ContractDetails contractDetails =
-            settings.arguments as ContractDetails;
+        ContractDetails contractDetails = settings.arguments as ContractDetails;
         return normalNavigate(
           ContractDetailsView(
             contractDetails: contractDetails,
@@ -47,11 +58,16 @@ class NavigationRoute {
         );
       case NavigationConstants.CHAT:
         String title = settings.arguments as String;
-        return normalNavigate(ChatView(title: title), NavigationConstants.CHAT);
+        return normalNavigate(
+          ChatView(title: title),
+          NavigationConstants.CHAT,
+        );
       default:
         //throw NavigateException<SettingsDynamicModel>(args.arguments);
         return normalNavigate(
-            const NotFoundNavigation(), NavigationConstants.NOT_FOUND);
+          const NotFoundNavigation(),
+          NavigationConstants.NOT_FOUND,
+        );
     }
   }
 

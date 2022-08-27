@@ -1,16 +1,17 @@
-import 'package:emekteb/data-domain-layer/school/modules/week_yearly_controller.dart';
 import 'package:emekteb/data-domain-layer/school/modules/yearly_controller.dart';
 
-import '../../../../data-domain-layer/school/modules/class_yearly_controller.dart';
+import '../../../../core/constants/enums/api_enum.dart';
+import '../../../../data-domain-layer/school/modules/student_controller.dart';
+
 
 class TimetableFilter {
+  StudentController? studentController;
   YearlyController? schoolYearly;
-  ClassYearlyController? schoolClassYearly;
-  WeekYearlyController? schoolWeekYearly;
+  List<Map<Month, dynamic>> months;
 
   TimetableFilter({
+    required this.studentController,
     required this.schoolYearly,
-    required this.schoolClassYearly,
-    required this.schoolWeekYearly,
+    required this.months,
   });
 }

@@ -1,4 +1,5 @@
 import 'package:emekteb/core/init/network/IResponseModel.dart';
+import 'package:emekteb/data-domain-layer/school/modules/student_controller.dart';
 import 'package:emekteb/data-domain-layer/school/modules/timetable_controller.dart';
 import 'package:emekteb/data-domain-layer/school/modules/year_controller.dart';
 import 'package:emekteb/data-domain-layer/school/modules/week_yearly_controller.dart';
@@ -113,6 +114,22 @@ class SchoolService extends ISchoolService {
       url,
       type: HttpTypes.GET,
       parseModel: TimetableController(),
+      accessToken: accessToken,
+    );
+
+    return response;
+  }
+
+  @override
+  Future<IResponseModel<StudentController>> fetchStudents(
+    String? accessToken,
+  ) async {
+    String url = ApiUrlConstants.student;
+
+    IResponseModel<StudentController> response = await CoreHttp.instance.send(
+      url,
+      type: HttpTypes.GET,
+      parseModel: StudentController(),
       accessToken: accessToken,
     );
 

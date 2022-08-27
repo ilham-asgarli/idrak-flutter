@@ -32,7 +32,7 @@ class HomeViewModel with BaseViewModel {
 
       for (Permissions item in loginResponse.result?.user?.permissions ?? []) {
         for (SubItems subItem in item.subItems ?? []) {
-          for (HomeMenuItem homeMenuItem in AppConstants.allMenuItems) {
+          for (HomeMenuItem homeMenuItem in AppConstants.homeMenuItems) {
             if (homeMenuItem.route == subItem.link) {
               homeGridItems.add(HomeGrid(
                 title: subItem.info!,

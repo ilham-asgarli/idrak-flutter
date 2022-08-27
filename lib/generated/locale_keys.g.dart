@@ -5,10 +5,14 @@ abstract class  LocaleKeys {
   static const login = 'login';
   static const username = 'username';
   static const password = 'password';
-  static const mainEndDrawerItemTitles_0 = 'mainEndDrawerItemTitles.0';
-  static const mainEndDrawerItemTitles_1 = 'mainEndDrawerItemTitles.1';
-  static const mainEndDrawerItemTitles_2 = 'mainEndDrawerItemTitles.2';
-  static const mainEndDrawerItemTitles = 'mainEndDrawerItemTitles';
+  static const scheduleMainEndDrawerItemTitles_0 = 'scheduleMainEndDrawerItemTitles.0';
+  static const scheduleMainEndDrawerItemTitles_1 = 'scheduleMainEndDrawerItemTitles.1';
+  static const scheduleMainEndDrawerItemTitles_2 = 'scheduleMainEndDrawerItemTitles.2';
+  static const scheduleMainEndDrawerItemTitles = 'scheduleMainEndDrawerItemTitles';
+  static const timetableMainEndDrawerItemTitles_0 = 'timetableMainEndDrawerItemTitles.0';
+  static const timetableMainEndDrawerItemTitles_1 = 'timetableMainEndDrawerItemTitles.1';
+  static const timetableMainEndDrawerItemTitles_2 = 'timetableMainEndDrawerItemTitles.2';
+  static const timetableMainEndDrawerItemTitles = 'timetableMainEndDrawerItemTitles';
   static const dateOfBirth = 'dateOfBirth';
   static const documentSerial = 'documentSerial';
   static const documentFin = 'documentFin';
@@ -71,5 +75,14 @@ abstract class  LocaleKeys {
   static const contractInvoices_date = 'contractInvoices.date';
   static const contractInvoices = 'contractInvoices';
   static const haveNoPayment = 'haveNoPayment';
+  static const timetable_no = 'timetable.no';
+  static const timetable_subject = 'timetable.subject';
+  static const timetable_teacher = 'timetable.teacher';
+  static const timetable_topic = 'timetable.topic';
+  static const timetable_homeTask = 'timetable.homeTask';
+  static const timetable_mark = 'timetable.mark';
+  static const timetable_markNote = 'timetable.markNote';
+  static const timetable_contentInfo = 'timetable.contentInfo';
+  static const timetable = 'timetable';
 
 }
