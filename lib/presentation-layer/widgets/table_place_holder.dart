@@ -8,10 +8,14 @@ import 'my_shimmer.dart';
 class TablePlaceHolder extends StatelessWidget {
   final int columnCount;
   final int rowCount;
+  final double? padding;
+  final double? space;
 
   const TablePlaceHolder({
     required this.columnCount,
     required this.rowCount,
+    this.padding,
+    this.space,
     Key? key,
   }) : super(key: key);
 
@@ -31,7 +35,9 @@ class TablePlaceHolder extends StatelessWidget {
                   columnCount,
                   (index) => Card(
                     child: Padding(
-                      padding: context.paddingNormal,
+                      padding: padding != null
+                          ? EdgeInsets.all(padding!)
+                          : context.paddingNormal,
                       child: const Text(""),
                     ),
                   ),
@@ -42,7 +48,11 @@ class TablePlaceHolder extends StatelessWidget {
         );
       },
       separatorBuilder: (BuildContext context, int index) {
-        return context.widget.verticalSpace(context, 0.01);
+        return space != null
+            ? const SizedBox(
+                height: 10,
+              )
+            : context.widget.verticalSpace(context, 0.01);
       },
     );
   }

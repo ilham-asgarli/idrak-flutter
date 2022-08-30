@@ -1,3 +1,4 @@
+import 'package:emekteb/core/init/chat/view-models/chat_init_view_model.dart';
 import 'package:emekteb/presentation-layer/features/contract/notifiers/contract_notifier.dart';
 import 'package:emekteb/presentation-layer/features/contract/notifiers/contract_payments_notifier.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +34,9 @@ class ApplicationProvider {
     ),
     ChangeNotifierProvider(
       create: (_) => ContractPaymentsNotifier(),
+    ),
+    Provider(
+      create: (context) => ChatInitViewModel(context),
     ),
     //Provider.value(value: NavigationService.instance),
   ];

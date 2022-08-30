@@ -722,7 +722,7 @@ class ContractPaymentOrderLine {
 }
 
 class Payments {
-  int? lineAmount;
+  num? lineAmount;
   String? paymentDate;
 
   Payments({this.lineAmount, this.paymentDate});

@@ -10,6 +10,7 @@ class NavigationConstants {
   static const HOME = "/";
   static const LOGIN = "login";
   static const CHAT = "/dashboard/chat";
+  static const CHAT_ITEM = "/dashboard/chat/item";
   static const TIMETABLE = "/school/timeline";
   static const CONTRACT = "/school/contracts";
   static const SCHEDULE = "/school/calendar";

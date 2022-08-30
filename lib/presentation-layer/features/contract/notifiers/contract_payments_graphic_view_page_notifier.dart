@@ -1,4 +1,4 @@
-import '../../../../core/base/notifier/base_change_notifier.dart';
+import '../../../../core/base/notifiers/base_change_notifier.dart';
 
 class ContractPaymentsGraphicViewPageNotifier extends BaseChangeNotifier {
   int activeIndex = 0;

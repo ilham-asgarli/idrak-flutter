@@ -33,7 +33,7 @@ class CoreHttp {
 
     if (response != null) {
       try {
-        final model = _returnResponse(response, parseModel: parseModel);
+        final model = _returnResponse<R, T>(response, parseModel: parseModel);
         return ResponseModel<R>(data: model);
       } on InvalidInputException catch (e) {
         if (type == HttpTypes.GET) {

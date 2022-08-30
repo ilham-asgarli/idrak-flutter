@@ -8,7 +8,6 @@ class BaseHttp implements BaseModel {
 
   @override
   fromJson(Map<String, dynamic> json) {
-    print(json);
     return BaseHttp(
       message: json["message"],
       code: json["code"],

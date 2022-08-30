@@ -88,12 +88,13 @@
   "haveNoPayment": "Ödəməniz yoxdur.",
   "timetable": {
     "no": "#",
-    "subject": "Fenn",
+    "subject": "Fənn",
     "teacher": "Müəllim",
     "topic": "Mövzu",
     "homeTask": "Ev tapşırığı",
     "mark": "Qiymət",
     "markNote": "Qeyd",
     "contentInfo": "Məzmun Standartı"
-  }
+  },
+  "typeMessageHint": "Mesaj"
 }

@@ -1,9 +1,13 @@
 class ApiUrlConstants {
   static String base =
-      "https://back.idrak.edu.az/"; // "http://btk.ddns.net:7777/";
+      "https://back.idrak.edu.az/";
+      //"http://btk.ddns.net:7777/";
 
   static String auth = "security/auth";
   static String userInfo = "security/user/current";
+  static String contacts = "security/chat/contacts";
+
+  static String message(username) => "security/chat/message/$username";
 
   static String yearly = "school/api/v1/yearly";
 

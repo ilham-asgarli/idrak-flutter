@@ -27,15 +27,17 @@ abstract class BaseViewModel {
     setUserInfo();
   }
 
-  void setBuildContext(BuildContext context) {
+  void setBuildContext(BuildContext? context) {
     buildContext = context;
   }
 
   void setUserInfo() {
     accessToken = hiveBox.get(HiveConstants.accessToken);
     role = getRoleFromString(hiveBox.get(HiveConstants.role));
-    userModel = jsonDecode(hiveBox.get(HiveConstants.userModel, defaultValue: "{}"));
-    userInfoModel = jsonDecode(hiveBox.get(HiveConstants.userInfoModel, defaultValue: "{}"));
+    userModel =
+        jsonDecode(hiveBox.get(HiveConstants.userModel, defaultValue: "{}"));
+    userInfoModel = jsonDecode(
+        hiveBox.get(HiveConstants.userInfoModel, defaultValue: "{}"));
   }
 
   ROLE? getRoleFromString(String? role) {

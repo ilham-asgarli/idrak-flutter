@@ -104,14 +104,15 @@ class CodegenLoader extends AssetLoader{
   "haveNoPayment": "Ödəməniz yoxdur.",
   "timetable": {
     "no": "#",
-    "subject": "Fenn",
+    "subject": "Fənn",
     "teacher": "Müəllim",
     "topic": "Mövzu",
     "homeTask": "Ev tapşırığı",
     "mark": "Qiymət",
     "markNote": "Qeyd",
     "contentInfo": "Məzmun Standartı"
-  }
+  },
+  "typeMessageHint": "Mesaj"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"az_AZ": az_AZ};
 }

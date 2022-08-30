@@ -32,7 +32,9 @@ extension _CoreHttpOperations on CoreHttp {
 
       return response;
     } on SocketException {
-      throw FetchDataException('No Internet connection');
+      BaseHttp? baseHttp = _responseParser<BaseHttp, BaseHttp>(
+          BaseHttp(), {"message": "No Internet connection"});
+      throw FetchDataException(baseHttp);
     }
   }
 
@@ -41,9 +43,10 @@ extension _CoreHttpOperations on CoreHttp {
     final jsonDecoded = json.decode(utf8.decode(response.bodyBytes));
 
     if (response.statusCode == 200) {
-      return _responseParser(parseModel, jsonDecoded);
+      return _responseParser<R, T>(parseModel, jsonDecoded);
     } else {
-      BaseHttp? baseHttp = _responseParser(BaseHttp(), jsonDecoded);
+      BaseHttp? baseHttp =
+          _responseParser<BaseHttp, T>(BaseHttp(), jsonDecoded);
 
       switch (response.statusCode) {
         case 400:

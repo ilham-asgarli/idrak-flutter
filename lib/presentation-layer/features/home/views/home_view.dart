@@ -4,6 +4,7 @@ import 'package:emekteb/core/constants/image/image_constants.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
+import 'package:emekteb/presentation-layer/widgets/image_placeholder.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/base/views/base_view.dart';
@@ -84,9 +85,9 @@ class _HomeViewState extends State<HomeView> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CircleAvatar(
+          ImagePlaceholder(
             radius: context.dynamicHeight(0.06),
-            backgroundImage: AssetImage(ImageConstants.instance.logoPlayStore),
+            imageProvider: AssetImage(ImageConstants.instance.logoPlayStore),
           ),
           widget.verticalSpace(context, 0.03),
           Text(

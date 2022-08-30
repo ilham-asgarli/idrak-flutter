@@ -1,7 +1,9 @@
 import 'package:emekteb/presentation-layer/features/chat/views/chat_view.dart';
+import 'package:emekteb/presentation-layer/features/chat/views/chats_view.dart';
 import 'package:emekteb/presentation-layer/features/contract/views/contract_details_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data-domain-layer/security/modules/chat_contact_controller.dart';
 import '../../../presentation-layer/features/contract/models/contract_details.dart';
 import '../../../presentation-layer/features/contract/views/contract_view.dart';
 import '../../../presentation-layer/features/timetable/views/timetable_view.dart';
@@ -59,8 +61,15 @@ class NavigationRoute {
       case NavigationConstants.CHAT:
         String title = settings.arguments as String;
         return normalNavigate(
-          ChatView(title: title),
+          ChatsView(title: title),
           NavigationConstants.CHAT,
+        );
+      case NavigationConstants.CHAT_ITEM:
+        ChatContactController chatContactController =
+            settings.arguments as ChatContactController;
+        return normalNavigate(
+          ChatView(chatContactController: chatContactController),
+          NavigationConstants.CHAT_ITEM,
         );
       default:
         //throw NavigateException<SettingsDynamicModel>(args.arguments);

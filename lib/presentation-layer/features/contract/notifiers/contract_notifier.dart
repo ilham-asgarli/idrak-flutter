@@ -1,4 +1,4 @@
-import 'package:emekteb/core/base/notifier/base_change_notifier.dart';
+import 'package:emekteb/core/base/notifiers/base_change_notifier.dart';
 
 class ContractNotifier extends BaseChangeNotifier {
   List<Map<String, String>> contractItems = [];

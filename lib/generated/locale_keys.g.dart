@@ -85,5 +85,6 @@ abstract class  LocaleKeys {
   static const timetable_markNote = 'timetable.markNote';
   static const timetable_contentInfo = 'timetable.contentInfo';
   static const timetable = 'timetable';
+  static const typeMessageHint = 'typeMessageHint';
 
 }
