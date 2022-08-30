@@ -34,6 +34,7 @@ class CodegenLoader extends AssetLoader{
   "documentSerial": "Vəsiqənin nömrəsi",
   "documentFin": "FIN",
   "contractConditions": "Müqavilənin şərtləri",
+  "contractTitle": "Müqavilə",
   "contract": {
     "contractNumber": "Müqavilənin nömrəsi",
     "contractType": {

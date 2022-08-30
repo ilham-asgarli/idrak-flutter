@@ -4,6 +4,7 @@ import 'package:emekteb/data-domain-layer/school/modules/week_yearly_controller.
 import 'package:emekteb/data-domain-layer/school/modules/yearly_controller.dart';
 
 import '../../../core/init/network/IResponseModel.dart';
+import '../modules/class_yearly_result_controller.dart';
 import '../modules/scheduler_controller.dart';
 import '../modules/timetable_controller.dart';
 import '../modules/year_controller.dart';
@@ -27,6 +28,11 @@ abstract class ISchoolService {
     String? accessToken,
     String? yearId,
     String? studentId,
+  );
+
+  Future<IResponseModel<ClassYearlyResultController>> fetchClassForParent(
+    String? accessToken,
+    String? classId,
   );
 
   Future<IResponseModel<WeekYearlyController>> fetchWeekList(

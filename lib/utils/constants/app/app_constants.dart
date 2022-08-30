@@ -6,24 +6,28 @@ import '../../../generated/locale_keys.g.dart';
 import '../../../presentation-layer/features/home/models/home_menu_item.dart';
 
 class AppConstants {
-  static final List<HomeMenuItem> homeMenuItems = [
-    HomeMenuItem(
-        route: NavigationConstants.SCHEDULE,
-        iconData: FontAwesomeIcons.list,
-        iconColor: Colors.orange),
-    HomeMenuItem(
-        route: NavigationConstants.TIMETABLE,
-        iconData: FontAwesomeIcons.book,
-        iconColor: Colors.teal),
-    HomeMenuItem(
-        route: NavigationConstants.CHAT,
-        iconData: FontAwesomeIcons.rocketchat,
-        iconColor: Colors.green),
-    HomeMenuItem(
-        route: NavigationConstants.CONTRACT,
-        iconData: FontAwesomeIcons.handshake,
-        iconColor: Colors.blue),
-  ];
+  static List<HomeMenuItem> homeMenuItems = [
+        HomeMenuItem(
+          route: NavigationConstants.SCHEDULE,
+          iconData: FontAwesomeIcons.list,
+          iconColor: Colors.orange,
+        ),
+        HomeMenuItem(
+          route: NavigationConstants.TIMETABLE,
+          iconData: FontAwesomeIcons.book,
+          iconColor: Colors.teal,
+        ),
+        HomeMenuItem(
+          route: NavigationConstants.CHAT,
+          iconData: FontAwesomeIcons.rocketchat,
+          iconColor: Colors.green,
+        ),
+        HomeMenuItem(
+          route: NavigationConstants.CONTRACTS,
+          iconData: FontAwesomeIcons.handshake,
+          iconColor: Colors.blue,
+        ),
+      ];
 
   static const int scheduleEndDrawerYearIndex = 0;
   static const int scheduleEndDrawerStudentIndex = 1;

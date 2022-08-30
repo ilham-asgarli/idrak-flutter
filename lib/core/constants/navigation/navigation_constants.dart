@@ -12,7 +12,8 @@ class NavigationConstants {
   static const CHAT = "/dashboard/chat";
   static const CHAT_ITEM = "/dashboard/chat/item";
   static const TIMETABLE = "/school/timeline";
-  static const CONTRACT = "/school/contracts";
+  static const CONTRACT = "/school/contracts-item";
+  static const CONTRACTS = "/school/contracts";
   static const SCHEDULE = "/school/calendar";
   static const CONTRACT_DETAILS = "/school/contracts/details";
 }

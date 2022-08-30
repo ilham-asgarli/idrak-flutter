@@ -3,7 +3,7 @@ import 'package:emekteb/core/base/models/base_model.dart';
 class ContractController extends BaseModel {
   String? code;
   String? message;
-  List<Result>? result;
+  List<ContractControllerResult>? result;
 
   ContractController({this.code, this.message, this.result});
 
@@ -25,12 +25,12 @@ class ContractController extends BaseModel {
       message: json['message'],
       result: json["result"] == null
           ? null
-          : List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
+          : List<ContractControllerResult>.from(json["result"].map((x) => ContractControllerResult.fromJson(x))),
     );
   }
 }
 
-class Result {
+class ContractControllerResult {
   String? id;
   String? contractNumber;
   String? info;
@@ -43,7 +43,7 @@ class Result {
   ContractPaymentOrder? contractPaymentOrder;
   dynamic contractCancelled;
 
-  Result(
+  ContractControllerResult(
       {this.id,
       this.contractNumber,
       this.info,
@@ -56,7 +56,7 @@ class Result {
       this.contractPaymentOrder,
       this.contractCancelled});
 
-  Result.fromJson(Map<String, dynamic> json) {
+  ContractControllerResult.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     contractNumber = json['contractNumber'];
     info = json['info'];
@@ -487,9 +487,9 @@ class ContractPaymentOrder {
   num? totalInterest;
   num? totalBalance;
   num? totalPaymentAmount;
-  double? totalPaymentPercent;
+  num? totalPaymentPercent;
   num? totalDeptAmount;
-  double? totalDeptPercent;
+  num? totalDeptPercent;
   dynamic expireDate;
   num? lastPaymentAmount;
   dynamic lastPaymentDate;

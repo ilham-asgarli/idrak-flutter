@@ -8,10 +8,12 @@ import 'bubble_background.dart';
 @immutable
 class MessageBubble extends StatelessWidget {
   final ChatMessageFromController? messageFromController;
+  final Widget? child;
 
   const MessageBubble({
     Key? key,
-    required this.messageFromController,
+    this.messageFromController,
+    this.child,
   }) : super(key: key);
 
   @override
@@ -49,9 +51,10 @@ class MessageBubble extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: BubbleChild(
-                      messageFromController: messageFromController,
-                    ),
+                    child: child ??
+                        BubbleChild(
+                          messageFromController: messageFromController,
+                        ),
                   ),
                 ),
               ),

@@ -3,21 +3,25 @@ import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/data-domain-layer/accounting/modules/customer_controller.dart';
 import 'package:emekteb/data-domain-layer/school/modules/year_controller.dart';
 import 'package:emekteb/data-domain-layer/school/services/school_service.dart';
+import 'package:emekteb/presentation-layer/features/contract/models/contract_model.dart';
 import 'package:emekteb/utils/constants/app/app_constants.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain-layer/accounting/services/accounting_service.dart';
 import '../../../../data-domain-layer/accounting/modules/contract_controller.dart';
+import '../../../../data-domain-layer/school/modules/class_yearly_result_controller.dart';
 import '../../../../generated/locale_keys.g.dart';
 import '../notifiers/contract_notifier.dart';
 
 class ContractViewModel with BaseViewModel {
   late ContractNotifier contractNotifier;
+  late ContractModel contractModel;
 
   ContractController? contractController;
   List<CustomerController?> customerControllers = [];
   List<YearController?> schoolYearControllers = [];
+  List<ClassYearlyResultController?> classYearlyResultControllers = [];
 
   AccountingService accountingService = AccountingService();
   SchoolService schoolService = SchoolService();
@@ -29,7 +33,8 @@ class ContractViewModel with BaseViewModel {
     contractNotifier = Provider.of<ContractNotifier>(context);
     contractNotifier.reset();
 
-    contractController = await getContractController(accessToken);
+    contractController = contractModel.contractController ??
+        await getContractController(accessToken);
 
     if (contractController?.result != null) {
       for (var contract in contractController!.result!) {
@@ -41,13 +46,25 @@ class ContractViewModel with BaseViewModel {
     if (contractController?.result != null) {
       for (var contract in contractController!.result!) {
         String? yearId;
+        String? classId;
+
         contract.contractPredimet?.parametrs?.forEach((element) {
           if (element.indeks == "yearId") {
             yearId = element.value;
+          } else if (element.indeks == "classId") {
+            classId = element.value;
           }
         });
-        schoolYearControllers
-            .add(await getSchoolYearController(accessToken, yearId));
+
+        schoolYearControllers.add(await getSchoolYearController(
+          accessToken,
+          yearId,
+        ));
+
+        classYearlyResultControllers.add(await getClassYearlyResultController(
+          accessToken,
+          classId,
+        ));
       }
     }
 
@@ -69,7 +86,7 @@ class ContractViewModel with BaseViewModel {
 
   Future<ContractController?> getContractController(String? accessToken) async {
     IResponseModel<ContractController> responseModel =
-        await accountingService.fetchContractListForToken(accessToken);
+        await accountingService.fetchContractList(accessToken);
 
     return responseModel.data;
   }
@@ -86,6 +103,14 @@ class ContractViewModel with BaseViewModel {
       String? accessToken, String? yearId) async {
     IResponseModel<YearController> responseModel =
         await schoolService.fetchYearByYearId(accessToken, yearId);
+
+    return responseModel.data;
+  }
+
+  Future<ClassYearlyResultController?> getClassYearlyResultController(
+      String? accessToken, String? classId) async {
+    IResponseModel<ClassYearlyResultController> responseModel =
+        await schoolService.fetchClassForParent(accessToken, classId);
 
     return responseModel.data;
   }
@@ -236,7 +261,6 @@ class ContractViewModel with BaseViewModel {
     return detail ?? "";
   }
 
-  //TODO: get class detail from api
   String getStudentInfoDetailByName(String contractItemName, int index) {
     String? detail;
 
@@ -254,7 +278,8 @@ class ContractViewModel with BaseViewModel {
             ?.documentSeriya;
         break;
       case LocaleKeys.contractStudent_class:
-        detail = "5 R2";
+        detail =
+            "${classYearlyResultControllers[index]?.result?.classPrefix} ${classYearlyResultControllers[index]?.result?.classPrefixIndicator}";
         break;
       case LocaleKeys.contractStudent_organisationCode:
         detail =

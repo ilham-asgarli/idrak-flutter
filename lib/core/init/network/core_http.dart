@@ -28,23 +28,27 @@ class CoreHttp {
     data,
     accessToken,
   }) async {
-    Response? response = await _sendRequest(url,
-        type: type, data: data, accessToken: accessToken);
+    try {
+      Response? response = await _sendRequest(url,
+          type: type, data: data, accessToken: accessToken);
 
-    if (response != null) {
-      try {
-        final model = _returnResponse<R, T>(response, parseModel: parseModel);
-        return ResponseModel<R>(data: model);
-      } on InvalidInputException catch (e) {
-        if (type == HttpTypes.GET) {
-          await AuthHelper().logout();
+      if (response != null) {
+        try {
+          final model = _returnResponse<R, T>(response, parseModel: parseModel);
+          return ResponseModel<R>(data: model);
+        } on InvalidInputException catch (e) {
+          if (type == HttpTypes.GET) {
+            await AuthHelper().logout();
+          }
+          return ResponseModel(error: BaseError(e.toString()));
+        } on Exception catch (e) {
+          return ResponseModel(error: BaseError(e.toString()));
         }
-        return ResponseModel(error: BaseError(e.toString()));
-      } on Exception catch (e) {
-        return ResponseModel(error: BaseError(e.toString()));
+      } else {
+        return ResponseModel(error: BaseError("Wrong http method"));
       }
-    } else {
-      return ResponseModel(error: BaseError("Wrong http method"));
+    } on Exception catch (e) {
+      return ResponseModel(error: BaseError(e.toString()));
     }
   }
 }

@@ -28,7 +28,7 @@ void main() async {
         startLocale: const Locale('az', 'AZ'),
         fallbackLocale: const Locale('en', 'US'),
         child: MultiProvider(
-          providers: [...ApplicationProvider.instance.dependItems],
+          providers: [...ApplicationProvider.instance.dependItems, ...ApplicationProvider.instance.uiChangesItems],
           child: const MyAppView(),
         ),
       ),

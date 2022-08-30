@@ -3,6 +3,7 @@ import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
 import 'package:emekteb/presentation-layer/features/contract/components/contract_body_place_holder.dart';
 import 'package:emekteb/presentation-layer/features/contract/components/contract_view_page_item.dart';
+import 'package:emekteb/presentation-layer/features/contract/models/contract_model.dart';
 import 'package:emekteb/presentation-layer/widgets/have_no.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,9 +13,9 @@ import '../../../../core/base/views/base_view.dart';
 import '../view-models/contract_view_model.dart';
 
 class ContractView extends StatefulWidget {
-  final String title;
+  final ContractModel contractModel;
 
-  const ContractView({required this.title, Key? key}) : super(key: key);
+  const ContractView({required this.contractModel, Key? key}) : super(key: key);
 
   @override
   State<ContractView> createState() => _ContractViewState();
@@ -37,6 +38,7 @@ class _ContractViewState extends State<ContractView> {
       viewModel: ContractViewModel(),
       onModelReady: (model) async {
         _contractViewModel = model;
+        _contractViewModel.contractModel = widget.contractModel;
         model.init(context);
       },
       onPageBuilder: (BuildContext buildContext, ContractViewModel model) =>
@@ -49,7 +51,7 @@ class _ContractViewState extends State<ContractView> {
       child: Scaffold(
         appBar: AppBar(
           leading: const BackButton(),
-          title: Text(widget.title),
+          title: Text(widget.contractModel.title),
         ),
         body: buildBody(),
       ),

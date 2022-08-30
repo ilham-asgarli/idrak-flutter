@@ -7,8 +7,10 @@ import '../../../../core/constants/colors/my_colors.dart';
 class BubbleChild extends StatelessWidget {
   final ChatMessageFromController? messageFromController;
 
-  const BubbleChild({Key? key, required this.messageFromController})
-      : super(key: key);
+  const BubbleChild({
+    Key? key,
+    required this.messageFromController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

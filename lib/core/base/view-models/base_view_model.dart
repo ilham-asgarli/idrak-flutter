@@ -9,7 +9,7 @@ import '../../init/cache/shared_preferences_manager.dart';
 import '../../init/navigation/navigation_service.dart';
 
 abstract class BaseViewModel {
-  BuildContext? buildContext;
+  late BuildContext buildContext;
 
   SharedPreferencesManager sharedPreferencesManager =
       SharedPreferencesManager.instance;
@@ -27,7 +27,7 @@ abstract class BaseViewModel {
     setUserInfo();
   }
 
-  void setBuildContext(BuildContext? context) {
+  void setBuildContext(BuildContext context) {
     buildContext = context;
   }
 

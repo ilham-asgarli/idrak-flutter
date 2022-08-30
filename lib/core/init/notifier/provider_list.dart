@@ -19,10 +19,15 @@ class ApplicationProvider {
   ApplicationProvider._init();
 
   List<SingleChildWidget> singleItems = [];
+
   List<SingleChildWidget> dependItems = [
     ChangeNotifierProvider(
-      create: (context) => ThemeNotifier(),
+      create: (_) => ThemeNotifier(),
     ),
+    //Provider.value(value: NavigationService.instance),
+  ];
+
+  List<SingleChildWidget> uiChangesItems = [
     ChangeNotifierProvider(
       create: (_) => ContractNotifier(),
     ),
@@ -35,10 +40,8 @@ class ApplicationProvider {
     ChangeNotifierProvider(
       create: (_) => ContractPaymentsNotifier(),
     ),
-    Provider(
-      create: (context) => ChatInitViewModel(context),
+    ChangeNotifierProvider(
+      create: (_) => ChatInitViewModel(_),
     ),
-    //Provider.value(value: NavigationService.instance),
   ];
-  List<SingleChildWidget> uiChangesItems = [];
 }

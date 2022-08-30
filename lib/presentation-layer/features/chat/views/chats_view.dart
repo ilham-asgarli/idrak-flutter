@@ -22,6 +22,12 @@ class _ChatsViewState extends State<ChatsView> {
   late ChatsViewModel _chatsViewModel;
 
   @override
+  void dispose() {
+    _chatsViewModel.chatsNotifier.isDisposed = true;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [

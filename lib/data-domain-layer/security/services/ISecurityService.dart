@@ -2,6 +2,7 @@ import 'package:emekteb/data-domain-layer/security/modules/chat_contact_controll
 import 'package:emekteb/data-domain-layer/security/modules/chat_message_from_controller.dart';
 
 import '../../../../../core/init/network/IResponseModel.dart';
+import '../modules/chat_message_to_controller.dart';
 import '../modules/login_response.dart';
 import '../modules/user_info.dart';
 import '../../../presentation-layer/features/login/models/login.dart';
@@ -14,6 +15,12 @@ abstract class ISecurityService {
   Future<IResponseModel<List<ChatMessageFromController>>> fetchChatMessageFrom(
     String? accessToken,
     String? username,
+  );
+
+  Future<IResponseModel<ChatMessageToController>> fetchChatMessageTo(
+    String? accessToken,
+    String? username,
+    String? message,
   );
 
   Future<IResponseModel<List<ChatContactController>>> fetchChatContacts(

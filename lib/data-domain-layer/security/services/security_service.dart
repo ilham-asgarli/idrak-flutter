@@ -3,6 +3,7 @@ import 'package:emekteb/core/constants/enums/http_request_enum.dart';
 import 'package:emekteb/core/init/network/core_http.dart';
 import 'package:emekteb/data-domain-layer/security/modules/chat_contact_controller.dart';
 import 'package:emekteb/data-domain-layer/security/modules/chat_message_from_controller.dart';
+import 'package:emekteb/data-domain-layer/security/modules/chat_message_to_controller.dart';
 import 'package:emekteb/data-domain-layer/security/modules/login_response.dart';
 import 'package:emekteb/data-domain-layer/security/modules/user_info.dart';
 
@@ -37,6 +38,21 @@ class SecurityService extends ISecurityService {
   }
 
   @override
+  Future<IResponseModel<List<ChatContactController>>> fetchChatContacts(
+    String? accessToken,
+  ) async {
+    IResponseModel<List<ChatContactController>> response =
+        await CoreHttp.instance.send(
+      ApiUrlConstants.contacts,
+      type: HttpTypes.GET,
+      parseModel: ChatContactController(),
+      accessToken: accessToken,
+    );
+
+    return response;
+  }
+
+  @override
   Future<IResponseModel<List<ChatMessageFromController>>> fetchChatMessageFrom(
     String? accessToken,
     String? username,
@@ -53,15 +69,18 @@ class SecurityService extends ISecurityService {
   }
 
   @override
-  Future<IResponseModel<List<ChatContactController>>> fetchChatContacts(
+  Future<IResponseModel<ChatMessageToController>> fetchChatMessageTo(
     String? accessToken,
+    String? username,
+    String? message,
   ) async {
-    IResponseModel<List<ChatContactController>> response =
+    IResponseModel<ChatMessageToController> response =
         await CoreHttp.instance.send(
-      ApiUrlConstants.contacts,
-      type: HttpTypes.GET,
-      parseModel: ChatContactController(),
+      ApiUrlConstants.message(username),
+      type: HttpTypes.POST,
+      parseModel: ChatMessageToController(),
       accessToken: accessToken,
+      data: {"message": message},
     );
 
     return response;

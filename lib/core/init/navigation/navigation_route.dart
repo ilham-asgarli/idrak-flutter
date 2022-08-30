@@ -1,6 +1,8 @@
 import 'package:emekteb/presentation-layer/features/chat/views/chat_view.dart';
 import 'package:emekteb/presentation-layer/features/chat/views/chats_view.dart';
+import 'package:emekteb/presentation-layer/features/contract/models/contract_model.dart';
 import 'package:emekteb/presentation-layer/features/contract/views/contract_details_view.dart';
+import 'package:emekteb/presentation-layer/features/contract/views/contracts_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data-domain-layer/security/modules/chat_contact_controller.dart';
@@ -44,12 +46,18 @@ class NavigationRoute {
           TimetableView(title: title),
           NavigationConstants.TIMETABLE,
         );
-      case NavigationConstants.CONTRACT:
-        String title = settings.arguments as String;
-        return normalNavigate(
-          ContractView(title: title),
-          NavigationConstants.CONTRACT,
-        );
+      case NavigationConstants.CONTRACTS:
+        if(settings.arguments is ContractModel) {
+          return normalNavigate(
+            ContractView(contractModel: settings.arguments as ContractModel),
+            NavigationConstants.CONTRACT,
+          );
+        } else {
+          return normalNavigate(
+            ContractsView(title: settings.arguments as String),
+            NavigationConstants.CONTRACTS,
+          );
+        }
       case NavigationConstants.CONTRACT_DETAILS:
         ContractDetails contractDetails = settings.arguments as ContractDetails;
         return normalNavigate(

@@ -18,6 +18,7 @@ abstract class  LocaleKeys {
   static const documentSerial = 'documentSerial';
   static const documentFin = 'documentFin';
   static const contractConditions = 'contractConditions';
+  static const contractTitle = 'contractTitle';
   static const contract_contractNumber = 'contract.contractNumber';
   static const contract_contractType_info = 'contract.contractType.info';
   static const contract_contractType = 'contract.contractType';

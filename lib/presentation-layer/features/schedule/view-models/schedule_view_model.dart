@@ -76,8 +76,8 @@ class ScheduleViewModel with BaseViewModel {
         .selectedChoosingEndDrawerItemIndex;
 
     try {
-      String? classYearId =
-          scheduleFilter?.schoolClassYearly?.result?[selectedClassIndex].id;
+      String? classYearId = scheduleFilter
+          ?.schoolClassYearly?.result?[selectedClassIndex].id;
       int? weekId =
           scheduleFilter?.schoolWeekYearly?.result?[selectedWeekIndex].id;
       SchedulerController? schoolScheduler =
@@ -111,7 +111,8 @@ class ScheduleViewModel with BaseViewModel {
       case AppConstants.scheduleEndDrawerClassIndex:
         return timetableFilter?.schoolClassYearly?.result!
             .map((e) => ChoosingEndDrawerItem(
-                  title: "${e.classPrefix} ${e.classPrefixIndicator}",
+                  title:
+                      "${e.classPrefix} ${e.classPrefixIndicator}",
                 ))
             .toList();
     }

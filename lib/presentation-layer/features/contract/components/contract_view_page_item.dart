@@ -102,9 +102,9 @@ class _ContractViewPageItemState extends State<ContractViewPageItem>
   }
 
   Widget buildChart(BuildContext context) {
-    double? totalPaymentPercent = widget.contractViewModel.contractController
+    num? totalPaymentPercent = widget.contractViewModel.contractController
         ?.result?[widget.index].contractPaymentOrder?.totalPaymentPercent;
-    double? totalDeptPercent = widget.contractViewModel.contractController
+    num? totalDeptPercent = widget.contractViewModel.contractController
         ?.result?[widget.index].contractPaymentOrder?.totalDeptPercent;
 
     return PieChart(
@@ -114,14 +114,14 @@ class _ContractViewPageItemState extends State<ContractViewPageItem>
         sections: [
           PieChartSectionData(
             color: Colors.green,
-            value: totalPaymentPercent,
+            value: totalPaymentPercent?.toDouble(),
             radius: 25,
             title: "${totalPaymentPercent?.toStringAsFixed(0)}%",
             titleStyle: const TextStyle(color: Colors.white),
           ),
           PieChartSectionData(
             color: Colors.red,
-            value: totalDeptPercent,
+            value: totalDeptPercent?.toDouble(),
             radius: 45,
             title: "${totalDeptPercent?.toStringAsFixed(0)}%",
             titleStyle: const TextStyle(color: Colors.white),

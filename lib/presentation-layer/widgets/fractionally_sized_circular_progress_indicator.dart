@@ -15,7 +15,7 @@ class FractionallySizedCircularProgressIndicator extends StatelessWidget {
         return SizedBox(
           width: constraints.maxHeight * factor,
           height: constraints.maxHeight * factor,
-          child: CircularProgressIndicator(
+          child: const CircularProgressIndicator(
             color: MyColors.secondColor,
           ),
         );

@@ -5,7 +5,7 @@ extension _CoreHttpOperations on CoreHttp {
     String url, {
     required HttpTypes type,
     required data,
-    accessToken,
+    String? accessToken,
   }) async {
     Response? response;
 
@@ -16,13 +16,14 @@ extension _CoreHttpOperations on CoreHttp {
         case HttpTypes.GET:
           response =
               await Client().get(Uri.parse(url), headers: <String, String>{
-            HttpHeaders.authorizationHeader: accessToken,
+            HttpHeaders.authorizationHeader: accessToken ?? "",
           });
           break;
         case HttpTypes.POST:
           response = await Client().post(Uri.parse(url),
               headers: <String, String>{
-                'Content-Type': 'application/json; charset=utf-8',
+                HttpHeaders.authorizationHeader: accessToken ?? "",
+                HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
               },
               body: jsonEncode(data));
           break;

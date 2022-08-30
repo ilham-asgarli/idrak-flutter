@@ -1,5 +1,6 @@
 import 'package:emekteb/core/init/network/IResponseModel.dart';
 import 'package:emekteb/data-domain-layer/accounting/modules/invoices_controller.dart';
+import 'package:emekteb/data-domain-layer/accounting/modules/pageable_contract_controller.dart';
 
 import '../../../core/constants/api/api_url_constants.dart';
 import '../../../core/constants/enums/http_request_enum.dart';
@@ -10,13 +11,36 @@ import 'IAccountingService.dart';
 
 class AccountingService extends IAccountingService {
   @override
-  Future<IResponseModel<ContractController>> fetchContractListForToken(
-      String? accessToken) async {
+  Future<IResponseModel<ContractController>> fetchContractList(
+    String? accessToken,
+  ) async {
     IResponseModel<ContractController> response = await CoreHttp.instance.send(
       ApiUrlConstants.contract,
       type: HttpTypes.GET,
       parseModel: ContractController(),
       accessToken: accessToken,
+    );
+
+    return response;
+  }
+
+  @override
+  Future<IResponseModel<PageableContractController>> fetchContractListForAdmin(
+    String? accessToken,
+    int page,
+    int size,
+  ) async {
+    IResponseModel<PageableContractController> response =
+        await CoreHttp.instance.send(
+      ApiUrlConstants.contractsForAdmin(page, size),
+      type: HttpTypes.POST,
+      parseModel: PageableContractController(),
+      accessToken: accessToken,
+      data: {
+        "criteria": [
+          {"key": "id", "operation": "IS_NOT_NULL", "value": ""}
+        ]
+      },
     );
 
     return response;

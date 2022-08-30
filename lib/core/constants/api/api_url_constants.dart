@@ -1,7 +1,7 @@
 class ApiUrlConstants {
-  static String base =
-      "https://back.idrak.edu.az/";
-      //"http://btk.ddns.net:7777/";
+  static String base = "https://back.idrak.edu.az/";
+
+  //"http://btk.ddns.net:7777/";
 
   static String auth = "security/auth";
   static String userInfo = "security/user/current";
@@ -16,8 +16,16 @@ class ApiUrlConstants {
   static String classYearly({required yearId}) =>
       "school/api/v1/class-yearly/year/$yearId";
 
-  static String classYearlyForParent({required yearId, required studentId}) =>
+  static String classYearlyForParent({
+    required yearId,
+    required studentId,
+  }) =>
       "school/api/v1/class-yearly/year/$yearId/student/$studentId";
+
+  static String classYearlyResultForParent({
+    required classId,
+  }) =>
+      "school/api/v1/class-yearly/$classId";
 
   static String weekYearly({required yearId}) =>
       "school/api/v1/week/year/$yearId";
@@ -44,4 +52,7 @@ class ApiUrlConstants {
 
   static String contractInvoices({required contractId}) =>
       "accounting/api/v1/contract/invoices/$contractId";
+
+  static String contractsForAdmin(int page, int size) =>
+      "accounting/api/v1/contract/search?page=$page&size=$size&sort=createdDate%2Cdesc";
 }

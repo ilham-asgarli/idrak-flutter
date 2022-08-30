@@ -4,10 +4,13 @@ import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/data-domain-layer/security/modules/chat_contact_controller.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
 import 'package:emekteb/presentation-layer/features/chat/components/message_bubble.dart';
+import 'package:emekteb/presentation-layer/features/chat/notifiers/chat_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/base/views/base_view.dart';
 import '../../../../data-domain-layer/security/modules/chat_message_from_controller.dart';
+import '../components/chat_view_placeholder.dart';
 import '../view-models/chat_view_model.dart';
 
 class ChatView extends StatefulWidget {
@@ -28,16 +31,33 @@ class _ChatViewState extends State<ChatView> {
   TextEditingController textEditingController = TextEditingController();
 
   @override
+  void dispose() {
+    _chatViewModel.chatNotifier.isDisposed = true;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BaseView<ChatViewModel>(
-      viewModel: ChatViewModel(),
-      onModelReady: (model) async {
-        _chatViewModel = model;
-        _chatViewModel.chatContactController = widget.chatContactController;
-        model.init(context);
-      },
-      onPageBuilder: (BuildContext buildContext, ChatViewModel model) =>
-          buildPage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ChatNotifier(),
+        ),
+        Consumer<ChatNotifier>(builder: (context, notifier, _) {
+          return BaseView<ChatViewModel>(
+            viewModel: ChatViewModel(),
+            onModelReady: (model) async {
+              _chatViewModel = model;
+              _chatViewModel.chatContactController =
+                  widget.chatContactController;
+              _chatViewModel.chatNotifier = notifier;
+              model.init(context);
+            },
+            onPageBuilder: (BuildContext buildContext, ChatViewModel model) =>
+                buildPage(),
+          );
+        }),
+      ],
     );
   }
 
@@ -61,13 +81,13 @@ class _ChatViewState extends State<ChatView> {
   buildBody() {
     return StreamBuilder(
       stream: _chatViewModel.streamSocket.getStream,
-      initialData: const <ChatMessageFromController>[],
+      //initialData: const <ChatMessageFromController>[],
       builder: (BuildContext context,
           AsyncSnapshot<List<ChatMessageFromController?>?> snapshot) {
         if (snapshot.hasData) {
           return buildChat(snapshot.data);
         } else {
-          return Container();
+          return const ChatViewPlaceholder();
         }
       },
     );
@@ -77,6 +97,7 @@ class _ChatViewState extends State<ChatView> {
     List<ChatMessageFromController?>? chatMessageFromControllers,
   ) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
           child: buildMessages(chatMessageFromControllers),
@@ -144,12 +165,25 @@ class _ChatViewState extends State<ChatView> {
   }
 
   Widget buildSend() {
-    return IconButton(
-      color: MyColors.secondColor,
-      icon: const Icon(Icons.send),
-      onPressed: () {
-        textEditingController.clear();
-      },
-    );
+    return _chatViewModel.chatNotifier.isSendingMessage
+        ? Container(
+            margin: const EdgeInsets.only(right: 15),
+            height: 20,
+            width: 20,
+            child: const CircularProgressIndicator(
+              color: MyColors.secondColor,
+            ),
+          )
+        : IconButton(
+            color: MyColors.secondColor,
+            icon: const Icon(Icons.send),
+            onPressed: () {
+              _chatViewModel.sendMessage(
+                _chatViewModel.chatContactController?.username,
+                textEditingController.text,
+              );
+              textEditingController.clear();
+            },
+          );
   }
 }
