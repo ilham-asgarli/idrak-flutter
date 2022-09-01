@@ -29,8 +29,12 @@ class CoreHttp {
     accessToken,
   }) async {
     try {
-      Response? response = await _sendRequest(url,
-          type: type, data: data, accessToken: accessToken);
+      Response? response = await _sendRequest(
+        url,
+        type: type,
+        data: data,
+        accessToken: accessToken,
+      );
 
       if (response != null) {
         try {

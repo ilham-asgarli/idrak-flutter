@@ -155,8 +155,8 @@ class SchedulerList {
   ClassYearly? classYearly;
   LessonHour? lessonHour;
   Subject1? subject1;
-  dynamic subject2;
-  dynamic subject3;
+  Subject1? subject2;
+  Subject1? subject3;
 
   SchedulerList(
       {this.id,
@@ -183,8 +183,13 @@ class SchedulerList {
     subject1 = json['subject1'] != null
         ? Subject1.fromJson(json['subject1'])
         : Subject1();
-    subject2 = json['subject2'];
-    subject3 = json['subject3'];
+    subject2 = json['subject2'] != null
+        ? Subject1.fromJson(json['subject2'])
+        : Subject1();
+    subject3 = json['subject3'] != null
+        ? Subject1.fromJson(json['subject3'])
+        : Subject1();
+    ;
   }
 
   Map<String, dynamic> toJson() {
@@ -520,7 +525,7 @@ class Subject1 {
   Subject? subject;
   Header? teacher;
   Section? branchRoom;
-  int? qrup;
+  num? qrup;
 
   Subject1({this.id, this.subject, this.teacher, this.branchRoom, this.qrup});
 

@@ -20,12 +20,15 @@ extension _CoreHttpOperations on CoreHttp {
           });
           break;
         case HttpTypes.POST:
-          response = await Client().post(Uri.parse(url),
-              headers: <String, String>{
-                HttpHeaders.authorizationHeader: accessToken ?? "",
-                HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
-              },
-              body: jsonEncode(data));
+          response = await Client().post(
+            Uri.parse(url),
+            headers: <String, String>{
+              HttpHeaders.authorizationHeader: accessToken ?? "",
+              HttpHeaders.contentTypeHeader: "application/json; charset=utf-8"
+            },
+            body: jsonEncode(data),
+            encoding: Encoding.getByName("utf-8"),
+          );
           break;
         default:
           response = null;
@@ -39,9 +42,15 @@ extension _CoreHttpOperations on CoreHttp {
     }
   }
 
-  R? _returnResponse<R, T extends BaseModel>(Response response,
-      {required T parseModel}) {
-    final jsonDecoded = json.decode(utf8.decode(response.bodyBytes));
+  R? _returnResponse<R, T extends BaseModel>(
+    Response response, {
+    required T parseModel,
+  }) {
+    dynamic jsonDecoded = json.decode("{}");
+
+    if (response.body.isNotEmpty) {
+      jsonDecoded = json.decode(utf8.decode(response.bodyBytes));
+    }
 
     if (response.statusCode == 200) {
       return _responseParser<R, T>(parseModel, jsonDecoded);
