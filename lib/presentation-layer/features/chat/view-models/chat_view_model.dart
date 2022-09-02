@@ -48,7 +48,7 @@ class ChatViewModel with BaseViewModel {
               baseChatMessageFromContent?.last.id,
               CHAT_MESSAGE_SEARCH_TYPE.BEFORE,
               0,
-              25))
+              50))
           ?.content,
     ];
     streamSocket.add(baseChatMessageFromContent);

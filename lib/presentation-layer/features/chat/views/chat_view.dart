@@ -168,7 +168,9 @@ class _ChatViewState extends State<ChatView> {
                     padding: context.paddingLow,
                     child: Text(
                       DateFormat("dd.MM.yyyy").format(
-                          DateTime.parse(contents?[index].dateTime ?? "")),
+                        DateTime.parse(contents?[index].dateTime ?? ""),
+                      ),
+                      style: const TextStyle(color: MyColors.secondColor),
                     ),
                   ),
                 ),
