@@ -21,10 +21,10 @@ class ChatViewModel with BaseViewModel {
     super.init(context);
 
     while (true) {
-      List<ChatMessageFromController?>? chatMessageFromControllers =
-          await getChatMessageFromList(chatContactController?.username);
+      ChatMessageFromController? chatMessageFromController =
+          await getChatMessageFromList(chatContactController?.username, 0, 100);
 
-      streamSocket.add(chatMessageFromControllers);
+      streamSocket.add(chatMessageFromController);
 
       await Future<void>.delayed(const Duration(seconds: 1));
     }
@@ -39,11 +39,18 @@ class ChatViewModel with BaseViewModel {
     chatNotifier.changeIsSendingMessage(false);
   }
 
-  Future<List<ChatMessageFromController?>?> getChatMessageFromList(
+  Future<ChatMessageFromController?> getChatMessageFromList(
     String? username,
+    page,
+    size,
   ) async {
-    IResponseModel<List<ChatMessageFromController?>> responseModel =
-        await securityService.fetchChatMessageFrom(accessToken, username);
+    IResponseModel<ChatMessageFromController?> responseModel =
+        await securityService.fetchChatMessageFrom(
+      accessToken,
+      username,
+      page,
+      size,
+    );
 
     return responseModel.data;
   }
@@ -62,11 +69,10 @@ class ChatViewModel with BaseViewModel {
 
 class StreamSocket {
   final _socketResponse =
-      StreamController<List<ChatMessageFromController?>?>.broadcast();
+      StreamController<ChatMessageFromController?>.broadcast();
 
-  void Function(List<ChatMessageFromController?>?) get add =>
-      _socketResponse.sink.add;
+  void Function(ChatMessageFromController?) get add => _socketResponse.sink.add;
 
-  Stream<List<ChatMessageFromController?>?> get getStream =>
+  Stream<ChatMessageFromController?> get getStream =>
       _socketResponse.stream.asBroadcastStream();
 }

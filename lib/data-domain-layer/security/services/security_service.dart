@@ -53,13 +53,15 @@ class SecurityService extends ISecurityService {
   }
 
   @override
-  Future<IResponseModel<List<ChatMessageFromController>>> fetchChatMessageFrom(
+  Future<IResponseModel<ChatMessageFromController>> fetchChatMessageFrom(
     String? accessToken,
     String? username,
+    page,
+    size,
   ) async {
-    IResponseModel<List<ChatMessageFromController>> response =
+    IResponseModel<ChatMessageFromController> response =
         await CoreHttp.instance.send(
-      ApiUrlConstants.message(username),
+      ApiUrlConstants.getMessage(username, page, size),
       type: HttpTypes.GET,
       parseModel: ChatMessageFromController(),
       accessToken: accessToken,

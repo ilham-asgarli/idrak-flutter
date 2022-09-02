@@ -1,6 +1,6 @@
 import 'package:emekteb/core/base/models/base_model.dart';
 
-class ContractController extends BaseModel {
+class ContractController extends BaseModel<ContractController> {
   String? code;
   String? message;
   List<ContractControllerResult>? result;

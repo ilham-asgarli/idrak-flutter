@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/colors/my_colors.dart';
 
 class BubbleChild extends StatelessWidget {
-  final ChatMessageFromController? messageFromController;
+  final ChatMessageFromContent? messageFromContent;
 
   const BubbleChild({
     Key? key,
-    required this.messageFromController,
+    required this.messageFromContent,
   }) : super(key: key);
 
   @override
@@ -18,7 +18,7 @@ class BubbleChild extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            messageFromController?.message ?? "",
+            messageFromContent?.message ?? "",
             style: const TextStyle(
               fontSize: 15,
               color: MyColors.secondColor,
@@ -30,7 +30,7 @@ class BubbleChild extends StatelessWidget {
             children: [
               Text(
                 DateFormat("HH:mm").format(
-                  DateTime.parse(messageFromController?.dateTime ?? ""),
+                  DateTime.parse(messageFromContent?.dateTime ?? ""),
                 ),
                 style: const TextStyle(
                   fontSize: 10,

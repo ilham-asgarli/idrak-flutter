@@ -7,18 +7,18 @@ import 'bubble_background.dart';
 
 @immutable
 class MessageBubble extends StatelessWidget {
-  final ChatMessageFromController? messageFromController;
+  final ChatMessageFromContent? messageFromContent;
   final Widget? child;
 
   const MessageBubble({
     Key? key,
-    this.messageFromController,
+    this.messageFromContent,
     this.child,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final messageAlignment = (messageFromController?.owner ?? true)
+    final messageAlignment = (messageFromContent?.owner ?? true)
         ? Alignment.topRight
         : Alignment.topLeft;
 
@@ -35,7 +35,7 @@ class MessageBubble extends StatelessWidget {
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(16.0)),
               child: BubbleBackground(
-                colors: (messageFromController?.owner ?? true)
+                colors: (messageFromContent?.owner ?? true)
                     ? [
                         Colors.green.shade300,
                         Colors.green,
@@ -53,7 +53,7 @@ class MessageBubble extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: child ??
                         BubbleChild(
-                          messageFromController: messageFromController,
+                          messageFromContent: messageFromContent,
                         ),
                   ),
                 ),

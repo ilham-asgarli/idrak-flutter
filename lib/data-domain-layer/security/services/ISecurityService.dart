@@ -12,9 +12,11 @@ abstract class ISecurityService {
 
   Future<IResponseModel<UserInfo>> fetchUserInfo(String? accessToken);
 
-  Future<IResponseModel<List<ChatMessageFromController>>> fetchChatMessageFrom(
+  Future<IResponseModel<ChatMessageFromController>> fetchChatMessageFrom(
     String? accessToken,
     String? username,
+    page,
+    size,
   );
 
   Future<IResponseModel<ChatMessageToController>> fetchChatMessageTo(

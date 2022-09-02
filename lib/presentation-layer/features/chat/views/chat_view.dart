@@ -83,7 +83,7 @@ class _ChatViewState extends State<ChatView> {
       stream: _chatViewModel.streamSocket.getStream,
       //initialData: const <ChatMessageFromController>[],
       builder: (BuildContext context,
-          AsyncSnapshot<List<ChatMessageFromController?>?> snapshot) {
+          AsyncSnapshot<ChatMessageFromController?> snapshot) {
         if (snapshot.hasData) {
           return buildChat(snapshot.data);
         } else {
@@ -94,13 +94,13 @@ class _ChatViewState extends State<ChatView> {
   }
 
   Widget buildChat(
-    List<ChatMessageFromController?>? chatMessageFromControllers,
+    ChatMessageFromController? chatMessageFromController,
   ) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
-          child: buildMessages(chatMessageFromControllers),
+          child: buildMessages(chatMessageFromController),
         ),
         Container(
           color: MyColors.mainColor,
@@ -126,17 +126,17 @@ class _ChatViewState extends State<ChatView> {
   }
 
   Widget buildMessages(
-    List<ChatMessageFromController?>? chatMessageFromControllers,
+    ChatMessageFromController? chatMessageFromController,
   ) {
     return ListView.separated(
       padding: context.paddingLow,
       cacheExtent: 1,
       reverse: true,
       shrinkWrap: true,
-      itemCount: chatMessageFromControllers?.length ?? 0,
+      itemCount: chatMessageFromController?.content?.length ?? 0,
       itemBuilder: (context, index) {
         return MessageBubble(
-          messageFromController: chatMessageFromControllers?[index],
+          messageFromContent: chatMessageFromController?.content?[index],
         );
       },
       separatorBuilder: (BuildContext context, int index) {

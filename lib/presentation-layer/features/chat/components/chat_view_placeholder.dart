@@ -64,7 +64,7 @@ class _ChatViewPlaceholderState extends State<ChatViewPlaceholder> {
         return MyShimmer(
           color: index.isOdd ? MyColors.mainColor : Colors.green,
           child: MessageBubble(
-            messageFromController: ChatMessageFromController(
+            messageFromContent: ChatMessageFromContent(
               owner: index.isEven,
             ),
             child: SizedBox(
