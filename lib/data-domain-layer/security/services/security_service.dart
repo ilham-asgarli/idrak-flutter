@@ -6,6 +6,7 @@ import 'package:emekteb/data-domain-layer/security/modules/chat_message_from_con
 import 'package:emekteb/data-domain-layer/security/modules/chat_message_to_controller.dart';
 import 'package:emekteb/data-domain-layer/security/modules/login_response.dart';
 import 'package:emekteb/data-domain-layer/security/modules/user_info.dart';
+import 'package:emekteb/utils/constants/enums/enums.dart';
 
 import '../../../core/init/network/IResponseModel.dart';
 import '../../../presentation-layer/features/login/models/login.dart';
@@ -83,6 +84,35 @@ class SecurityService extends ISecurityService {
       parseModel: ChatMessageToController(),
       accessToken: accessToken,
       data: {"message": message},
+    );
+
+    return response;
+  }
+
+  @override
+  Future<IResponseModel<ChatMessageFromController>>
+      fetchChatMessageFromByMessageId(
+    String? accessToken,
+    String? username,
+    String? messageId,
+    CHAT_MESSAGE_SEARCH_TYPE chatMessageSearchType,
+    page,
+    size,
+  ) async {
+    String url = "";
+
+    if (chatMessageSearchType == CHAT_MESSAGE_SEARCH_TYPE.AFTER) {
+      url = ApiUrlConstants.getNewMessage(username, messageId, page, size);
+    } else if (chatMessageSearchType == CHAT_MESSAGE_SEARCH_TYPE.BEFORE) {
+      url = ApiUrlConstants.getOldMessage(username, messageId, page, size);
+    }
+
+    IResponseModel<ChatMessageFromController> response =
+        await CoreHttp.instance.send(
+      url,
+      type: HttpTypes.GET,
+      parseModel: ChatMessageFromController(),
+      accessToken: accessToken,
     );
 
     return response;

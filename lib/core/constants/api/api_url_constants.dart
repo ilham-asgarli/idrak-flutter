@@ -1,6 +1,6 @@
 class ApiUrlConstants {
-  static String base = "https://back.idrak.edu.az/";
-
+  static String base =
+      "https://back.idrak.edu.az/";
   //http://btk.ddns.net:7777/";
 
   static String auth = "security/auth";
@@ -8,7 +8,19 @@ class ApiUrlConstants {
   static String contacts = "security/chat/contacts";
 
   static String message(username) => "security/chat/message/$username";
-  static String getMessage(username, page, size) => "security/chat/message/$username/?page=$page&size=$size";
+
+  static String getMessage(
+    username,
+    page,
+    size,
+  ) =>
+      "security/chat/message/$username/?page=$page&size=$size";
+
+  static String getNewMessage(username, messageId, page, size) =>
+      "security/chat/new-message/$username/message/$messageId?page=$page&size=$size";
+
+  static String getOldMessage(username, messageId, page, size) =>
+      "security/chat/old-message/$username/message/$messageId?page=$page&size=$size";
 
   static String yearly = "school/api/v1/yearly/actual-years";
 

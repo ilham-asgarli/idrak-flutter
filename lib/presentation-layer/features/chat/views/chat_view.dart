@@ -6,6 +6,7 @@ import 'package:emekteb/generated/locale_keys.g.dart';
 import 'package:emekteb/presentation-layer/features/chat/components/message_bubble.dart';
 import 'package:emekteb/presentation-layer/features/chat/notifiers/chat_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/base/views/base_view.dart';
@@ -83,7 +84,7 @@ class _ChatViewState extends State<ChatView> {
       stream: _chatViewModel.streamSocket.getStream,
       //initialData: const <ChatMessageFromController>[],
       builder: (BuildContext context,
-          AsyncSnapshot<ChatMessageFromController?> snapshot) {
+          AsyncSnapshot<List<ChatMessageFromContent>?> snapshot) {
         if (snapshot.hasData) {
           return buildChat(snapshot.data);
         } else {
@@ -94,13 +95,32 @@ class _ChatViewState extends State<ChatView> {
   }
 
   Widget buildChat(
-    ChatMessageFromController? chatMessageFromController,
+    List<ChatMessageFromContent>? contents,
   ) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
-          child: buildMessages(chatMessageFromController),
+          child: LazyLoadScrollView(
+            scrollOffset: context.height.toInt(),
+            isLoading: _chatViewModel.chatNotifier.isLoadingOldMessages,
+            onEndOfPage: () => _chatViewModel.loadOldMessages(),
+            child: SingleChildScrollView(
+              reverse: true,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Visibility(
+                    visible: _chatViewModel.chatNotifier.isLoadingOldMessages,
+                    child: const CircularProgressIndicator(),
+                  ),
+                  buildMessages(contents),
+                ],
+              ),
+            ),
+          ),
         ),
         Container(
           color: MyColors.mainColor,
@@ -126,17 +146,38 @@ class _ChatViewState extends State<ChatView> {
   }
 
   Widget buildMessages(
-    ChatMessageFromController? chatMessageFromController,
+    List<ChatMessageFromContent>? contents,
   ) {
     return ListView.separated(
       padding: context.paddingLow,
+      physics: const NeverScrollableScrollPhysics(),
       cacheExtent: 1,
       reverse: true,
       shrinkWrap: true,
-      itemCount: chatMessageFromController?.content?.length ?? 0,
+      itemCount: contents?.length ?? 0,
       itemBuilder: (context, index) {
-        return MessageBubble(
-          messageFromContent: chatMessageFromController?.content?[index],
+        return Column(
+          children: [
+            Visibility(
+              visible: _chatViewModel.isNewDay(contents, index),
+              child: Padding(
+                padding: context.paddingLow,
+                child: Card(
+                  color: MyColors.mainColor,
+                  child: Padding(
+                    padding: context.paddingLow,
+                    child: Text(
+                      DateFormat("dd.MM.yyyy").format(
+                          DateTime.parse(contents?[index].dateTime ?? "")),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            MessageBubble(
+              messageFromContent: contents?[index],
+            ),
+          ],
         );
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -182,6 +223,7 @@ class _ChatViewState extends State<ChatView> {
                 _chatViewModel.chatContactController?.username,
                 textEditingController.text,
               );
+
               textEditingController.clear();
             },
           );

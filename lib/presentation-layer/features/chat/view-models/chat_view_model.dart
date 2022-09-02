@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/data-domain-layer/security/modules/chat_contact_controller.dart';
 import 'package:emekteb/presentation-layer/features/chat/notifiers/chat_notifier.dart';
+import 'package:emekteb/utils/constants/enums/enums.dart';
 
 import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain-layer/security/modules/chat_message_from_controller.dart';
@@ -16,15 +17,73 @@ class ChatViewModel with BaseViewModel {
   SecurityService securityService = SecurityService();
   StreamSocket streamSocket = StreamSocket();
 
+  List<ChatMessageFromContent>? baseChatMessageFromContent = [];
+
   @override
   void init(context) async {
     super.init(context);
 
-    while (true) {
-      ChatMessageFromController? chatMessageFromController =
-          await getChatMessageFromList(chatContactController?.username, 0, 100);
+    baseChatMessageFromContent =
+        (await getChatMessageFromList(chatContactController?.username, 0, 50))
+            ?.content;
 
-      streamSocket.add(chatMessageFromController);
+    await listenToNewMessages();
+  }
+
+  bool isNewDay(List<ChatMessageFromContent>? contents, int index) {
+    if (contents != null && index == contents.length - 1) {
+      return true;
+    }
+
+    return DateTime.parse(contents?[index].dateTime ?? "").day !=
+        DateTime.parse(contents?[index + 1].dateTime ?? "").day;
+  }
+
+  Future<void> loadOldMessages() async {
+    chatNotifier.changeIsLoadingOldMessages(true);
+    baseChatMessageFromContent = [
+      ...?baseChatMessageFromContent,
+      ...?(await getChatMessageFromListByMessageId(
+              chatContactController?.username,
+              baseChatMessageFromContent?.last.id,
+              CHAT_MESSAGE_SEARCH_TYPE.BEFORE,
+              0,
+              25))
+          ?.content,
+    ];
+    streamSocket.add(baseChatMessageFromContent);
+    chatNotifier.changeIsLoadingOldMessages(false);
+  }
+
+  Future<void> listenToNewMessages() async {
+    while (true) {
+      List<ChatMessageFromContent>? newList = [];
+
+      if (baseChatMessageFromContent != null &&
+          baseChatMessageFromContent!.isNotEmpty) {
+        newList = (await getChatMessageFromListByMessageId(
+                chatContactController?.username,
+                baseChatMessageFromContent?.first.id,
+                CHAT_MESSAGE_SEARCH_TYPE.AFTER,
+                0,
+                50))
+            ?.content;
+
+        baseChatMessageFromContent = [
+          ...?newList,
+          ...?baseChatMessageFromContent,
+        ];
+      } else {
+        newList = (await getChatMessageFromList(
+                chatContactController?.username, 0, 50))
+            ?.content;
+
+        baseChatMessageFromContent = [
+          ...?newList,
+        ];
+      }
+
+      streamSocket.add(baseChatMessageFromContent);
 
       await Future<void>.delayed(const Duration(seconds: 1));
     }
@@ -55,6 +114,26 @@ class ChatViewModel with BaseViewModel {
     return responseModel.data;
   }
 
+  Future<ChatMessageFromController?> getChatMessageFromListByMessageId(
+    String? username,
+    String? messageId,
+    CHAT_MESSAGE_SEARCH_TYPE chatMessageSearchType,
+    num page,
+    num size,
+  ) async {
+    IResponseModel<ChatMessageFromController?> responseModel =
+        await securityService.fetchChatMessageFromByMessageId(
+      accessToken,
+      username,
+      messageId,
+      chatMessageSearchType,
+      page,
+      size,
+    );
+
+    return responseModel.data;
+  }
+
   Future<ChatMessageToController?> getChatMessageToList(
     String? username,
     String? message,
@@ -69,10 +148,11 @@ class ChatViewModel with BaseViewModel {
 
 class StreamSocket {
   final _socketResponse =
-      StreamController<ChatMessageFromController?>.broadcast();
+      StreamController<List<ChatMessageFromContent>?>.broadcast();
 
-  void Function(ChatMessageFromController?) get add => _socketResponse.sink.add;
+  void Function(List<ChatMessageFromContent>?) get add =>
+      _socketResponse.sink.add;
 
-  Stream<ChatMessageFromController?> get getStream =>
+  Stream<List<ChatMessageFromContent>?> get getStream =>
       _socketResponse.stream.asBroadcastStream();
 }
