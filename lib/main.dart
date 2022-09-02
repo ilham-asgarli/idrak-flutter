@@ -21,17 +21,21 @@ void main() async {
   runApp(
     DevicePreview(
       enabled: false, //!kReleaseMode
-      builder: (context) => EasyLocalization(
-        supportedLocales: const [Locale('az', 'AZ')],
-        path: 'assets/translations',
-        assetLoader: const CodegenLoader(),
-        startLocale: const Locale('az', 'AZ'),
-        fallbackLocale: const Locale('en', 'US'),
-        child: MultiProvider(
-          providers: [...ApplicationProvider.instance.dependItems, ...ApplicationProvider.instance.uiChangesItems],
-          child: const MyAppView(),
-        ),
-      ),
+      builder: (context) =>
+          EasyLocalization(
+            supportedLocales: const [Locale('az', 'AZ')],
+            path: 'assets/translations',
+            assetLoader: const CodegenLoader(),
+            startLocale: const Locale('az', 'AZ'),
+            fallbackLocale: const Locale('en', 'US'),
+            child: MultiProvider(
+              providers: [
+                ...ApplicationProvider.instance.dependItems,
+                ...ApplicationProvider.instance.uiChangesItems
+              ],
+              child: const MyAppView(),
+            ),
+          ),
     ),
   );
 }
