@@ -115,6 +115,11 @@ class TimetableViewModel with BaseViewModel {
     switch (index) {
       case AppConstants.timetableEndDrawerYearIndex:
         return getCurrentYearIndex(timetableFilter?.schoolYearly);
+      case AppConstants.timetableEndDrawerMonthIndex:
+        int monthIndex = ApiConstants.months.indexWhere(
+              (element) => element.containsValue(DateTime.now().month),
+        );
+        return monthIndex >= 0 ? monthIndex : 0;
       default:
         return 0;
     }

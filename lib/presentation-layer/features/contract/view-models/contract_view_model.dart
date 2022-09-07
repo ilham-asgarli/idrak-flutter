@@ -56,15 +56,19 @@ class ContractViewModel with BaseViewModel {
           }
         });
 
-        schoolYearControllers.add(await getSchoolYearController(
-          accessToken,
-          yearId,
-        ));
+        schoolYearControllers.add(
+          await getSchoolYearController(
+            accessToken,
+            yearId,
+          ),
+        );
 
-        classYearlyResultControllers.add(await getClassYearlyResultController(
-          accessToken,
-          classId,
-        ));
+        classYearlyResultControllers.add(
+          await getClassYearlyResultController(
+            accessToken,
+            classId,
+          ),
+        );
       }
     }
 

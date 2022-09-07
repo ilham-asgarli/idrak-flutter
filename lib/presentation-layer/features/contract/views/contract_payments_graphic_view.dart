@@ -19,7 +19,8 @@ class ContractPaymentsGraphicView extends StatefulWidget {
 }
 
 class _ContractPaymentsGraphicViewState
-    extends State<ContractPaymentsGraphicView> with AutomaticKeepAliveClientMixin<ContractPaymentsGraphicView>{
+    extends State<ContractPaymentsGraphicView>
+    with AutomaticKeepAliveClientMixin<ContractPaymentsGraphicView> {
   @override
   bool get wantKeepAlive => true;
 
