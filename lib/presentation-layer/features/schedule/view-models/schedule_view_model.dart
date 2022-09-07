@@ -69,15 +69,17 @@ class ScheduleViewModel with BaseViewModel {
 
   Future<SchedulerController?> getScheduleControllerByParameters() async {
     int selectedWeekIndex = scheduleNotifier
-        .mainEndDrawerItems[AppConstants.scheduleEndDrawerWeekIndex]
-        .selectedChoosingEndDrawerItemIndex;
+            .mainEndDrawerItems[AppConstants.scheduleEndDrawerWeekIndex]
+            .selectedChoosingEndDrawerItemIndex ??
+        0;
     int selectedClassIndex = scheduleNotifier
-        .mainEndDrawerItems[AppConstants.scheduleEndDrawerClassIndex]
-        .selectedChoosingEndDrawerItemIndex;
+            .mainEndDrawerItems[AppConstants.scheduleEndDrawerClassIndex]
+            .selectedChoosingEndDrawerItemIndex ??
+        0;
 
     try {
-      String? classYearId = scheduleFilter
-          ?.schoolClassYearly?.result?[selectedClassIndex].id;
+      String? classYearId =
+          scheduleFilter?.schoolClassYearly?.result?[selectedClassIndex].id;
       int? weekId =
           scheduleFilter?.schoolWeekYearly?.result?[selectedWeekIndex].id;
       SchedulerController? schoolScheduler =
@@ -111,8 +113,7 @@ class ScheduleViewModel with BaseViewModel {
       case AppConstants.scheduleEndDrawerClassIndex:
         return timetableFilter?.schoolClassYearly?.result!
             .map((e) => ChoosingEndDrawerItem(
-                  title:
-                      "${e.classPrefix} ${e.classPrefixIndicator}",
+                  title: "${e.classPrefix} ${e.classPrefixIndicator}",
                 ))
             .toList();
     }
@@ -207,13 +208,25 @@ class ScheduleViewModel with BaseViewModel {
                 : scheduleFilter?.studentController
             : null;
 
-    int index = yearIndex ?? getCurrentYearIndex(schoolYearly);
+    int index = yearIndex ??
+        scheduleNotifier
+            .mainEndDrawerItems[AppConstants.scheduleEndDrawerYearIndex]
+            .selectedChoosingEndDrawerItemIndex ??
+        getCurrentYearIndex(schoolYearly);
 
     ClassYearlyController? schoolClassYearly =
         role == ROLE.ROLE_SCHOOL_STUDENT_PARENT
             ? await getClassYearlyControllerForParent(
                 schoolYearly?.result?[index].id,
-                studentController?.result?[studentIndex ?? 0].customer?.id,
+                studentController
+                    ?.result?[studentIndex ??
+                        scheduleNotifier
+                            .mainEndDrawerItems[
+                                AppConstants.scheduleEndDrawerStudentIndex]
+                            .selectedChoosingEndDrawerItemIndex ??
+                        0]
+                    .customer
+                    ?.id,
               )
             : await getClassYearlyController(
                 schoolYearly?.result?[index].id,

@@ -63,13 +63,13 @@ class TimetableViewModel with BaseViewModel {
   Future<TimetableController?> getTimetableControllerByParameters() async {
     int selectedYearIndex = timetableNotifier
         .mainEndDrawerItems[AppConstants.timetableEndDrawerYearIndex]
-        .selectedChoosingEndDrawerItemIndex;
+        .selectedChoosingEndDrawerItemIndex ?? 0;
     int selectedStudentIndex = timetableNotifier
         .mainEndDrawerItems[AppConstants.timetableEndDrawerStudentIndex]
-        .selectedChoosingEndDrawerItemIndex;
+        .selectedChoosingEndDrawerItemIndex ?? 0;
     int selectedMonthIndex = timetableNotifier
         .mainEndDrawerItems[AppConstants.timetableEndDrawerMonthIndex]
-        .selectedChoosingEndDrawerItemIndex;
+        .selectedChoosingEndDrawerItemIndex ?? 0;
 
     try {
       String? yearId =
