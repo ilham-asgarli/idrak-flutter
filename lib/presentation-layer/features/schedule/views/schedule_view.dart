@@ -157,9 +157,9 @@ class _ScheduleViewState extends State<ScheduleView> {
       itemCount: _scheduleViewModel.scheduleNotifier.mainEndDrawerItems.length,
       itemBuilder: (context, index) {
         return Visibility(
-          visible: (index != 0 || _scheduleViewModel.role == ROLE.ROLE_ADMIN) &&
-              (index != 1 ||
-                  _scheduleViewModel.role == ROLE.ROLE_SCHOOL_STUDENT_PARENT),
+          visible: (index != 1 ||
+              _scheduleViewModel.role == ROLE.ROLE_SCHOOL_STUDENT_PARENT),
+          //(index != 0 || _scheduleViewModel.role == ROLE.ROLE_ADMIN) &&
           child: ListTile(
             title: Text(_scheduleViewModel
                 .scheduleNotifier.mainEndDrawerItems[index].title),
