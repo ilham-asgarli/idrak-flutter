@@ -68,38 +68,42 @@ class _LoginViewState extends State<LoginView> {
     return AbsorbPointer(
       absorbing: _loginViewModel.loginNotifier.isLogging,
       child: Scaffold(
-        body: LayoutBuilder(builder: (context, constraints) {
-          return SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                  minWidth: constraints.maxWidth,
-                  minHeight: constraints.maxHeight),
-              child: IntrinsicHeight(
-                child: Padding(
-                  padding: context.paddingNormal,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Visibility(
-                        visible: !KeyboardVisibilityProvider.isKeyboardVisible(
-                            context),
-                        child: logoArea(),
-                      ),
-                      welcomeMessage(),
-                      loginInputArea(),
-                      Visibility(
-                        visible: !KeyboardVisibilityProvider.isKeyboardVisible(
-                            context),
-                        child: copyrightArea(),
-                      ),
-                    ],
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                    minWidth: constraints.maxWidth,
+                    minHeight: constraints.maxHeight),
+                child: IntrinsicHeight(
+                  child: Padding(
+                    padding: context.paddingNormal,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Visibility(
+                          visible:
+                              !KeyboardVisibilityProvider.isKeyboardVisible(
+                                  context),
+                          child: logoArea(),
+                        ),
+                        welcomeMessage(),
+                        loginInputArea(),
+                        Visibility(
+                          visible:
+                              !KeyboardVisibilityProvider.isKeyboardVisible(
+                                  context),
+                          child: copyrightArea(),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          );
-        }),
+            );
+          },
+        ),
       ),
     );
   }
