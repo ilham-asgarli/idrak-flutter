@@ -1,10 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../../generated/locale_keys.g.dart';
 
 class HaveNo extends StatelessWidget {
   final IconData iconData;
