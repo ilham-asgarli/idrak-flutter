@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../core/constants/navigation/navigation_constants.dart';
 import '../../../generated/locale_keys.g.dart';
-import '../../../presentation-layer/features/home/models/home_menu_item.dart';
+import '../../../presentation/features/home/models/home_menu_item.dart';
 
 class AppConstants {
   static List<HomeMenuItem> homeMenuItems = [

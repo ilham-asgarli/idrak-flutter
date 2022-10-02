@@ -4,7 +4,7 @@ import 'package:emekteb/core/constants/cache/hive_constants.dart';
 import 'package:emekteb/core/init/cache/hive_manager.dart';
 import 'package:emekteb/core/init/cache/shared_preferences_manager.dart';
 import 'package:emekteb/generated/codegen_loader.g.dart';
-import 'package:emekteb/presentation-layer/features/my-app/views/my_app_view.dart';
+import 'package:emekteb/presentation/features/my-app/views/my_app_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';

@@ -5,7 +5,7 @@
 // gestures. You can also use WidgetTester to find child widgets in the widgets
 // tree, read text, and verify that the values of widgets properties are correct.
 
-import 'package:emekteb/presentation-layer/features/my-app/views/my_app_view.dart';
+import 'package:emekteb/presentation/features/my-app/views/my_app_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

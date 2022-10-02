@@ -4,8 +4,8 @@ import 'package:emekteb/core/base/notifiers/base_change_notifier.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../data-domain-layer/security/modules/chat_contact_controller.dart';
-import '../../../../data-domain-layer/security/services/security_service.dart';
+import '../../../../data-domain/security/modules/chat_contact_controller.dart';
+import '../../../../data-domain/security/services/security_service.dart';
 import '../../../constants/cache/hive_constants.dart';
 import '../../network/IResponseModel.dart';
 

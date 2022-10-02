@@ -1,18 +1,18 @@
-import 'package:emekteb/presentation-layer/features/chat/views/chat_view.dart';
-import 'package:emekteb/presentation-layer/features/chat/views/chats_view.dart';
-import 'package:emekteb/presentation-layer/features/contract/models/contract_model.dart';
-import 'package:emekteb/presentation-layer/features/contract/views/contract_details_view.dart';
-import 'package:emekteb/presentation-layer/features/contract/views/contracts_view.dart';
+import 'package:emekteb/presentation/features/chat/views/chat_view.dart';
+import 'package:emekteb/presentation/features/chat/views/chats_view.dart';
+import 'package:emekteb/presentation/features/contract/models/contract_model.dart';
+import 'package:emekteb/presentation/features/contract/views/contract_details_view.dart';
+import 'package:emekteb/presentation/features/contract/views/contracts_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data-domain-layer/security/modules/chat_contact_controller.dart';
-import '../../../presentation-layer/features/contract/models/contract_details.dart';
-import '../../../presentation-layer/features/contract/views/contract_view.dart';
-import '../../../presentation-layer/features/timetable/views/timetable_view.dart';
-import '../../../presentation-layer/features/home/views/home_view.dart';
-import '../../../presentation-layer/features/login/views/login_view.dart';
-import '../../../presentation-layer/features/not-found-navigation/views/not_found_navigation.dart';
-import '../../../presentation-layer/features/schedule/views/schedule_view.dart';
+import '../../../data-domain/security/modules/chat_contact_controller.dart';
+import '../../../presentation/features/contract/models/contract_details.dart';
+import '../../../presentation/features/contract/views/contract_view.dart';
+import '../../../presentation/features/timetable/views/timetable_view.dart';
+import '../../../presentation/features/home/views/home_view.dart';
+import '../../../presentation/features/login/views/login_view.dart';
+import '../../../presentation/features/not-found-navigation/views/not_found_navigation.dart';
+import '../../../presentation/features/schedule/views/schedule_view.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
 class NavigationRoute {
