@@ -1,3 +1,5 @@
+import 'package:emekteb/generated/locale_keys.g.dart';
+
 class UsernameValidator {
   String? username;
 
@@ -7,7 +9,7 @@ class UsernameValidator {
     if(username != null && username!.isNotEmpty) {
       return null;
     } else {
-      return "İstifadəçi adı girin";
+      return LocaleKeys.emptyUsernameWarning;
     }
   }
 }

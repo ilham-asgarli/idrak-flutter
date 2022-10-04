@@ -1,3 +1,5 @@
+import 'package:emekteb/generated/locale_keys.g.dart';
+
 class PasswordValidator {
   String? password;
 
@@ -7,7 +9,7 @@ class PasswordValidator {
     if(password != null && password!.isNotEmpty) {
       return null;
     } else {
-      return "Şifrə girin";
+      return LocaleKeys.emptyPasswordWarning;
     }
   }
 }

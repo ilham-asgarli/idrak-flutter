@@ -5,6 +5,8 @@ abstract class  LocaleKeys {
   static const login = 'login';
   static const username = 'username';
   static const password = 'password';
+  static const emptyUsernameWarning = 'emptyUsernameWarning';
+  static const emptyPasswordWarning = 'emptyPasswordWarning';
   static const scheduleSubjectInfo_room = 'scheduleSubjectInfo.room';
   static const scheduleSubjectInfo_qrup = 'scheduleSubjectInfo.qrup';
   static const scheduleSubjectInfo = 'scheduleSubjectInfo';

@@ -19,6 +19,8 @@ class CodegenLoader extends AssetLoader{
   "login": "Daxil olun",
   "username": "İstifadəçi adı",
   "password": "Şifrə",
+  "emptyUsernameWarning": "İstifadəçi adı girin",
+  "emptyPasswordWarning": "Şifrə girin",
   "scheduleSubjectInfo": {
     "room": "Otaq",
     "qrup": "Qrup"
