@@ -1,3 +1,4 @@
+import 'package:centered_singlechildscrollview/centered_singlechildscrollview.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/presentation/features/timetable/components/timetable_body_place_holder.dart';
 import 'package:emekteb/presentation/features/timetable/components/timetable_view_page_item.dart';
@@ -105,7 +106,13 @@ class _TimetableViewState extends State<TimetableView> {
         children: [
           Padding(
             padding: EdgeInsets.only(right: context.normalValue),
-            child: buildPageIndicator(),
+            child: CenteredSingleChildScrollView(
+              maxWidth: false,
+              maxHeight: false,
+              children: [
+                buildPageIndicator(),
+              ],
+            ),
           ),
           Expanded(
             child: buildPageView(),

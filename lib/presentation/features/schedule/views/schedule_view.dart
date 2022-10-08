@@ -1,3 +1,4 @@
+import 'package:centered_singlechildscrollview/centered_singlechildscrollview.dart';
 import 'package:emekteb/core/base/views/base_view.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/utils/constants/enums/enums.dart';
@@ -100,7 +101,14 @@ class _ScheduleViewState extends State<ScheduleView> {
       children: [
         Padding(
           padding: context.paddingNormalVertical,
-          child: buildPageIndicator(),
+          child: CenteredSingleChildScrollView(
+            maxWidth: false,
+            maxHeight: false,
+            axis: Axis.horizontal,
+            children: [
+              buildPageIndicator(),
+            ],
+          ),
         ),
         Expanded(
           child: buildPageView(),

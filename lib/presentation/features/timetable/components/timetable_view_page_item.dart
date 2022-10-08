@@ -1,3 +1,4 @@
+import 'package:centered_singlechildscrollview/centered_singlechildscrollview.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/data-domain/school/modules/timetable_controller.dart';
@@ -77,7 +78,14 @@ class _TimetableViewPageItemState extends State<TimetableViewPageItem>
             ),
           ),
           context.widget.verticalSpace(context, 0.03),
-          buildPageIndicator(context),
+          CenteredSingleChildScrollView(
+            maxWidth: false,
+            maxHeight: false,
+            axis: Axis.horizontal,
+            children: [
+              buildPageIndicator(context),
+            ],
+          ),
         ],
       ),
     );
@@ -106,7 +114,7 @@ class _TimetableViewPageItemState extends State<TimetableViewPageItem>
     return AnimatedSmoothIndicator(
       activeIndex: timetableViewPageItemNotifier.activeIndex,
       count: widget.timetableController?.result?.dates?[widget.index].subjects
-              ?.length ??
+          ?.length ??
           0,
       effect: WormEffect(
         activeDotColor: context.colorScheme.background,

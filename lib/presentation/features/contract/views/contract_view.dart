@@ -1,3 +1,4 @@
+import 'package:centered_singlechildscrollview/centered_singlechildscrollview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
@@ -74,7 +75,14 @@ class _ContractViewState extends State<ContractView> {
       children: [
         Padding(
           padding: context.paddingNormal,
-          child: buildPageIndicator(),
+          child: CenteredSingleChildScrollView(
+            maxWidth: false,
+            maxHeight: false,
+            axis: Axis.horizontal,
+            children: [
+              buildPageIndicator(),
+            ],
+          ),
         ),
         Expanded(
           child: buildPageView(),
