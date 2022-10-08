@@ -1,3 +1,4 @@
+import 'package:centered_singlechildscrollview/centered_singlechildscrollview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
@@ -75,7 +76,13 @@ class _ContractPaymentsState extends State<ContractPayments> with AutomaticKeepA
         children: [
           Padding(
             padding: EdgeInsets.only(right: context.normalValue),
-            child: buildPageIndicator(),
+            child: CenteredSingleChildScrollView(
+              maxWidth: false,
+              maxHeight: false,
+              children: [
+                buildPageIndicator(),
+              ],
+            ),
           ),
           Expanded(
             child: PageView.builder(

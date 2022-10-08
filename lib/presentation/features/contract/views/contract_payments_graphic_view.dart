@@ -1,3 +1,4 @@
+import 'package:centered_singlechildscrollview/centered_singlechildscrollview.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/presentation/features/contract/components/contract_payments_graphic_view_page_item.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,13 @@ class _ContractPaymentsGraphicViewState
         children: [
           Padding(
             padding: EdgeInsets.only(right: context.normalValue),
-            child: buildPageIndicator(),
+            child: CenteredSingleChildScrollView(
+              maxWidth: false,
+              maxHeight: false,
+              children: [
+                buildPageIndicator(),
+              ],
+            ),
           ),
           Expanded(
             child: PageView.builder(
