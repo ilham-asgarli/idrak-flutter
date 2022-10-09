@@ -1,1 +1,1 @@
-cmd /c "flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons.yaml"
+flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons.yaml
