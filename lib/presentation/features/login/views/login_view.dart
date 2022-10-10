@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/utils/generics/constants/assets/image_constants.dart';
+import 'package:emekteb/utils/app/constants/assets/image_constants.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
-import 'package:emekteb/utils/generics/notifier/theme_notifier.dart';
+import 'package:emekteb/utils/app/notifier/theme_notifier.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';

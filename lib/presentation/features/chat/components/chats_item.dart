@@ -2,8 +2,8 @@ import 'package:emekteb/data-domain/security/modules/chat_contact_controller.dar
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import '../../../../utils/generics/constants/assets/image_constants.dart';
-import '../../../../utils/generics/constants/navigation/navigation_constants.dart';
+import '../../../../utils/app/constants/assets/image_constants.dart';
+import '../../../../utils/app/constants/navigation/navigation_constants.dart';
 import '../../../../core/init/navigation/navigation_service.dart';
 import '../../../widgets/image_placeholder.dart';
 

@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:emekteb/core/base/models/base_http.dart';
-import 'package:emekteb/utils/generics/constants/api/api_url_constants.dart';
-import 'package:emekteb/utils/generics/helpers/auth_helper.dart';
+import 'package:emekteb/utils/app/constants/api/api_url_constants.dart';
+import 'package:emekteb/utils/app/helpers/auth_helper.dart';
 import 'package:http/http.dart';
 
 import '../../base/models/base_error.dart';
 import '../../base/models/base_model.dart';
-import '../../../utils/generics/constants/enums/http_request_enum.dart';
+import '../../../utils/app/constants/enums/http_request_enum.dart';
 import '../../exceptions/network/http_exception.dart';
 import 'IResponseModel.dart';
 

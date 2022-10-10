@@ -1,6 +1,6 @@
 import 'package:emekteb/data-domain/school/modules/yearly_controller.dart';
 
-import '../../../../utils/generics/constants/enums/api_enum.dart';
+import '../../../../utils/app/constants/enums/api_enum.dart';
 import '../../../../data-domain/school/modules/student_controller.dart';
 
 

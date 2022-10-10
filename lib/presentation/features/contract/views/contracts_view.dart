@@ -1,4 +1,4 @@
-import 'package:emekteb/utils/generics/constants/navigation/navigation_constants.dart';
+import 'package:emekteb/utils/app/constants/navigation/navigation_constants.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/init/navigation/navigation_service.dart';
 import 'package:emekteb/data-domain/accounting/modules/contract_controller.dart';

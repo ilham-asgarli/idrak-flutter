@@ -1,6 +1,6 @@
-import 'package:emekteb/utils/generics/config/theme/common_theme.dart';
-import 'package:emekteb/utils/generics/config/theme/dark_theme.dart';
-import 'package:emekteb/utils/generics/config/theme/light_theme.dart';
+import 'package:emekteb/utils/app/config/theme/common_theme.dart';
+import 'package:emekteb/utils/app/config/theme/dark_theme.dart';
+import 'package:emekteb/utils/app/config/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';

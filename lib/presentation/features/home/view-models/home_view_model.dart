@@ -1,9 +1,9 @@
-import 'package:emekteb/utils/generics/constants/cache/shared_preferences_constants.dart';
-import 'package:emekteb/utils/generics/constants/navigation/navigation_constants.dart';
-import 'package:emekteb/utils/generics/helpers/auth_helper.dart';
+import 'package:emekteb/utils/app/constants/cache/shared_preferences_constants.dart';
+import 'package:emekteb/utils/app/constants/navigation/navigation_constants.dart';
+import 'package:emekteb/utils/app/helpers/auth_helper.dart';
 import 'package:emekteb/core/init/cache/shared_preferences_manager.dart';
-import 'package:emekteb/utils/generics/chat/view-models/chat_init_view_model.dart';
-import 'package:emekteb/utils/generics/notifier/theme_notifier.dart';
+import 'package:emekteb/utils/app/chat/view-models/chat_init_view_model.dart';
+import 'package:emekteb/utils/app/notifier/theme_notifier.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/data-domain/security/modules/login_response.dart';
 import 'package:emekteb/data-domain/security/modules/user_info.dart';

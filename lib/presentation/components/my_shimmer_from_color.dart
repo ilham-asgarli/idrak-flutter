@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../utils/generics/constants/colors/my_colors.dart';
+import '../../utils/app/constants/colors/my_colors.dart';
 
 class MyShimmerFromColor extends StatelessWidget {
   final Widget child;

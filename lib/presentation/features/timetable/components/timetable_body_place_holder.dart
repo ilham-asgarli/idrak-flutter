@@ -2,7 +2,7 @@ import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../utils/generics/constants/colors/my_colors.dart';
+import '../../../../utils/app/constants/colors/my_colors.dart';
 import '../../../widgets/my_shimmer.dart';
 import '../../../widgets/table_place_holder.dart';
 
