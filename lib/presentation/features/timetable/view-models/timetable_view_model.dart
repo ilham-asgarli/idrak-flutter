@@ -8,10 +8,10 @@ import 'package:emekteb/presentation/features/timetable/models/timetable_filter.
 import 'package:emekteb/presentation/features/timetable/notifiers/timetable_notifier.dart';
 import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 
+import '../constants/app_constants.dart';
 import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain/school/modules/yearly_controller.dart';
 import '../../../../data-domain/school/services/school_service.dart';
-import '../../../../utils/ui/constants/app/app_constants.dart';
 import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
 
@@ -62,14 +62,17 @@ class TimetableViewModel with BaseViewModel {
 
   Future<TimetableController?> getTimetableControllerByParameters() async {
     int selectedYearIndex = timetableNotifier
-        .mainEndDrawerItems[AppConstants.timetableEndDrawerYearIndex]
-        .selectedChoosingEndDrawerItemIndex ?? 0;
+            .mainEndDrawerItems[AppConstants.timetableEndDrawerYearIndex]
+            .selectedChoosingEndDrawerItemIndex ??
+        0;
     int selectedStudentIndex = timetableNotifier
-        .mainEndDrawerItems[AppConstants.timetableEndDrawerStudentIndex]
-        .selectedChoosingEndDrawerItemIndex ?? 0;
+            .mainEndDrawerItems[AppConstants.timetableEndDrawerStudentIndex]
+            .selectedChoosingEndDrawerItemIndex ??
+        0;
     int selectedMonthIndex = timetableNotifier
-        .mainEndDrawerItems[AppConstants.timetableEndDrawerMonthIndex]
-        .selectedChoosingEndDrawerItemIndex ?? 0;
+            .mainEndDrawerItems[AppConstants.timetableEndDrawerMonthIndex]
+            .selectedChoosingEndDrawerItemIndex ??
+        0;
 
     try {
       String? yearId =
@@ -117,7 +120,7 @@ class TimetableViewModel with BaseViewModel {
         return getCurrentYearIndex(timetableFilter?.schoolYearly);
       case AppConstants.timetableEndDrawerMonthIndex:
         int monthIndex = ApiConstants.months.indexWhere(
-              (element) => element.containsValue(DateTime.now().month),
+          (element) => element.containsValue(DateTime.now().month),
         );
         return monthIndex >= 0 ? monthIndex : 0;
       default:

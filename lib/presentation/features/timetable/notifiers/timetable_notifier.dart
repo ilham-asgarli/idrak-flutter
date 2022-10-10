@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/notifiers/base_change_notifier.dart';
 import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 
-import '../../../../utils/ui/constants/app/app_constants.dart';
+import '../constants/app_constants.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
 
 class TimetableNotifier extends BaseChangeNotifier {

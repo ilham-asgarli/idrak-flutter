@@ -4,7 +4,7 @@ import 'package:emekteb/data-domain/accounting/modules/customer_controller.dart'
 import 'package:emekteb/data-domain/school/modules/year_controller.dart';
 import 'package:emekteb/data-domain/school/services/school_service.dart';
 import 'package:emekteb/presentation/features/contract/models/contract_model.dart';
-import 'package:emekteb/utils/ui/constants/app/app_constants.dart';
+import 'package:emekteb/presentation/features/contract/constants/app_constants.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/init/network/IResponseModel.dart';
