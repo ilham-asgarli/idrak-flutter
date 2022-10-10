@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../utils/app/constants/navigation/navigation_constants.dart';
-import '../models/home_menu_item.dart';
+import '../../../../../utils/app/constants/navigation/navigation_constants.dart';
+import '../../models/home_menu_item.dart';
 
 class Constants {
   static List<HomeMenuItem> homeMenuItems = [

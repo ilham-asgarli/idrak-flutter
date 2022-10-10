@@ -11,8 +11,8 @@ import '../../../../data-domain/school/services/school_service.dart';
 import '../../../../utils/app/constants/enums/api_enum.dart';
 import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
-import '../constants/constants.dart';
-import '../constants/enums.dart';
+import '../utils/constants/constants.dart';
+import '../utils/constants/enums.dart';
 import '../models/schedule_filter.dart';
 import '../notifiers/schedule_notifier.dart';
 

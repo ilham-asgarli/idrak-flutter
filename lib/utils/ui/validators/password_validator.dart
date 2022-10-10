@@ -6,7 +6,7 @@ class PasswordValidator {
   PasswordValidator(this.password);
 
   String? validate() {
-    if(password != null && password!.isNotEmpty) {
+    if (password != null && password!.isNotEmpty) {
       return null;
     } else {
       return LocaleKeys.emptyPasswordWarning;

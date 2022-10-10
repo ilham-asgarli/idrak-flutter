@@ -3,7 +3,7 @@ import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/data-domain/accounting/modules/customer_controller.dart';
 import 'package:emekteb/data-domain/school/modules/year_controller.dart';
 import 'package:emekteb/data-domain/school/services/school_service.dart';
-import 'package:emekteb/presentation/features/contract/constants/constants.dart';
+import 'package:emekteb/presentation/features/contract/utils/constants/constants.dart';
 import 'package:emekteb/presentation/features/contract/models/contract_model.dart';
 import 'package:provider/provider.dart';
 

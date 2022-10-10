@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/notifiers/base_change_notifier.dart';
 
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
-import '../constants/constants.dart';
-import '../constants/enums.dart';
+import '../utils/constants/constants.dart';
+import '../utils/constants/enums.dart';
 
 class ScheduleNotifier extends BaseChangeNotifier {
   List<MainEndDrawerItem> mainEndDrawerItems = Constants.scheduleMainEndDrawerItemTitleKeys

@@ -12,7 +12,7 @@ import '../../../../utils/app/constants/enums/api_enum.dart';
 import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
 import '../../../components/end_drawer_place_holder.dart';
-import '../constants/enums.dart';
+import '../utils/constants/enums.dart';
 import '../view-models/timetable_view_model.dart';
 
 class TimetableView extends StatefulWidget {

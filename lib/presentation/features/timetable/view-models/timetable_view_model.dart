@@ -12,8 +12,8 @@ import '../../../../data-domain/school/modules/yearly_controller.dart';
 import '../../../../data-domain/school/services/school_service.dart';
 import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
-import '../constants/constants.dart';
-import '../constants/enums.dart';
+import '../utils/constants/constants.dart';
+import '../utils/constants/enums.dart';
 
 class TimetableViewModel with BaseViewModel {
   late TimetableNotifier timetableNotifier;

@@ -1,4 +1,4 @@
-import '../../../../../generated/locale_keys.g.dart';
+import '../../../../../../generated/locale_keys.g.dart';
 
 class Constants {
   static const List<String> contractConditionItemNames = [
