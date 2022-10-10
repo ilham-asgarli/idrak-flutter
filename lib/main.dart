@@ -1,14 +1,14 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/utils/app/constants/cache/hive_constants.dart';
-import 'package:emekteb/core/init/cache/hive_manager.dart';
-import 'package:emekteb/core/init/cache/shared_preferences_manager.dart';
-import 'package:emekteb/generated/codegen_loader.g.dart';
-import 'package:emekteb/presentation/features/my-app/views/my_app_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
+import 'core/init/cache/hive_manager.dart';
+import 'core/init/cache/shared_preferences_manager.dart';
+import 'generated/codegen_loader.g.dart';
+import 'presentation/features/my-app/views/my_app_view.dart';
+import 'utils/app/constants/cache/hive_constants.dart';
 import 'utils/app/notifiers/provider_list.dart';
 
 void main() async {

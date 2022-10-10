@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
-import 'package:emekteb/utils/app/constants/assets/image_constants.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/core/init/navigation/navigation_service.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
 import 'package:emekteb/presentation/widgets/image_placeholder.dart';
+import 'package:emekteb/utils/app/constants/assets/image_constants.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/base/views/base_view.dart';

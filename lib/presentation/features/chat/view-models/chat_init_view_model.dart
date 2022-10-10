@@ -4,10 +4,10 @@ import 'package:emekteb/core/base/notifiers/base_change_notifier.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain/security/modules/chat_contact_controller.dart';
 import '../../../../data-domain/security/services/security_service.dart';
 import '../../../../utils/app/constants/cache/hive_constants.dart';
-import '../../../../core/init/network/IResponseModel.dart';
 
 class ChatInitViewModel extends BaseChangeNotifier with BaseViewModel {
   SecurityService securityService = SecurityService();

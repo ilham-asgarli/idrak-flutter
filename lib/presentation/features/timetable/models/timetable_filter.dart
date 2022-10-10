@@ -1,7 +1,7 @@
 import 'package:emekteb/data-domain/school/modules/yearly_controller.dart';
 
-import '../../../../utils/app/constants/enums/api_enum.dart';
 import '../../../../data-domain/school/modules/student_controller.dart';
+import '../../../../utils/app/constants/enums/api_enum.dart';
 
 
 class TimetableFilter {

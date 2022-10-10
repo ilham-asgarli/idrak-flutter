@@ -1,5 +1,5 @@
-import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:emekteb/presentation/features/chat/components/bubble_child.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data-domain/security/modules/chat_message_from_controller.dart';

@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/data-domain/security/modules/chat_contact_controller.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
 import 'package:emekteb/presentation/features/chat/components/message_bubble.dart';
 import 'package:emekteb/presentation/features/chat/notifiers/chat_notifier.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:provider/provider.dart';

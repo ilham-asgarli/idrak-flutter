@@ -1,6 +1,5 @@
 import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommonTheme {
   static final CommonTheme _instance = CommonTheme._init();

@@ -1,19 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
-import 'package:emekteb/utils/app/constants/api/api_constants.dart';
-import 'package:emekteb/utils/app/constants/enums/api_enum.dart';
 import 'package:emekteb/data-domain/school/modules/student_controller.dart';
 import 'package:emekteb/data-domain/school/modules/timetable_controller.dart';
 import 'package:emekteb/presentation/features/timetable/models/timetable_filter.dart';
 import 'package:emekteb/presentation/features/timetable/notifiers/timetable_notifier.dart';
-import 'package:emekteb/utils/ui/constants/enums/enums.dart';
+import 'package:emekteb/utils/app/constants/api/api_constants.dart';
+import 'package:emekteb/utils/app/constants/enums/api_enum.dart';
 
-import '../constants/constants.dart';
 import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain/school/modules/yearly_controller.dart';
 import '../../../../data-domain/school/services/school_service.dart';
 import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
+import '../constants/constants.dart';
 import '../constants/enums.dart';
 
 class TimetableViewModel with BaseViewModel {

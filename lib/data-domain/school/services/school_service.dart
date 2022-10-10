@@ -2,15 +2,15 @@ import 'package:emekteb/core/init/network/IResponseModel.dart';
 import 'package:emekteb/data-domain/school/modules/class_yearly_result_controller.dart';
 import 'package:emekteb/data-domain/school/modules/student_controller.dart';
 import 'package:emekteb/data-domain/school/modules/timetable_controller.dart';
-import 'package:emekteb/data-domain/school/modules/year_controller.dart';
 import 'package:emekteb/data-domain/school/modules/week_yearly_controller.dart';
+import 'package:emekteb/data-domain/school/modules/year_controller.dart';
 import 'package:emekteb/data-domain/school/modules/yearly_controller.dart';
 
+import '../../../core/init/network/core_http.dart';
 import '../../../utils/app/constants/api/api_url_constants.dart';
 import '../../../utils/app/constants/enums/http_request_enum.dart';
-import '../../../core/init/network/core_http.dart';
-import '../modules/scheduler_controller.dart';
 import '../modules/class_yearly_controller.dart';
+import '../modules/scheduler_controller.dart';
 import 'ISchoolService.dart';
 
 class SchoolService extends ISchoolService {

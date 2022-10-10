@@ -1,17 +1,16 @@
 import 'package:centered_singlechildscrollview/centered_singlechildscrollview.dart';
 import 'package:emekteb/core/base/views/base_view.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
-import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../utils/app/constants/enums/api_enum.dart';
-import '../components/schedule_body_place_holder.dart';
-import '../../../components/end_drawer_place_holder.dart';
-import '../components/schedule_view_page_item.dart';
 import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
+import '../../../components/end_drawer_place_holder.dart';
+import '../components/schedule_body_place_holder.dart';
+import '../components/schedule_view_page_item.dart';
 import '../constants/enums.dart';
 import '../notifiers/schedule_notifier.dart';
 import '../view-models/schedule_view_model.dart';

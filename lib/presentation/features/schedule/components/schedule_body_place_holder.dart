@@ -1,7 +1,7 @@
-import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/presentation/widgets/my_shimmer.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ScheduleBodyPlaceHolder extends StatelessWidget {
