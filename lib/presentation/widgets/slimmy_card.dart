@@ -172,9 +172,9 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                       BorderRadius.circular(widget.borderRadius ?? 0),
                     ),
                     alignment: Alignment.center,
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: AnimatedOpacity(
-                      duration: Duration(milliseconds: 100),
+                      duration: const Duration(milliseconds: 100),
                       opacity: (isSeperated) ? 1.0 : 0,
                       child: bottomCardWidget,
                     ),
@@ -225,7 +225,7 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                         ? (widget.topCardHeight! - y)
                         : 0,
                   ),
-                  Container(
+                  SizedBox(
                     height: widget.width! / 4,
                     width: widget.width,
                     child: FlareActor(
@@ -283,7 +283,7 @@ Widget simpleTextWidget(String text) {
   return Center(
     child: Text(
       text,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.white,
         fontSize: 12,
         fontWeight: FontWeight.w500,
