@@ -1,4 +1,4 @@
-import 'package:emekteb/utils/app/chat/view-models/chat_init_view_model.dart';
+import 'package:emekteb/presentation/features/chat/view-models/chat_init_view_model.dart';
 import 'package:emekteb/presentation/features/contract/notifiers/contract_notifier.dart';
 import 'package:emekteb/presentation/features/contract/notifiers/contract_payments_notifier.dart';
 import 'package:provider/provider.dart';

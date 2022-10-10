@@ -3,7 +3,7 @@ import 'package:emekteb/utils/app/constants/cache/shared_preferences_constants.d
 import 'package:emekteb/utils/app/constants/navigation/navigation_constants.dart';
 import 'package:emekteb/utils/app/helpers/auth_helper.dart';
 import 'package:emekteb/core/init/cache/shared_preferences_manager.dart';
-import 'package:emekteb/utils/app/chat/view-models/chat_init_view_model.dart';
+import 'package:emekteb/presentation/features/chat/view-models/chat_init_view_model.dart';
 import 'package:emekteb/utils/app/notifier/theme_notifier.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/data-domain/security/modules/login_response.dart';

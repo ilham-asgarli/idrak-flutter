@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../data-domain/security/modules/chat_contact_controller.dart';
 import '../../../../data-domain/security/services/security_service.dart';
-import '../../constants/cache/hive_constants.dart';
+import '../../../../utils/app/constants/cache/hive_constants.dart';
 import '../../../../core/init/network/IResponseModel.dart';
 
 class ChatInitViewModel extends BaseChangeNotifier with BaseViewModel {
