@@ -2,9 +2,12 @@ import 'package:emekteb/core/base/models/base_http.dart';
 
 class HttpException implements Exception {
   final BaseHttp? _baseHttp;
-  final _prefix;
+  final dynamic _prefix;
 
-  HttpException([this._baseHttp, this._prefix,]);
+  HttpException([
+    this._baseHttp,
+    this._prefix,
+  ]);
 
   @override
   String toString() {
