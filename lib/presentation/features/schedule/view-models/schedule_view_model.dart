@@ -3,15 +3,15 @@ import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/data-domain/school/modules/scheduler_controller.dart';
 import 'package:emekteb/data-domain/school/modules/week_yearly_controller.dart';
 import 'package:emekteb/data-domain/school/modules/yearly_controller.dart';
-import 'package:emekteb/utils/constants/app/app_constants.dart';
+import 'package:emekteb/utils/ui/constants/app/app_constants.dart';
 
 import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain/school/modules/class_yearly_controller.dart';
 import '../../../../data-domain/school/modules/student_controller.dart';
 import '../../../../data-domain/school/services/school_service.dart';
-import '../../../../utils/constants/enums/enums.dart';
-import '../../../../utils/models/choosing_end_drawer_item.dart';
-import '../../../../utils/models/main_end_drawer_item.dart';
+import '../../../../utils/ui/constants/enums/enums.dart';
+import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
+import '../../../../utils/ui/models/main_end_drawer_item.dart';
 import '../models/schedule_filter.dart';
 import '../notifiers/schedule_notifier.dart';
 

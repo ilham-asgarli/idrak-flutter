@@ -1,4 +1,4 @@
-import 'package:emekteb/core/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/constants/colors/my_colors.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/presentation/widgets/my_shimmer.dart';

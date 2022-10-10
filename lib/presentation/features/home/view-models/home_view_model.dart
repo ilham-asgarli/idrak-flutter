@@ -1,14 +1,14 @@
-import 'package:emekteb/core/constants/cache/shared_preferences_constants.dart';
-import 'package:emekteb/core/constants/navigation/navigation_constants.dart';
-import 'package:emekteb/core/helper/auth_helper.dart';
+import 'package:emekteb/utils/constants/cache/shared_preferences_constants.dart';
+import 'package:emekteb/utils/constants/navigation/navigation_constants.dart';
+import 'package:emekteb/utils/helpers/auth_helper.dart';
 import 'package:emekteb/core/init/cache/shared_preferences_manager.dart';
-import 'package:emekteb/core/init/chat/view-models/chat_init_view_model.dart';
-import 'package:emekteb/core/init/notifier/theme_notifier.dart';
+import 'package:emekteb/utils/chat/view-models/chat_init_view_model.dart';
+import 'package:emekteb/utils/notifier/theme_notifier.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/data-domain/security/modules/login_response.dart';
 import 'package:emekteb/data-domain/security/modules/user_info.dart';
-import 'package:emekteb/utils/constants/app/app_constants.dart';
-import 'package:emekteb/utils/constants/enums/enums.dart';
+import 'package:emekteb/utils/ui/constants/app/app_constants.dart';
+import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 import 'package:provider/provider.dart';
 
 import '../../contract/models/contract_model.dart';

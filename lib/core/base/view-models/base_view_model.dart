@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:emekteb/core/constants/cache/hive_constants.dart';
+import 'package:emekteb/utils/constants/cache/hive_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-import '../../../utils/constants/enums/enums.dart';
+import '../../../utils/ui/constants/enums/enums.dart';
 import '../../init/cache/shared_preferences_manager.dart';
 import '../../init/navigation/navigation_service.dart';
 

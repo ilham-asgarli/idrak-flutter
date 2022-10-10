@@ -3,7 +3,7 @@ import 'package:emekteb/core/base/view-models/base_view_model.dart';
 
 import '../../../../data-domain/school/modules/timetable_controller.dart';
 import '../../../../generated/locale_keys.g.dart';
-import '../../../../utils/constants/app/app_constants.dart';
+import '../../../../utils/ui/constants/app/app_constants.dart';
 
 class TimetableViewPageItemPageItemViewModel with BaseViewModel {
   late Dates? date;

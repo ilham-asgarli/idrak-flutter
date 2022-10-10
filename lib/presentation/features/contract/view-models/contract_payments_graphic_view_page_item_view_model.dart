@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
-import 'package:emekteb/utils/constants/app/app_constants.dart';
+import 'package:emekteb/utils/ui/constants/app/app_constants.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../data-domain/accounting/modules/contract_controller.dart';

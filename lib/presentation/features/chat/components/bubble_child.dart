@@ -4,7 +4,7 @@ import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/data-domain/security/modules/chat_message_from_controller.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/colors/my_colors.dart';
+import '../../../../utils/constants/colors/my_colors.dart';
 
 class BubbleChild extends StatelessWidget {
   final ChatMessageFromContent? messageFromContent;

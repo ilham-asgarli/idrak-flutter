@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/base/views/base_view.dart';
-import '../../../../core/init/navigation/navigation_route.dart';
+import '../../../../utils/config/navigation/navigation_route.dart';
 import '../../../../core/init/navigation/navigation_service.dart';
-import '../../../../core/init/notifier/theme_notifier.dart';
-import '../../../../core/init/theme/common_theme.dart';
-import '../../../../core/init/theme/dark_theme.dart';
+import '../../../../utils/notifier/theme_notifier.dart';
+import '../../../../utils/config/theme/common_theme.dart';
+import '../../../../utils/config/theme/dark_theme.dart';
 import '../view-models/my_app_view_model.dart';
 
 class MyAppView extends StatefulWidget {

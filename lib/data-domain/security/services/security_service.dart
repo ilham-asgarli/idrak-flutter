@@ -1,12 +1,12 @@
-import 'package:emekteb/core/constants/api/api_url_constants.dart';
-import 'package:emekteb/core/constants/enums/http_request_enum.dart';
+import 'package:emekteb/utils/constants/api/api_url_constants.dart';
+import 'package:emekteb/utils/constants/enums/http_request_enum.dart';
 import 'package:emekteb/core/init/network/core_http.dart';
 import 'package:emekteb/data-domain/security/modules/chat_contact_controller.dart';
 import 'package:emekteb/data-domain/security/modules/chat_message_from_controller.dart';
 import 'package:emekteb/data-domain/security/modules/chat_message_to_controller.dart';
 import 'package:emekteb/data-domain/security/modules/login_response.dart';
 import 'package:emekteb/data-domain/security/modules/user_info.dart';
-import 'package:emekteb/utils/constants/enums/enums.dart';
+import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 
 import '../../../core/init/network/IResponseModel.dart';
 import '../../../presentation/features/login/models/login.dart';

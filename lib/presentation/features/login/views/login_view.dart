@@ -1,16 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/core/constants/assets/image_constants.dart';
+import 'package:emekteb/utils/constants/assets/image_constants.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
-import 'package:emekteb/core/init/notifier/theme_notifier.dart';
+import 'package:emekteb/utils/notifier/theme_notifier.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/base/views/base_view.dart';
-import '../../../../utils/validators/password_validator.dart';
-import '../../../../utils/validators/username_validator.dart';
+import '../../../../utils/ui/validators/password_validator.dart';
+import '../../../../utils/ui/validators/username_validator.dart';
 import '../../../widgets/fractionally_sized_circular_progress_indicator.dart';
 import '../notifiers/login_notifier.dart';
 import '../view-models/login_view_model.dart';

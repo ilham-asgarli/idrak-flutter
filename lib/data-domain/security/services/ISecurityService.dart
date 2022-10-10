@@ -1,6 +1,6 @@
 import 'package:emekteb/data-domain/security/modules/chat_contact_controller.dart';
 import 'package:emekteb/data-domain/security/modules/chat_message_from_controller.dart';
-import 'package:emekteb/utils/constants/enums/enums.dart';
+import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 
 import '../../../../../core/init/network/IResponseModel.dart';
 import '../modules/chat_message_to_controller.dart';

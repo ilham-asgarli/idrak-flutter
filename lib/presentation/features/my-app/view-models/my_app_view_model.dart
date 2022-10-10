@@ -1,12 +1,12 @@
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
-import 'package:emekteb/core/constants/cache/hive_constants.dart';
-import 'package:emekteb/core/constants/navigation/navigation_constants.dart';
+import 'package:emekteb/utils/constants/cache/hive_constants.dart';
+import 'package:emekteb/utils/constants/navigation/navigation_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/constants/cache/shared_preferences_constants.dart';
-import '../../../../core/init/notifier/theme_notifier.dart';
+import '../../../../utils/constants/cache/shared_preferences_constants.dart';
+import '../../../../utils/notifier/theme_notifier.dart';
 
 class MyAppViewModel with BaseViewModel {
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/constants/colors/my_colors.dart';
+import '../../utils/constants/colors/my_colors.dart';
 
 class FractionallySizedCircularProgressIndicator extends StatelessWidget {
   final double factor;

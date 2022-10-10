@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/core/constants/colors/my_colors.dart';
-import 'package:emekteb/core/constants/assets/image_constants.dart';
+import 'package:emekteb/utils/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/constants/assets/image_constants.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/core/init/navigation/navigation_service.dart';

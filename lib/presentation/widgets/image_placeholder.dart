@@ -1,4 +1,4 @@
-import 'package:emekteb/core/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/constants/colors/my_colors.dart';
 import 'package:flutter/material.dart';
 
 class ImagePlaceholder extends StatelessWidget {

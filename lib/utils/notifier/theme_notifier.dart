@@ -1,12 +1,12 @@
-import 'package:emekteb/core/init/theme/common_theme.dart';
-import 'package:emekteb/core/init/theme/dark_theme.dart';
-import 'package:emekteb/core/init/theme/light_theme.dart';
+import 'package:emekteb/utils/config/theme/common_theme.dart';
+import 'package:emekteb/utils/config/theme/dark_theme.dart';
+import 'package:emekteb/utils/config/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
-import '../../constants/colors/my_colors.dart';
-import '../../constants/enums/app_theme_enum.dart';
+import '../constants/colors/my_colors.dart';
+import '../constants/enums/app_theme_enum.dart';
 
 class ThemeNotifier extends ChangeNotifier {
   ThemeData themeData = CommonTheme.instance.getTheme(

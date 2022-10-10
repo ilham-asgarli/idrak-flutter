@@ -1,11 +1,11 @@
-import 'package:emekteb/core/init/chat/view-models/chat_init_view_model.dart';
+import 'package:emekteb/utils/chat/view-models/chat_init_view_model.dart';
 import 'package:emekteb/presentation/features/contract/notifiers/contract_notifier.dart';
 import 'package:emekteb/presentation/features/contract/notifiers/contract_payments_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
-import '../../../presentation/features/contract/notifiers/contract_payments_graphic_view_page_item_notifier.dart';
-import '../../../presentation/features/contract/notifiers/contract_payments_graphic_view_page_notifier.dart';
+import '../../presentation/features/contract/notifiers/contract_payments_graphic_view_page_item_notifier.dart';
+import '../../presentation/features/contract/notifiers/contract_payments_graphic_view_page_notifier.dart';
 import 'theme_notifier.dart';
 
 class ApplicationProvider {
