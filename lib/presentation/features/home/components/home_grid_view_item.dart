@@ -1,4 +1,4 @@
-import 'package:emekteb/utils/app/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:emekteb/utils/app/constants/navigation/navigation_constants.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
@@ -39,7 +39,7 @@ class HomeGridViewItem extends StatelessWidget {
                       homeGrid.title,
                       textAlign: TextAlign.center,
                       style: context.textTheme.titleMedium!.copyWith(
-                        color: MyColors.secondColor,
+                        color: AppColors.secondColor,
                       ),
                     ),
                   ),
@@ -59,7 +59,7 @@ class HomeGridViewItem extends StatelessWidget {
                   child: Text(
                     "${chatInitViewModel.messageCount < 100 ? chatInitViewModel.messageCount : "99+"}",
                     style: const TextStyle(
-                      color: MyColors.secondColor,
+                      color: AppColors.secondColor,
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                     ),

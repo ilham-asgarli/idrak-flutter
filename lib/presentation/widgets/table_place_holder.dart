@@ -2,7 +2,7 @@ import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/app/constants/colors/my_colors.dart';
+import '../../utils/app/constants/colors/app_colors.dart';
 import 'my_shimmer.dart';
 
 class TablePlaceHolder extends StatelessWidget {
@@ -27,7 +27,7 @@ class TablePlaceHolder extends StatelessWidget {
       itemCount: rowCount,
       itemBuilder: (context, index) {
         return MyShimmer(
-          color: MyColors.shimmerColor,
+          color: AppColors.shimmerColor,
           child: Table(
             children: [
               TableRow(

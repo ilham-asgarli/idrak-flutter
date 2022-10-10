@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/utils/app/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/data-domain/security/modules/chat_message_from_controller.dart';
 import 'package:emekteb/presentation/widgets/my_shimmer.dart';
@@ -31,7 +31,7 @@ class _ChatViewPlaceholderState extends State<ChatViewPlaceholder> {
           child: buildMessages(),
         ),
         Container(
-          color: MyColors.mainColor,
+          color: AppColors.mainColor,
           child: Padding(
             padding: EdgeInsets.only(
               left: context.normalValue,
@@ -62,7 +62,7 @@ class _ChatViewPlaceholderState extends State<ChatViewPlaceholder> {
       itemCount: 10,
       itemBuilder: (context, index) {
         return MyShimmer(
-          color: index.isOdd ? MyColors.mainColor : Colors.green,
+          color: index.isOdd ? AppColors.mainColor : Colors.green,
           child: MessageBubble(
             messageFromContent: ChatMessageFromContent(
               owner: index.isEven,
@@ -85,9 +85,9 @@ class _ChatViewPlaceholderState extends State<ChatViewPlaceholder> {
   buildTextField() {
     return TextField(
       //focusNode: focusNode,
-      cursorColor: MyColors.secondColor,
+      cursorColor: AppColors.secondColor,
       style: const TextStyle(
-        color: MyColors.secondColor,
+        color: AppColors.secondColor,
       ),
       controller: textEditingController,
       minLines: null,
@@ -101,7 +101,7 @@ class _ChatViewPlaceholderState extends State<ChatViewPlaceholder> {
 
   Widget buildSend() {
     return IconButton(
-      color: MyColors.secondColor,
+      color: AppColors.secondColor,
       icon: const Icon(Icons.send),
       onPressed: () {
         textEditingController.clear();

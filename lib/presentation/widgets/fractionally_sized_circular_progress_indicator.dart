@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/app/constants/colors/my_colors.dart';
+import '../../utils/app/constants/colors/app_colors.dart';
 
 class FractionallySizedCircularProgressIndicator extends StatelessWidget {
   final double factor;
@@ -16,7 +16,7 @@ class FractionallySizedCircularProgressIndicator extends StatelessWidget {
           width: constraints.maxHeight * factor,
           height: constraints.maxHeight * factor,
           child: const CircularProgressIndicator(
-            color: MyColors.secondColor,
+            color: AppColors.secondColor,
           ),
         );
       },

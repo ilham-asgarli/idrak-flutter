@@ -1,4 +1,4 @@
-import 'package:emekteb/utils/app/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:emekteb/presentation/features/chat/components/bubble_child.dart';
 import 'package:flutter/material.dart';
 
@@ -41,8 +41,8 @@ class MessageBubble extends StatelessWidget {
                         Colors.green,
                       ]
                     : [
-                        MyColors.mainColor.shade300,
-                        MyColors.mainColor,
+                        AppColors.mainColor.shade300,
+                        AppColors.mainColor,
                       ],
                 child: DefaultTextStyle.merge(
                   style: const TextStyle(

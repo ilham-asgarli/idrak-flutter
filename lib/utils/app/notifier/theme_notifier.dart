@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
-import '../constants/colors/my_colors.dart';
+import '../constants/colors/app_colors.dart';
 import '../constants/enums/app_theme_enum.dart';
 
 class ThemeNotifier extends ChangeNotifier {
@@ -61,16 +61,16 @@ class ThemeNotifier extends ChangeNotifier {
   SystemUiOverlayStyle systemUiOverlayStyle(ThemeMode currentMode) {
     return SystemUiOverlayStyle(
       // status bar color
-      statusBarColor: MyColors.mainColor,
+      statusBarColor: AppColors.mainColor,
       // status bar brightness
       statusBarBrightness: Brightness.light,
       // status barIcon Brightness
       statusBarIconBrightness: Brightness.light,
       // navigation bar color
       systemNavigationBarColor: currentMode == ThemeMode.light
-          ? MyColors.light
+          ? AppColors.light
           : currentMode == ThemeMode.dark
-              ? MyColors.dark
+              ? AppColors.dark
               : null,
       // navigation bar icon
       systemNavigationBarIconBrightness: currentMode == ThemeMode.light
@@ -80,9 +80,9 @@ class ThemeNotifier extends ChangeNotifier {
               : null,
       // navigation bar divider color
       systemNavigationBarDividerColor: currentMode == ThemeMode.light
-          ? MyColors.light
+          ? AppColors.light
           : currentMode == ThemeMode.dark
-              ? MyColors.dark
+              ? AppColors.dark
               : null,
     );
   }

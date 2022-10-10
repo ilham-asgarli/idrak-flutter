@@ -4,7 +4,7 @@ import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/data-domain/security/modules/chat_message_from_controller.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../utils/app/constants/colors/my_colors.dart';
+import '../../../../utils/app/constants/colors/app_colors.dart';
 
 class BubbleChild extends StatelessWidget {
   final ChatMessageFromContent? messageFromContent;
@@ -23,7 +23,7 @@ class BubbleChild extends StatelessWidget {
             messageFromContent?.message ?? "",
             style: const TextStyle(
               fontSize: 15,
-              color: MyColors.secondColor,
+              color: AppColors.secondColor,
             ),
           ),
           Row(
@@ -37,7 +37,7 @@ class BubbleChild extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 10,
                   //fontWeight: FontWeight.bold,
-                  color: MyColors.secondColor,
+                  color: AppColors.secondColor,
                 ),
               ),
               Visibility(
@@ -52,7 +52,7 @@ class BubbleChild extends StatelessWidget {
                       (messageFromContent?.NEW ?? true)
                           ? const Icon(
                               Icons.done,
-                              color: MyColors.secondColor,
+                              color: AppColors.secondColor,
                               size: 15,
                             )
                           : const Icon(

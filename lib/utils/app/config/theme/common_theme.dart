@@ -1,4 +1,4 @@
-import 'package:emekteb/utils/app/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,7 +14,7 @@ class CommonTheme {
       visualDensity: VisualDensity.adaptivePlatformDensity,
       //textTheme: Typography.tall2021.apply(fontSizeFactor: 1.sp),
       colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: MyColors.mainColor,
+        primarySwatch: AppColors.mainColor,
       ),
     );
   }

@@ -1,4 +1,4 @@
-import 'package:emekteb/utils/app/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/presentation/widgets/my_shimmer.dart';
@@ -25,7 +25,7 @@ class ScheduleBodyPlaceHolder extends StatelessWidget {
 
   Widget buildDayTitlePlaceHolder(BuildContext context) {
     return MyShimmer(
-      color: MyColors.shimmerColor,
+      color: AppColors.shimmerColor,
       child: SizedBox(
         width: context.dynamicWidth(0.5),
         height: context.dynamicHeight(0.075),
@@ -41,7 +41,7 @@ class ScheduleBodyPlaceHolder extends StatelessWidget {
       itemCount: 8,
       itemBuilder: (context, index) {
         return MyShimmer(
-          color: MyColors.shimmerColor,
+          color: AppColors.shimmerColor,
           child: SizedBox(
             width: double.infinity,
             height: context.dynamicHeight(0.1),

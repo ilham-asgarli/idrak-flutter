@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/utils/app/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/data-domain/security/modules/chat_contact_controller.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
@@ -123,7 +123,7 @@ class _ChatViewState extends State<ChatView> {
           ),
         ),
         Container(
-          color: MyColors.mainColor,
+          color: AppColors.mainColor,
           child: Padding(
             padding: EdgeInsets.only(
               left: context.normalValue,
@@ -163,14 +163,14 @@ class _ChatViewState extends State<ChatView> {
               child: Padding(
                 padding: context.paddingLow,
                 child: Card(
-                  color: MyColors.mainColor,
+                  color: AppColors.mainColor,
                   child: Padding(
                     padding: context.paddingLow,
                     child: Text(
                       DateFormat("dd.MM.yyyy").format(
                         DateTime.parse(contents?[index].dateTime ?? ""),
                       ),
-                      style: const TextStyle(color: MyColors.secondColor),
+                      style: const TextStyle(color: AppColors.secondColor),
                     ),
                   ),
                 ),
@@ -193,9 +193,9 @@ class _ChatViewState extends State<ChatView> {
   buildTextField() {
     return TextField(
       //focusNode: focusNode,
-      cursorColor: MyColors.secondColor,
+      cursorColor: AppColors.secondColor,
       style: const TextStyle(
-        color: MyColors.secondColor,
+        color: AppColors.secondColor,
       ),
       controller: textEditingController,
       minLines: null,
@@ -214,11 +214,11 @@ class _ChatViewState extends State<ChatView> {
             height: 20,
             width: 20,
             child: const CircularProgressIndicator(
-              color: MyColors.secondColor,
+              color: AppColors.secondColor,
             ),
           )
         : IconButton(
-            color: MyColors.secondColor,
+            color: AppColors.secondColor,
             icon: const Icon(Icons.send),
             onPressed: () {
               _chatViewModel.sendMessage(

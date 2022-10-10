@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/utils/app/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/app/constants/colors/app_colors.dart';
 import 'package:emekteb/utils/app/constants/assets/image_constants.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
@@ -91,7 +91,7 @@ class _HomeViewState extends State<HomeView> {
 
   Widget top() {
     return Container(
-      color: MyColors.mainColor,
+      color: AppColors.mainColor,
       width: context.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -105,14 +105,14 @@ class _HomeViewState extends State<HomeView> {
           Text(
             _homeViewModel.loginResponse.result?.user?.fullName ?? "",
             style: context.textTheme.titleLarge!.copyWith(
-              color: MyColors.secondColor,
+              color: AppColors.secondColor,
             ),
           ),
           widget.verticalSpace(context, 0.005),
           Text(
             _homeViewModel.userInfo.result?.role?.description ?? "",
             style: const TextStyle(
-              color: MyColors.secondColor,
+              color: AppColors.secondColor,
             ),
           ),
         ],
