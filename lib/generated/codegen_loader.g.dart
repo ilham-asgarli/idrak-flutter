@@ -15,6 +15,7 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> az_AZ = {
+  "notFoundNavigation": "403",
   "welcome": "Xoş gəlmisiniz!",
   "login": "Daxil olun",
   "username": "İstifadəçi adı",
