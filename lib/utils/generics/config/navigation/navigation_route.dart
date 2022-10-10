@@ -5,14 +5,14 @@ import 'package:emekteb/presentation/features/contract/views/contract_details_vi
 import 'package:emekteb/presentation/features/contract/views/contracts_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data-domain/security/modules/chat_contact_controller.dart';
-import '../../../presentation/features/contract/models/contract_details.dart';
-import '../../../presentation/features/contract/views/contract_view.dart';
-import '../../../presentation/features/timetable/views/timetable_view.dart';
-import '../../../presentation/features/home/views/home_view.dart';
-import '../../../presentation/features/login/views/login_view.dart';
-import '../../../presentation/features/not-found-navigation/views/not_found_navigation.dart';
-import '../../../presentation/features/schedule/views/schedule_view.dart';
+import '../../../../data-domain/security/modules/chat_contact_controller.dart';
+import '../../../../presentation/features/contract/models/contract_details.dart';
+import '../../../../presentation/features/contract/views/contract_view.dart';
+import '../../../../presentation/features/timetable/views/timetable_view.dart';
+import '../../../../presentation/features/home/views/home_view.dart';
+import '../../../../presentation/features/login/views/login_view.dart';
+import '../../../../presentation/features/not-found-navigation/views/not_found_navigation.dart';
+import '../../../../presentation/features/schedule/views/schedule_view.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
 class NavigationRoute {

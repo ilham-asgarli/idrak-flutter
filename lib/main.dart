@@ -1,6 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/utils/constants/cache/hive_constants.dart';
+import 'package:emekteb/utils/generics/constants/cache/hive_constants.dart';
 import 'package:emekteb/core/init/cache/hive_manager.dart';
 import 'package:emekteb/core/init/cache/shared_preferences_manager.dart';
 import 'package:emekteb/generated/codegen_loader.g.dart';
@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
-import 'utils/notifier/provider_list.dart';
+import 'utils/generics/notifier/provider_list.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();

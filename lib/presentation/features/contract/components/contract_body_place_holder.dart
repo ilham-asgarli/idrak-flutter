@@ -3,7 +3,7 @@ import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/presentation/widgets/my_shimmer.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../utils/constants/colors/my_colors.dart';
+import '../../../../utils/generics/constants/colors/my_colors.dart';
 import '../../../widgets/table_place_holder.dart';
 
 class ContractBodyPlaceHolder extends StatelessWidget {

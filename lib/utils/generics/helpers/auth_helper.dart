@@ -1,18 +1,18 @@
 import 'dart:convert';
 
-import 'package:emekteb/utils/constants/cache/shared_preferences_constants.dart';
+import 'package:emekteb/utils/generics/constants/cache/shared_preferences_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-import '../../data-domain/security/modules/login_response.dart';
-import '../../data-domain/security/modules/user_info.dart';
-import '../../data-domain/security/services/security_service.dart';
-import '../../presentation/features/login/models/login.dart';
+import '../../../data-domain/security/modules/login_response.dart';
+import '../../../data-domain/security/modules/user_info.dart';
+import '../../../data-domain/security/services/security_service.dart';
+import '../../../presentation/features/login/models/login.dart';
 import '../constants/cache/hive_constants.dart';
 import '../constants/navigation/navigation_constants.dart';
-import '../../core/init/cache/shared_preferences_manager.dart';
-import '../../core/init/navigation/navigation_service.dart';
-import '../../core/init/network/IResponseModel.dart';
+import '../../../core/init/cache/shared_preferences_manager.dart';
+import '../../../core/init/navigation/navigation_service.dart';
+import '../../../core/init/network/IResponseModel.dart';
 
 class AuthHelper {
   SecurityService loginService = SecurityService();

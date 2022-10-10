@@ -1,5 +1,5 @@
-import 'package:emekteb/utils/constants/cache/shared_preferences_constants.dart';
-import 'package:emekteb/utils/helpers/auth_helper.dart';
+import 'package:emekteb/utils/generics/constants/cache/shared_preferences_constants.dart';
+import 'package:emekteb/utils/generics/helpers/auth_helper.dart';
 
 import '../../../../core/base/view-models/base_view_model.dart';
 import '../../../../core/init/cache/shared_preferences_manager.dart';

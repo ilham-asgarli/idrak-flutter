@@ -1,5 +1,5 @@
-import 'package:emekteb/utils/constants/api/api_url_constants.dart';
-import 'package:emekteb/utils/constants/enums/http_request_enum.dart';
+import 'package:emekteb/utils/generics/constants/api/api_url_constants.dart';
+import 'package:emekteb/utils/generics/constants/enums/http_request_enum.dart';
 import 'package:emekteb/core/init/network/core_http.dart';
 import 'package:emekteb/data-domain/security/modules/chat_contact_controller.dart';
 import 'package:emekteb/data-domain/security/modules/chat_message_from_controller.dart';

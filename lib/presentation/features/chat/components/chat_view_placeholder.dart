@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/utils/constants/colors/my_colors.dart';
+import 'package:emekteb/utils/generics/constants/colors/my_colors.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/data-domain/security/modules/chat_message_from_controller.dart';
 import 'package:emekteb/presentation/widgets/my_shimmer.dart';

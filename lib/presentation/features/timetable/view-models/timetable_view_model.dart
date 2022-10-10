@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
-import 'package:emekteb/utils/constants/api/api_constants.dart';
-import 'package:emekteb/utils/constants/enums/api_enum.dart';
+import 'package:emekteb/utils/generics/constants/api/api_constants.dart';
+import 'package:emekteb/utils/generics/constants/enums/api_enum.dart';
 import 'package:emekteb/data-domain/school/modules/student_controller.dart';
 import 'package:emekteb/data-domain/school/modules/timetable_controller.dart';
 import 'package:emekteb/presentation/features/timetable/models/timetable_filter.dart';
