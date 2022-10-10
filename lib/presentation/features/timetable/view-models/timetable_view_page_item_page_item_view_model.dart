@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 
-import '../constants/app_constants.dart';
+import '../constants/constants.dart';
 import '../../../../data-domain/school/modules/timetable_controller.dart';
 import '../../../../generated/locale_keys.g.dart';
 
@@ -10,7 +10,7 @@ class TimetableViewPageItemPageItemViewModel with BaseViewModel {
 
   getTimetableSubjectMap(int subjectIndex) {
     return {
-      for (String s in AppConstants.timetableNames)
+      for (String s in Constants.timetableNames)
         s.tr(): getTimetableSubjectValueByName(s, subjectIndex)
     };
   }

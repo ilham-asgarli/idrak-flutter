@@ -1,4 +1,4 @@
-import 'package:emekteb/presentation/features/home/constants/app/app_constants.dart';
+import 'package:emekteb/presentation/features/home/constants/constants.dart';
 import 'package:emekteb/utils/app/constants/cache/shared_preferences_constants.dart';
 import 'package:emekteb/utils/app/constants/navigation/navigation_constants.dart';
 import 'package:emekteb/utils/app/helpers/auth_helper.dart';
@@ -11,6 +11,7 @@ import 'package:emekteb/data-domain/security/modules/user_info.dart';
 import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../utils/app/constants/enums/api_enum.dart';
 import '../../contract/models/contract_model.dart';
 import '../models/home_grid.dart';
 import '../models/home_menu_item.dart';
@@ -52,7 +53,7 @@ class HomeViewModel with BaseViewModel {
 
       for (Permissions item in loginResponse.result?.user?.permissions ?? []) {
         for (SubItems subItem in item.subItems ?? []) {
-          for (HomeMenuItem homeMenuItem in AppConstants.homeMenuItems) {
+          for (HomeMenuItem homeMenuItem in Constants.homeMenuItems) {
             if (homeMenuItem.route == subItem.link) {
               homeGridItems.add(
                 HomeGrid(

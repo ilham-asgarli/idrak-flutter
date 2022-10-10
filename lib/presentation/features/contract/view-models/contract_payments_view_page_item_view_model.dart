@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 
 import '../../../../generated/locale_keys.g.dart';
-import '../constants/app_constants.dart';
+import '../constants/constants.dart';
 import '../models/contract_payment_details.dart';
 
 class ContractPaymentsViewPageItemViewModel with BaseViewModel {
@@ -10,7 +10,7 @@ class ContractPaymentsViewPageItemViewModel with BaseViewModel {
 
   getContractPaymentMap() {
     return {
-      for (String s in AppConstants.contractPaymentNames)
+      for (String s in Constants.contractPaymentNames)
         getContractPaymentKeyByName(s): getContractPaymentValueByName(s)
     };
   }

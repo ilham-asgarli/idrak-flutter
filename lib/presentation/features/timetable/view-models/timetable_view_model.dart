@@ -8,12 +8,13 @@ import 'package:emekteb/presentation/features/timetable/models/timetable_filter.
 import 'package:emekteb/presentation/features/timetable/notifiers/timetable_notifier.dart';
 import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 
-import '../constants/app_constants.dart';
+import '../constants/constants.dart';
 import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain/school/modules/yearly_controller.dart';
 import '../../../../data-domain/school/services/school_service.dart';
 import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
+import '../constants/enums.dart';
 
 class TimetableViewModel with BaseViewModel {
   late TimetableNotifier timetableNotifier;
@@ -32,8 +33,8 @@ class TimetableViewModel with BaseViewModel {
 
   setMainEndDrawerItems(TimetableFilter? timetableFilter) {
     timetableNotifier.changeMainEndDrawerItems(
-        AppConstants.timetableMainEndDrawerItemTitleKeys.map((e) {
-      int index = AppConstants.timetableMainEndDrawerItemTitleKeys.indexOf(e);
+        Constants.timetableMainEndDrawerItemTitleKeys.map((e) {
+      int index = Constants.timetableMainEndDrawerItemTitleKeys.indexOf(e);
 
       return MainEndDrawerItem(
         e.tr(),
@@ -53,7 +54,7 @@ class TimetableViewModel with BaseViewModel {
         mainIndex, choosingIndex);
     timetableNotifier.changeEndDrawerEnum(TIMETABLE_END_DRAWER.MAIN);
 
-    if (mainIndex == AppConstants.timetableEndDrawerYearIndex) {
+    if (mainIndex == Constants.timetableEndDrawerYearIndex) {
       await getFilterDataAndChangeState(yearIndex: choosingIndex);
     }
 
@@ -62,15 +63,15 @@ class TimetableViewModel with BaseViewModel {
 
   Future<TimetableController?> getTimetableControllerByParameters() async {
     int selectedYearIndex = timetableNotifier
-            .mainEndDrawerItems[AppConstants.timetableEndDrawerYearIndex]
+            .mainEndDrawerItems[Constants.timetableEndDrawerYearIndex]
             .selectedChoosingEndDrawerItemIndex ??
         0;
     int selectedStudentIndex = timetableNotifier
-            .mainEndDrawerItems[AppConstants.timetableEndDrawerStudentIndex]
+            .mainEndDrawerItems[Constants.timetableEndDrawerStudentIndex]
             .selectedChoosingEndDrawerItemIndex ??
         0;
     int selectedMonthIndex = timetableNotifier
-            .mainEndDrawerItems[AppConstants.timetableEndDrawerMonthIndex]
+            .mainEndDrawerItems[Constants.timetableEndDrawerMonthIndex]
             .selectedChoosingEndDrawerItemIndex ??
         0;
 
@@ -98,15 +99,15 @@ class TimetableViewModel with BaseViewModel {
     TimetableFilter? timetableFilter,
   ) {
     switch (index) {
-      case AppConstants.timetableEndDrawerYearIndex:
+      case Constants.timetableEndDrawerYearIndex:
         return timetableFilter?.schoolYearly?.result!
             .map((e) => ChoosingEndDrawerItem(title: e.info))
             .toList();
-      case AppConstants.timetableEndDrawerStudentIndex:
+      case Constants.timetableEndDrawerStudentIndex:
         return timetableFilter?.studentController?.result!
             .map((e) => ChoosingEndDrawerItem(title: e.customer?.fullName))
             .toList();
-      case AppConstants.timetableEndDrawerMonthIndex:
+      case Constants.timetableEndDrawerMonthIndex:
         return timetableFilter?.months
             .map((e) => ChoosingEndDrawerItem(title: e[Month.INFO].toString()))
             .toList();
@@ -116,9 +117,9 @@ class TimetableViewModel with BaseViewModel {
 
   int getSelectedIndexByMainEndDrawerIndex(index) {
     switch (index) {
-      case AppConstants.timetableEndDrawerYearIndex:
+      case Constants.timetableEndDrawerYearIndex:
         return getCurrentYearIndex(timetableFilter?.schoolYearly);
-      case AppConstants.timetableEndDrawerMonthIndex:
+      case Constants.timetableEndDrawerMonthIndex:
         int monthIndex = ApiConstants.months.indexWhere(
           (element) => element.containsValue(DateTime.now().month),
         );

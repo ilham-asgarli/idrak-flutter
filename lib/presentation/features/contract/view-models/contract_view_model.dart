@@ -4,7 +4,7 @@ import 'package:emekteb/data-domain/accounting/modules/customer_controller.dart'
 import 'package:emekteb/data-domain/school/modules/year_controller.dart';
 import 'package:emekteb/data-domain/school/services/school_service.dart';
 import 'package:emekteb/presentation/features/contract/models/contract_model.dart';
-import 'package:emekteb/presentation/features/contract/constants/app_constants.dart';
+import 'package:emekteb/presentation/features/contract/constants/constants.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/init/network/IResponseModel.dart';
@@ -125,7 +125,7 @@ class ContractViewModel with BaseViewModel {
         int index = contractController!.result!.indexOf(e);
         return {
           for (String contractItemName
-              in AppConstants.contractConditionItemNames)
+              in Constants.contractConditionItemNames)
             contractItemName.tr():
                 getContractConditionDetailByName(contractItemName, index),
         };
@@ -141,7 +141,7 @@ class ContractViewModel with BaseViewModel {
         int index = contractController!.result!.indexOf(e);
         return {
           for (String customerItemName
-              in AppConstants.contractCustomerItemNames)
+              in Constants.contractCustomerItemNames)
             customerItemName.tr():
                 getCustomerInfoDetailByName(customerItemName, index),
         };
@@ -156,7 +156,7 @@ class ContractViewModel with BaseViewModel {
       List<Map<String, String>> list = contractController!.result!.map((e) {
         int index = contractController!.result!.indexOf(e);
         return {
-          for (String studentItemName in AppConstants.contractStudentItemNames)
+          for (String studentItemName in Constants.contractStudentItemNames)
             studentItemName.tr():
                 getStudentInfoDetailByName(studentItemName, index),
         };

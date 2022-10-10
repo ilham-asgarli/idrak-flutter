@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/generated/locale_keys.g.dart';
-import 'package:emekteb/presentation/features/contract/constants/app_constants.dart';
+import 'package:emekteb/presentation/features/contract/constants/constants.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../data-domain/accounting/modules/contract_controller.dart';
@@ -35,7 +35,7 @@ class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {
 
   Map<String?, String?> getContractPaymentDetailsMap() {
     return {
-      for (String s in AppConstants.contractPaymentDetailNames)
+      for (String s in Constants.contractPaymentDetailNames)
         s.tr(): getContractPaymentDetailsValueByName(s)
     };
   }
@@ -54,7 +54,7 @@ class ContractPaymentsGraphicViewPageItemViewModel with BaseViewModel {
     for (var element in payments) {
       int paymentIndex = payments.indexOf(element);
       list.add({
-        for (String s in AppConstants.contractPaymentPortionDetailNames)
+        for (String s in Constants.contractPaymentPortionDetailNames)
           s.tr(): getContractPaymentPortionDetailsValueByName(s, paymentIndex)
       });
     }

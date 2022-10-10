@@ -8,12 +8,14 @@ import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain/school/modules/class_yearly_controller.dart';
 import '../../../../data-domain/school/modules/student_controller.dart';
 import '../../../../data-domain/school/services/school_service.dart';
+import '../../../../utils/app/constants/enums/api_enum.dart';
 import '../../../../utils/ui/constants/enums/enums.dart';
 import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
+import '../constants/enums.dart';
 import '../models/schedule_filter.dart';
 import '../notifiers/schedule_notifier.dart';
-import '../constants/app_constants.dart';
+import '../constants/constants.dart';
 
 class ScheduleViewModel with BaseViewModel {
   late ScheduleNotifier scheduleNotifier;
@@ -32,8 +34,8 @@ class ScheduleViewModel with BaseViewModel {
 
   setMainEndDrawerItems(ScheduleFilter? scheduleFilter) {
     scheduleNotifier.changeMainEndDrawerItems(
-        AppConstants.scheduleMainEndDrawerItemTitleKeys.map((e) {
-      int index = AppConstants.scheduleMainEndDrawerItemTitleKeys.indexOf(e);
+        Constants.scheduleMainEndDrawerItemTitleKeys.map((e) {
+      int index = Constants.scheduleMainEndDrawerItemTitleKeys.indexOf(e);
 
       return MainEndDrawerItem(
         e.tr(),
@@ -56,10 +58,10 @@ class ScheduleViewModel with BaseViewModel {
     scheduleNotifier.changeEndDrawerEnum(SCHEDULE_END_DRAWER.MAIN);
 
     switch (mainIndex) {
-      case AppConstants.scheduleEndDrawerYearIndex:
+      case Constants.scheduleEndDrawerYearIndex:
         await getFilterDataAndChangeState(yearIndex: choosingIndex);
         break;
-      case AppConstants.scheduleEndDrawerStudentIndex:
+      case Constants.scheduleEndDrawerStudentIndex:
         await getFilterDataAndChangeState(studentIndex: choosingIndex);
         break;
     }
@@ -69,11 +71,11 @@ class ScheduleViewModel with BaseViewModel {
 
   Future<SchedulerController?> getScheduleControllerByParameters() async {
     int selectedWeekIndex = scheduleNotifier
-            .mainEndDrawerItems[AppConstants.scheduleEndDrawerWeekIndex]
+            .mainEndDrawerItems[Constants.scheduleEndDrawerWeekIndex]
             .selectedChoosingEndDrawerItemIndex ??
         0;
     int selectedClassIndex = scheduleNotifier
-            .mainEndDrawerItems[AppConstants.scheduleEndDrawerClassIndex]
+            .mainEndDrawerItems[Constants.scheduleEndDrawerClassIndex]
             .selectedChoosingEndDrawerItemIndex ??
         0;
 
@@ -96,21 +98,21 @@ class ScheduleViewModel with BaseViewModel {
     ScheduleFilter? timetableFilter,
   ) {
     switch (index) {
-      case AppConstants.scheduleEndDrawerYearIndex:
+      case Constants.scheduleEndDrawerYearIndex:
         return timetableFilter?.schoolYearly?.result!
             .map((e) => ChoosingEndDrawerItem(title: e.info))
             .toList();
-      case AppConstants.scheduleEndDrawerStudentIndex:
+      case Constants.scheduleEndDrawerStudentIndex:
         return timetableFilter?.studentController?.result!
             .map((e) => ChoosingEndDrawerItem(title: e.customer?.fullName))
             .toList();
-      case AppConstants.scheduleEndDrawerWeekIndex:
+      case Constants.scheduleEndDrawerWeekIndex:
         return timetableFilter?.schoolWeekYearly?.result!
             .map((e) => ChoosingEndDrawerItem(
                   title: "${e.startWeek} - ${e.endWeek}",
                 ))
             .toList();
-      case AppConstants.scheduleEndDrawerClassIndex:
+      case Constants.scheduleEndDrawerClassIndex:
         return timetableFilter?.schoolClassYearly?.result!
             .map((e) => ChoosingEndDrawerItem(
                   title: "${e.classPrefix} ${e.classPrefixIndicator}",
@@ -122,9 +124,9 @@ class ScheduleViewModel with BaseViewModel {
 
   int getSelectedIndexByMainEndDrawerIndex(index) {
     switch (index) {
-      case AppConstants.scheduleEndDrawerYearIndex:
+      case Constants.scheduleEndDrawerYearIndex:
         return getCurrentYearIndex(scheduleFilter?.schoolYearly);
-      case AppConstants.scheduleEndDrawerWeekIndex:
+      case Constants.scheduleEndDrawerWeekIndex:
         return getCurrentWeekIndex(scheduleFilter?.schoolWeekYearly);
       default:
         return 0;
@@ -210,7 +212,7 @@ class ScheduleViewModel with BaseViewModel {
 
     int index = yearIndex ??
         scheduleNotifier
-            .mainEndDrawerItems[AppConstants.scheduleEndDrawerYearIndex]
+            .mainEndDrawerItems[Constants.scheduleEndDrawerYearIndex]
             .selectedChoosingEndDrawerItemIndex ??
         getCurrentYearIndex(schoolYearly);
 
@@ -222,7 +224,7 @@ class ScheduleViewModel with BaseViewModel {
                     ?.result?[studentIndex ??
                         scheduleNotifier
                             .mainEndDrawerItems[
-                                AppConstants.scheduleEndDrawerStudentIndex]
+                                Constants.scheduleEndDrawerStudentIndex]
                             .selectedChoosingEndDrawerItemIndex ??
                         0]
                     .customer

@@ -1,6 +1,6 @@
 import '../../../../../generated/locale_keys.g.dart';
 
-class AppConstants {
+class Constants {
   static const List<String> contractConditionItemNames = [
     LocaleKeys.contract_contractNumber,
     LocaleKeys.contract_contractType_info,

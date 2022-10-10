@@ -1,6 +1,6 @@
 import '../../../../../generated/locale_keys.g.dart';
 
-class AppConstants {
+class Constants {
 
   static const int timetableEndDrawerStudentIndex = 0;
   static const int timetableEndDrawerYearIndex = 1;

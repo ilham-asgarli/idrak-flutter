@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:emekteb/core/base/view-models/base_view_model.dart';
 import 'package:emekteb/data-domain/security/modules/chat_contact_controller.dart';
 import 'package:emekteb/presentation/features/chat/notifiers/chat_notifier.dart';
-import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 
 import '../../../../core/init/network/IResponseModel.dart';
 import '../../../../data-domain/security/modules/chat_message_from_controller.dart';
 import '../../../../data-domain/security/modules/chat_message_to_controller.dart';
 import '../../../../data-domain/security/services/security_service.dart';
+import '../../../../utils/app/constants/enums/api_enum.dart';
 
 class ChatViewModel with BaseViewModel {
   late ChatContactController? chatContactController;

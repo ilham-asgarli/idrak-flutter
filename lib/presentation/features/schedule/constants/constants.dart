@@ -1,6 +1,6 @@
 import '../../../../../generated/locale_keys.g.dart';
 
-class AppConstants {
+class Constants {
   static const int scheduleEndDrawerYearIndex = 0;
   static const int scheduleEndDrawerStudentIndex = 1;
   static const int scheduleEndDrawerWeekIndex = 2;

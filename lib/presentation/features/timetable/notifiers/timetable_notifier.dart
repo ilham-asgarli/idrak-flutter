@@ -2,11 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:emekteb/core/base/notifiers/base_change_notifier.dart';
 import 'package:emekteb/utils/ui/constants/enums/enums.dart';
 
-import '../constants/app_constants.dart';
+import '../constants/constants.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
+import '../constants/enums.dart';
 
 class TimetableNotifier extends BaseChangeNotifier {
-  List<MainEndDrawerItem> mainEndDrawerItems = AppConstants
+  List<MainEndDrawerItem> mainEndDrawerItems = Constants
       .timetableMainEndDrawerItemTitleKeys
       .map((e) => MainEndDrawerItem(e.tr()))
       .toList();

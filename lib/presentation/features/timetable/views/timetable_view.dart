@@ -8,10 +8,12 @@ import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/base/views/base_view.dart';
+import '../../../../utils/app/constants/enums/api_enum.dart';
 import '../../../../utils/ui/constants/enums/enums.dart';
 import '../../../../utils/ui/models/choosing_end_drawer_item.dart';
 import '../../../../utils/ui/models/main_end_drawer_item.dart';
 import '../../../components/end_drawer_place_holder.dart';
+import '../constants/enums.dart';
 import '../view-models/timetable_view_model.dart';
 
 class TimetableView extends StatefulWidget {
