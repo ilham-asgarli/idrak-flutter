@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:emekteb/core/constants/image/image_constants.dart';
+import 'package:emekteb/core/constants/assets/image_constants.dart';
 import 'package:emekteb/core/extensions/context_extension.dart';
 import 'package:emekteb/core/extensions/widget_extension.dart';
 import 'package:emekteb/core/init/notifier/theme_notifier.dart';
